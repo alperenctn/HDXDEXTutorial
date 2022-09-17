@@ -1,5 +1,28 @@
 import './App.css';
 import React ,{useState, Component, useEffect} from "react";
+import aethpng from "./png/aeth.png"
+import chartpng from "./png/chart.bmp"
+import arrowpng from "./png/arrow.png"
+import chainpng from "./png/chain.bmp"
+import copypng from "./png/copy.png"
+import dexpng from "./png/dex.bmp"
+import downpng from "./png/down.bmp"
+import ethpng from "./png/eth.png"
+import greenpng from "./png/green.png"
+import hdxpng from "./png/hdx.png"
+import HYDRANETpng from "./png/HYDRANET.bmp"
+import leftpng from "./png/left.png"
+import ltcpng from "./png/ltc.png"
+import portfoliopng from "./png/portfolio.bmp"
+import settingspng from "./png/settings.bmp"
+import swappng from "./png/swap.bmp"
+import uppng from "./png/up.bmp"
+import usdcpng from "./png/usdc.png"
+import vortexpng from "./png/vortex.bmp"
+import walletpng from "./png/wallet.bmp"
+import btcpng from "./png/btc.png"
+import usdtpng from "./png/usdt.png"
+
 
 
 function App() {
@@ -70,7 +93,7 @@ function App() {
     const [usdcbalanceCR,setUsdcBalanceCR] = useState(0);
     const [usdtbalanceCR,setUsdtBalanceCR] = useState(0);
 
-    const [img,setImg] = useState("https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg");
+    const [img,setImg] = useState(btcpng);
     const [walletName,setWalletName] = useState("BTC Wallet");
     const [coinPrice, setCoinPrice] = useState("1 BTC = 100 usd");
     const [balanceValue, setBalanceValue] = useState(btcbalance*1000)
@@ -96,7 +119,7 @@ function App() {
         switch(x){
             case "AETH":
              setBalance(aethbalance);
-             setImg("https://imgyukle.com/f/2022/09/12/nheXFs.png");
+             setImg(aethpng);
              setWalletName("AETH Wallet")
              setCoinPrice("(1 AETH = 100 usd)");
              setBalanceValue((aethbalance+aethbalanceL2)*100);
@@ -107,7 +130,7 @@ function App() {
             return;
             case "BTC":
              setBalance(btcbalance);
-             setImg("https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg");
+             setImg(btcpng);
              setWalletName("BTC Wallet")
              setCoinPrice("(1 BTC = 1000 usd)");
              setBalanceValue((btcbalance+btcbalanceL2)*1000);
@@ -118,7 +141,7 @@ function App() {
             return;
             case "ETH":
              setBalance(ethbalance);
-             setImg("https://imgyukle.com/f/2022/09/11/nhC0It.png");
+             setImg(ethpng);
              setWalletName("ETH Wallet")
              setCoinPrice("(1 ETH = 100 usd)");
              setBalanceValue((ethbalance+ethbalanceL2)*100);
@@ -129,7 +152,7 @@ function App() {
             return;
             case "HDX":
              setBalance(hdxbalance);
-             setImg("https://imgyukle.com/f/2022/09/11/nhSkiN.png");
+             setImg(hdxpng);
              setWalletName("HDX Wallet")
              setCoinPrice("(1 HDX = 1 usd)");
              setBalanceValue(hdxbalance+hdxbalanceL2);
@@ -140,7 +163,7 @@ function App() {
             return;
             case "LTC":
              setBalance(ltcbalance);
-             setImg("https://imgyukle.com/f/2022/09/11/nhSym6.png");
+             setImg(ltcpng);
              setWalletName("LTC Wallet")
              setCoinPrice("(1 LTC = 10 usd)");
              setBalanceValue((ltcbalance+ltcbalanceL2)*10);
@@ -151,7 +174,7 @@ function App() {
             return;
             case "USDC":
              setBalance(usdcbalance);
-             setImg("https://imgyukle.com/f/2022/09/11/nhSxiM.png");
+             setImg(usdcpng);
              setWalletName("USDC Wallet")
              setCoinPrice("(1 USDC = 1 usd)");
              setBalanceValue((usdcbalance+usdcbalanceL2)*1);
@@ -162,7 +185,7 @@ function App() {
             return;
             case "USDT":
              setBalance(usdtbalance);
-             setImg("https://cryptologos.cc/logos/tether-usdt-logo.png?v=023");
+             setImg(usdtpng);
              setWalletName("USDT Wallet")
              setCoinPrice("(1 USDT = 1 usd)");
              setBalanceValue(usdtbalance+usdtbalanceL2);
@@ -507,8 +530,8 @@ function App() {
                 setSelectedPair1CRValue(btcbalanceCR*1000);
                 setSelectedPair2L2Value(usdtbalanceL2);
                 setSelectedPair2CRValue(usdtbalanceCR);
-                setSelectedPair1img("https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg")
-                setSelectedPair2img("https://cryptologos.cc/logos/tether-usdt-logo.png?v=023")
+                setSelectedPair1img(btcpng)
+                setSelectedPair2img(usdtpng)
                 setFirstCoin("BTC")
                 setSecondCoin("USDT")
                 return;
@@ -521,8 +544,8 @@ function App() {
                 setSelectedPair1CRValue(aethbalanceCR*100);
                 setSelectedPair2L2Value(hdxbalanceL2);
                 setSelectedPair2CRValue(hdxbalanceCR);
-                setSelectedPair1img("https://imgyukle.com/f/2022/09/12/nheXFs.png")
-                setSelectedPair2img("https://imgyukle.com/f/2022/09/11/nhSkiN.png")
+                setSelectedPair1img(aethpng)
+                setSelectedPair2img(hdxpng)
                 setFirstCoin("AETH")
                 setSecondCoin("HDX")
                 return;
@@ -535,8 +558,8 @@ function App() {
                 setSelectedPair1CRValue(btcbalanceCR*1000);
                 setSelectedPair2L2Value(ltcbalanceL2*10);
                 setSelectedPair2CRValue(ltcbalanceCR*10);
-                setSelectedPair1img("https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg")
-                setSelectedPair2img("https://imgyukle.com/f/2022/09/11/nhSym6.png")
+                setSelectedPair1img(btcpng)
+                setSelectedPair2img(ltcpng)
                 setFirstCoin("BTC")
                 setSecondCoin("LTC")
                 return;
@@ -549,8 +572,8 @@ function App() {
                 setSelectedPair1CRValue(btcbalanceCR*1000);
                 setSelectedPair2L2Value(ethbalanceL2*100);
                 setSelectedPair2CRValue(ethbalanceCR*100);
-                setSelectedPair1img("https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg")
-                setSelectedPair2img("https://imgyukle.com/f/2022/09/11/nhC0It.png")
+                setSelectedPair1img(btcpng)
+                setSelectedPair2img(ethpng)
                 setFirstCoin("BTC")
                 setSecondCoin("ETH")
                 return;
@@ -781,27 +804,27 @@ function App() {
         <div className="dex">
             <div className="leftside">
                 <div style={{"fontSize":"13px"}}>
-                    <img className="hdxlogo "src="https://imgyukle.com/f/2022/09/15/nBunRI.png"/>
+                    <img className="hdxlogo "src={HYDRANETpng}/>
                     
                 </div>
                 <hr className="hr"/>
                 <div style={{"fontSize":"10px"}}>My Balance</div>
                 <div style={{"fontSize":"13px"}}>${totalBalance}</div>
                 <div className="left-tab-names">
-                    <img src="https://imgyukle.com/f/2022/09/15/nBystI.png" className="left-img"/>
+                    <img src={portfoliopng} className="left-img"/>
                     <div className="left-tab-name" onClick={()=> changeTab("portfolio")}>Portfolio</div>
-                    <img src="https://imgyukle.com/f/2022/09/15/nBCdQR.png" className="left-img"/>
+                    <img src={walletpng} className="left-img"/>
                     <div className="left-tab-name" onClick={()=> changeTab("wallets")}>Wallets</div>
-                    <img src="https://imgyukle.com/f/2022/09/15/nBSw2n.png" className="left-img"/>
+                    <img src={dexpng} className="left-img"/>
                     <div className="left-tab-name" onClick={()=> changeTab("dex")}>Dex</div>
-                    <img src="https://imgyukle.com/f/2022/09/15/nBS078.png" className="left-img"/>
+                    <img src={vortexpng} className="left-img"/>
                     <div className="left-tab-name" onClick={()=> changeTab("vortex")}>Vortex</div>
-                    <img src="https://imgyukle.com/f/2022/09/15/nBSnw0.png" className="left-img"/>
+                    <img src={swappng} className="left-img"/>
                     <div className="left-tab-name" onClick={()=> changeTab("swap")}>Swap</div>
                 </div>
                 
                 <div className="left-tab-name-setting" onClick={()=> changeTab("settings")}>
-                    <img src="https://imgyukle.com/f/2022/09/15/nBSVKY.png" className="left-img"/>Settings</div>
+                    <img src={settingspng} className="left-img"/>Settings</div>
             </div>
             <div className="rightside-portfolio" id="rightside-portfolio">
                 <p style={{"float":"left", "marginLeft":"80px"}}>Portfolio</p>
@@ -827,7 +850,7 @@ function App() {
                         <div className="portfolio-currency-left">
                             <div className="portfolio-currency-left-name">
                             <img className="pngportfolio" 
-                            src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"/>
+                            src={btcpng}/>
                             </div> 
                             <div className="portfolio-currency-left-name">Bitcoin BTC</div>
                             <div className="portfolio-currency-left-balance">{btcbalance+btcbalanceL2} BTC (${(btcbalance+btcbalanceL2)*1000})</div>
@@ -844,9 +867,9 @@ function App() {
                         <div className="portfolio-currency-left">
                             <div className="portfolio-currency-left-name">
                             <img  
-                            style={{"width":"57px","height":"47x","marginLeft":"7px","marginTop":"-7px"}}
-                            src="https://imgyukle.com/f/2022/09/11/ngblZM.png"/></div>
-                            <div className="portfolio-currency-left-name" style={{"marginLeft":"-2px"}}>Arbitrum AETH</div>
+                            style={{"width":"35px","height":"35x","marginLeft":"17px","marginTop":"-4px"}}
+                            src={aethpng}/></div>
+                            <div className="portfolio-currency-left-name" style={{"marginLeft":"12px"}}>Arbitrum AETH</div>
                             <div className="portfolio-currency-left-balance">{aethbalance+aethbalanceL2} AETH (${(aethbalance+aethbalanceL2)*100})</div>
                         </div>
                         <div className="portfolio-currency-right">
@@ -861,7 +884,7 @@ function App() {
                         <div className="portfolio-currency-left">
                             <div className="portfolio-currency-left-name">
                             <img className="pngportfolio" 
-                            src="https://imgyukle.com/f/2022/09/11/nhC0It.png"/>
+                            src={ethpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">Ethereum ETH</div>
                             <div className="portfolio-currency-left-balance">{ethbalance+ethbalanceL2} ETH (${(ethbalance+ethbalanceL2)*100})</div>
@@ -878,7 +901,7 @@ function App() {
                         <div className="portfolio-currency-left">
                             <div className="portfolio-currency-left-name">
                             <img className="pngportfolio" 
-                            src="https://imgyukle.com/f/2022/09/11/nhSkiN.png"/>   
+                            src={hdxpng}/>   
                             </div>
                             <div className="portfolio-currency-left-name"> Hydranet HDX</div>   
                             <div className="portfolio-currency-left-balance">{hdxbalance+hdxbalanceL2} HDX (${hdxbalance+hdxbalanceL2})</div>
@@ -895,7 +918,7 @@ function App() {
                         <div className="portfolio-currency-left">
                             <div className="portfolio-currency-left-name">
                             <img className="pngportfolio" 
-                            src="https://imgyukle.com/f/2022/09/11/nhSym6.png"/>
+                            src={ltcpng}/>
                             </div>
                             <div className="portfolio-currency-left-name"> Litecoin LTC</div>  
                             <div className="portfolio-currency-left-balance">{ltcbalance+ltcbalanceL2} LTC (${(ltcbalance+ltcbalanceL2)*10})</div>
@@ -913,7 +936,7 @@ function App() {
                             <div className="portfolio-currency-left-name">
                             <img className="pngportfolio" 
                             style={{"width":"35px", "height":"35px", "marginRight":"0px","marginLeft":"17px"}} 
-                            src="https://imgyukle.com/f/2022/09/11/nhSxiM.png"/>
+                            src={usdcpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">USD Coin USDC</div>  
                             <div className="portfolio-currency-left-balance">{usdcbalance+usdcbalanceL2} USDC (${usdcbalance+usdcbalanceL2})</div>
@@ -931,7 +954,7 @@ function App() {
                             <div className="portfolio-currency-left-name">
                             <img className="pngportfolio" 
                             style={{"width":"30px", "height":"30px", "marginRight":"2px","marginLeft":"19px"}}
-                            src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=023"/>
+                            src={usdtpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">USD Tether USDT</div>  
                             <div className="portfolio-currency-left-balance">{usdtbalance+usdtbalanceL2} USDT (${usdtbalance+usdtbalanceL2})</div>
@@ -969,7 +992,7 @@ function App() {
                             digital asset will result in permanent loss.
                         </div>
                         <div className="modal-address">tb1qd73ex2x47e........5eg49c5er5qus3</div>
-                        <img className="modal-copyimg"src="https://imgyukle.com/f/2022/09/11/nhyJnq.png"></img>
+                        <img className="modal-copyimg"src={copypng}></img>
                         <ul className="modal-ul">
                             <li>  Coins will be deposited after 3 network confirmations.</li>
                             <li>You can check the progress on transaction page.</li>
@@ -1086,13 +1109,13 @@ function App() {
                 <div id="myModal-tutorial1" class="modal-tutorial1">
                     <div className="modal-content-tutorial1">
                         <span className="close-tutorial1" onClick={spanonclicktutorial1}>&times;</span>
-                        <img className="tutorial1-img1"src="https://imgyukle.com/f/2022/09/17/npXfhf.png"/>
+                        <img className="tutorial1-img1"src={arrowpng}/>
                         <div className="myModal-tutorial1-empty1"></div>
                         <div className="myModal-tutorial1-step1">STEP 1</div>
-                        <img className="tutorial1-img2"src="https://imgyukle.com/f/2022/09/17/npXfhf.png"/>
+                        <img className="tutorial1-img2"src={arrowpng}/>
                         <div className="myModal-tutorial1-empty2"></div>
                         <div className="myModal-tutorial1-step2">STEP 2</div>
-                        <img className="tutorial1-img3"src="https://imgyukle.com/f/2022/09/17/npXfhf.png"/>
+                        <img className="tutorial1-img3"src={arrowpng}/>
                         <div className="myModal-tutorial1-empty3"></div>
                         <div className="myModal-tutorial1-step3">STEP 3</div>
                     </div>
@@ -1107,52 +1130,52 @@ function App() {
                     <div style={{"textAlign":"left","padding":"10px","fontSize":"13px"}}>7 wallets total</div> 
                     <div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("AETH")}>
-                            <img className="pnglight" src="https://imgyukle.com/f/2022/09/11/ng46tP.png"/>
-                            <img className="png" src="https://imgyukle.com/f/2022/09/11/ngblZM.png"/>
+                            <img className="pnglight" src={greenpng}/>
+                            <img className="pngaeth" src={aethpng}/>
                             <div>Arbitrum - AETH</div>
                             <div>{aethbalance+aethbalanceL2} - AETH</div>
                             <div style={{"fontSize":"10px"}}>${(aethbalance+aethbalanceL2)*100}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("BTC")}>
-                            <img className="pnglight" src="https://imgyukle.com/f/2022/09/11/ng46tP.png"/>
-                            <div className="png"><img className="pngb" src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg"/></div>
+                            <img className="pnglight" src={greenpng}/>
+                            <div className="png"><img className="pngb" src={btcpng}/></div>
                             <div>Bitcoin - BTC</div>
                             <div>{btcbalance+btcbalanceL2} - BTC</div>
                             <div style={{"fontSize":"10px"}}>${(btcbalance+btcbalanceL2)*1000}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("ETH")}>
-                            <img className="pnglight" src="https://imgyukle.com/f/2022/09/11/ng46tP.png"/>
-                            <div className="png"><img className="pngb" src="https://imgyukle.com/f/2022/09/11/nhC0It.png"/></div>
+                            <img className="pnglight" src={greenpng}/>
+                            <div className="png"><img className="pngb" src={ethpng}/></div>
                             <div>Ethereum - ETH</div>
                             <div>{ethbalance+ethbalanceL2} - ETH</div>
                             <div style={{"fontSize":"10px"}}>${(ethbalance+ethbalanceL2)*100}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("HDX")}>
-                            <img className="pnglight" src="https://imgyukle.com/f/2022/09/11/ng46tP.png"/>
-                            <div className="png"><img className="pngb" src="https://imgyukle.com/f/2022/09/11/nhSkiN.png"/></div>
+                            <img className="pnglight" src={greenpng}/>
+                            <div className="png"><img className="pngb" src={hdxpng}/></div>
                             <div>Hydranet - HDX</div>
                             <div>{hdxbalance+hdxbalanceL2} - HDX</div>
                             <div style={{"fontSize":"10px"}}>${hdxbalance+hdxbalanceL2}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("LTC")}>
-                            <img className="pnglight" src="https://imgyukle.com/f/2022/09/11/ng46tP.png"/>
-                            <div className="png"><img className="pngb" src="https://imgyukle.com/f/2022/09/11/nhSym6.png"/></div>
+                            <img className="pnglight" src={greenpng}/>
+                            <div className="png"><img className="pngb" src={ltcpng}/></div>
                             <div>Litecoin - LTC</div>
                             <div>{ltcbalance+ltcbalanceL2} - LTC</div>
                             <div style={{"fontSize":"10px"}}>${(ltcbalance+ltcbalanceL2)*10}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("USDC")}>
-                            <img className="pnglight" src="https://imgyukle.com/f/2022/09/11/ng46tP.png"/>
+                            <img className="pnglight" src={greenpng}/>
                             <img className="png" style={{"width":"40px", "height":"40px", "marginRight":"17px","marginLeft":"12px"}} 
-                            src="https://imgyukle.com/f/2022/09/11/nhSxiM.png"/>
+                            src={usdcpng}/>
                             <div>USD Coin - USDC</div>
                             <div>{usdcbalance+usdcbalanceL2} - USDC</div>
                             <div style={{"fontSize":"10px"}}>${usdcbalance+usdcbalanceL2}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("USDT")}>
-                            <img className="pnglight" src="https://imgyukle.com/f/2022/09/11/ng46tP.png"/>
+                            <img className="pnglight" src={greenpng}/>
                             <img className="png" style={{"width":"35px", "height":"40px", "marginRight":"17px","marginLeft":"16px"}}
-                            src="https://cryptologos.cc/logos/tether-usdt-logo.png?v=023"/>
+                            src={usdtpng}/>
                             <div>USD Tether - USDT</div>
                             <div>{usdtbalance+usdtbalanceL2} - USDT</div>
                             <div style={{"fontSize":"10px"}}>${usdtbalance+usdtbalanceL2}</div>
@@ -1176,12 +1199,12 @@ function App() {
                         </div>
                         <div className="wallets-send" onClick={btnonclicksend}>Send
                             <div className="wallets-send-img-div" >
-                                <img src="https://imgyukle.com/f/2022/09/15/nBI3V6.png" className="wallets-send-img"/>
+                                <img src={uppng} className="wallets-send-img"/>
                             </div>
                         </div>
                         <div className="wallets-reveive" onClick={btnonclickreceive}>Receive
                             <div className="wallets-send-img-div">
-                                <img src="https://imgyukle.com/f/2022/09/15/nBI1vq.png" className="wallets-send-img"/>
+                                <img src={downpng} className="wallets-send-img"/>
                             </div>
                         </div>
                     </div>
@@ -1212,7 +1235,7 @@ function App() {
                                 <div className="channel-header1" onClick={btnonclicknewrental}>Channel Rental</div>
                                 <div className="channel-header1" onClick={btnonclicknewchannel}>New Channel+</div>
                                 <div className="channel-header1">Public Key:026af0d8dbc266....
-                                <img className="copyimg"src="https://imgyukle.com/f/2022/09/11/nhyJnq.png"></img>
+                                <img className="copyimg"src={copypng}></img>
                                 </div>
                         </div>
                         <div className="wallets-tx-channels">
@@ -1221,7 +1244,7 @@ function App() {
                                     <div>CAN SEND</div>
                                     <div className="cansendreceive-balance">{balanceL2}</div>
                                     <div className="arrowdiv" >
-                                    <img className="arrow" src="https://imgyukle.com/f/2022/09/12/nhZBgG.png"/>
+                                    <img className="arrow1" src={leftpng}/>
                                 </div>
 
                                 </div>
@@ -1231,7 +1254,7 @@ function App() {
                                     <div>CAN RECEIVE</div>
                                     <div className="cansendreceive-balance">{balanceCR}</div>
                                     <div className="arrowdiv2" >
-                                    <img className="arrow" src="https://imgyukle.com/f/2022/09/12/nhZ38q.png"/>
+                                    <img className="arrow2" src={leftpng}/>
                                     </div>
                                 </div>
                             </div>  
@@ -1324,6 +1347,7 @@ function App() {
                                     <th className="wallet-channels-header-tx">BALANCE CHANGE</th>
                                 </tr>
                             </table>
+                            <div style={{"textAlign":"left","opacity":"50%","fontSize":"22px"}}>No Transactions</div>
                         </div>
                     </div>
                 </div>
@@ -1417,7 +1441,7 @@ function App() {
                 <div className="dex-center">
                     <div className="dex-center-chart">
                         <div className="dex-center-btcusdt">BTC/USDT</div>
-                        <img className="chart" src="https://imgyukle.com/f/2022/09/15/nBSsLG.png"/>
+                        <img className="chart" src={chartpng}/>
                         
                     </div>
                     <div className='dex-orderbook'>
@@ -1458,27 +1482,27 @@ function App() {
                                 <div>    
                                 <div id="orders1">
                                     <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                        <div className="dex-orderbook-order-info">100</div>
-                                        <div className="dex-orderbook-order-info">2100</div>
+                                        <div className="dex-orderbook-order-info">990</div>
+                                        <div className="dex-orderbook-order-info">990</div>
                                         <div className="dex-orderbook-order-info">1</div>
                                         <div className="dex-orderbook-order-info-buyprice">990</div>
                                     </div>
                                     <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}> 
-                                        <div className="dex-orderbook-order-info">200</div>
-                                        <div className="dex-orderbook-order-info">200 </div>
-                                        <div className="dex-orderbook-order-info">100</div>
+                                        <div className="dex-orderbook-order-info">2950</div>
+                                        <div className="dex-orderbook-order-info">1960 </div>
+                                        <div className="dex-orderbook-order-info">2</div>
                                         <div className="dex-orderbook-order-info-buyprice">980 </div>
                                     </div>
                                     <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                        <div className="dex-orderbook-order-info">200</div>
-                                        <div className="dex-orderbook-order-info">200</div>
-                                        <div className="dex-orderbook-order-info">100</div>
+                                        <div className="dex-orderbook-order-info">5860</div>
+                                        <div className="dex-orderbook-order-info">2910</div>
+                                        <div className="dex-orderbook-order-info">3</div>
                                         <div className="dex-orderbook-order-info-buyprice">970</div>
                                     </div>
                                     <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                        <div className="dex-orderbook-order-info">200</div>
-                                        <div className="dex-orderbook-order-info">200</div>
-                                        <div className="dex-orderbook-order-info">100</div>
+                                        <div className="dex-orderbook-order-info">7780</div>
+                                        <div className="dex-orderbook-order-info">1920</div>
+                                        <div className="dex-orderbook-order-info">4</div>
                                         <div className="dex-orderbook-order-info-buyprice">960</div>
                                     </div>
                                     </div>
@@ -1509,26 +1533,26 @@ function App() {
                                         <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
                                             <div className="dex-orderbook-order-info-sellprice">1100</div>
                                             <div className="dex-orderbook-order-info">1</div>
-                                            <div className="dex-orderbook-order-info">2200</div>
-                                            <div className="dex-orderbook-order-info">100</div>
+                                            <div className="dex-orderbook-order-info">1100</div>
+                                            <div className="dex-orderbook-order-info">1100</div>
                                         </div>
                                         <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
                                             <div className="dex-orderbook-order-info-sellprice">1200</div>
                                             <div className="dex-orderbook-order-info">2</div>
-                                            <div className="dex-orderbook-order-info">230</div>
-                                            <div className="dex-orderbook-order-info">2</div>
-                                        </div>
-                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
-                                            <div className="dex-orderbook-order-info-sellprice">1200</div>
-                                            <div className="dex-orderbook-order-info">3</div>
-                                            <div className="dex-orderbook-order-info">2300</div>
-                                            <div className="dex-orderbook-order-info">200</div>
+                                            <div className="dex-orderbook-order-info">2400</div>
+                                            <div className="dex-orderbook-order-info">3500</div>
                                         </div>
                                         <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
                                             <div className="dex-orderbook-order-info-sellprice">1300</div>
+                                            <div className="dex-orderbook-order-info">3</div>
+                                            <div className="dex-orderbook-order-info">3900</div>
+                                            <div className="dex-orderbook-order-info">7400</div>
+                                        </div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
+                                            <div className="dex-orderbook-order-info-sellprice">1400</div>
                                             <div className="dex-orderbook-order-info">4</div>
-                                            <div className="dex-orderbook-order-info">2300</div>
-                                            <div className="dex-orderbook-order-info">200</div>
+                                            <div className="dex-orderbook-order-info">5600</div>
+                                            <div className="dex-orderbook-order-info">13000</div>
                                         </div>
                                     
                                         
@@ -1543,10 +1567,10 @@ function App() {
                                     <div style={{"marginTop":"10px","color":"green"}}>Sum:</div>
                                 </div>
                                 <div className="dex-orderbook-order-info">
-                                    <div style={{"marginTop":"10px"}}>10</div>
+                                    <div style={{"marginTop":"10px"}}>7780 <span style={{"color":"green"}}>{secondCoin}</span></div>
                                 </div>
                                 <div className="dex-orderbook-order-info">
-                                    <div style={{"marginTop":"10px"}}>23000</div>
+                                    <div style={{"marginTop":"10px"}}>10 <span style={{"color":"green"}}>{firstCoin}</span></div>
                                 </div>
                                 <div className="dex-orderbook-order-info">
                                     <div style={{"marginTop":"10px"}}></div>
@@ -1557,10 +1581,10 @@ function App() {
                                     <div style={{"marginTop":"10px","color":"red"}}>Sum:</div>
                                 </div>
                                 <div className="dex-orderbook-order-info">
-                                    <div style={{"marginTop":"10px"}}>10</div>
+                                    <div style={{"marginTop":"10px"}}>10 <span style={{"color":"red"}}>{firstCoin}</span></div>
                                 </div>
                                 <div className="dex-orderbook-order-info">
-                                    <div style={{"marginTop":"10px"}}>23000</div>
+                                    <div style={{"marginTop":"10px"}}>15950 <span style={{"color":"red"}}>{secondCoin}</span></div>
                                 </div>
                                 <div className="dex-orderbook-order-info">
                                     <div style={{"marginTop":"10px"}}></div>

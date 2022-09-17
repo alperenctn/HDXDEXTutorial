@@ -255,6 +255,14 @@ p{
   height: 50px;
   float: left;
 }
+.pngaeth{
+  float: left;
+  height: 35px;
+  width: 35px;
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
 .png1{
   width: 40px;
   height: 40px;
@@ -296,7 +304,13 @@ p{
 background: linear-gradient(90deg, rgba(4,9,77,0.4939017843465511) 0%, rgba(11,15,88,0.5079073865874475) 51%, rgba(48,58,135,0.471492820761117) 100%);
   border-radius: 8px;
 }
-.arrow{
+.arrow1{
+  width: 40px;
+  height: 50px;
+  opacity: 30%;
+  transform: rotate(180deg);
+}
+.arrow2{
   width: 40px;
   height: 50px;
   opacity: 30%;
@@ -606,7 +620,7 @@ td{
   float: left;
   width: 19%;
   height: 750px;
-  margin-left: 4px;
+  margin-left: 12px;
   margin-top: 20px;
   border-radius: 3px
 }
@@ -833,11 +847,12 @@ background: linear-gradient(0deg, rgba(88, 94, 176, 0.928) 0%, rgba(12, 12, 53, 
 .dex-orderbook-order-bottoms{
   float: left;
   width:100%;
+  font-weight: 700;
 }
 .dex-orderbook-order-bottom{
   float: left;
   width: 50%;
-
+  
 }
 
 .dex-buy-button,.dex-sell-button{
