@@ -5,7 +5,7 @@
   height: 800px;
   color: rgba(240, 248, 255, 0.346);
   
-  border: 12px solid rgb(79, 88, 171);
+  border: 17px solid rgb(79, 88, 171);
 
 }
 .titles{
@@ -555,24 +555,31 @@ table{
 }
 #tableChannelbtc{
   display: block;
+  overflow: hidden;
 }
 #tableChannelaeth{
   display: none;
+  overflow: hidden;
 }
 #tableChanneleth{
   display: none;
+  overflow: hidden;
 }
 #tableChannelhdx{
   display: none;
+  overflow: hidden;
 }
 #tableChannelltc{
   display: none;
+  overflow: hidden;
 }
 #tableChannelusdc{
   display: none;
+  overflow: hidden;
 }
 #tableChannelusdt{
   display: none;
+  overflow: hidden;
 }
 td{
   border: none;
@@ -622,7 +629,9 @@ td{
   height: 750px;
   margin-left: 12px;
   margin-top: 20px;
-  border-radius: 3px
+  border-radius: 3px;
+  overflow: hidden;
+  flex-direction: row;
 }
 .dex-dexheader-dex-online{
   width:250px;
@@ -800,7 +809,6 @@ input::-webkit-inner-spin-button {
 }
 .dex-orderbook{
   float: left;
-  
   height: 340px;
   width: 100%;
 
@@ -890,6 +898,7 @@ background: linear-gradient(0deg, rgba(88, 94, 176, 0.928) 0%, rgba(12, 12, 53, 
   height: 260px;
   width: 100%;
   margin-top: 10px;
+
 }
 .dex-orderbook-openorders{
   display: none;
@@ -1001,6 +1010,142 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
   width: 30%;
 }
 
+/* settings tab */
+
+.settings-leftside{
+  float: left;
+  width: 15%;
+  height: 800px;
+  background-color: rgba(5, 8, 18, 0.576);
+}
+.settings-leftside-header1,
+.settings-leftside-header2,
+.settings-leftside-header3,
+.settings-leftside-header4,
+.settings-leftside-header5,
+.settings-leftside-header6,
+.settings-leftside-header7{
+  cursor: pointer;
+  text-align: left;
+  margin-left: 25px;
+  margin-top: 8px;
+}
+.settings-leftside-header1{
+  cursor:auto;
+  margin-left: 25px;
+  height: 70px;
+  text-align: left;
+  padding-top: 30px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+
+.settings-rightside-Window-Settings,
+.settings-rightside-Assets,
+.settings-rightside-Orderbook-UX,
+.settings-rightside-Localization,
+.settings-rightside-Backup,
+.settings-rightside-Software-Version{
+  display: none;
+  float: left;
+  background-color: rgba(23, 22, 22, 0.592);
+  width: 85%;
+  height: 800px;
+  text-align: left;
+}
+.settings-rightside-Window-Settings{
+display: block;
+
+}
+.settings-rightside-Assets-imgwindow{
+  height: 700px;
+  width: 100%;
+}
+.settings-rightside-Assets{
+  display: none;
+}
+.settings-rightside-Assets-img{
+  height: 800px;
+  width:100%;
+}
+.settings-rightside-Orderbook-UX{
+  
+  display: none;
+}
+.settings-rightside-Assets-imgux{
+  
+  width: 100%;
+  height: 225px;
+}
+.settings-rightside-Assets-imgux1{
+  padding-top: 20px;
+  width: 100%;
+  height: 285px;
+}
+.settings-rightside-Localization{
+  display: none;
+}
+.settings-rightside-Backup{
+  display: none;
+}
+.settings-rightside-Software-Version{
+  display: none;
+}
+.settings-rightside-Window-Settings-header{
+  margin-top: 30px;
+  margin-left: 15px;
+  font-size: 23px;
+
+}
+.settings-rightside-Window-Settings-content{
+  color: rgba(255, 255, 255, 0.399);
+  margin-left: 15px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+.settings-rightside-Backup-header{
+  padding: 30px;
+  font-size: 25px;
+}
+.settings-rightside-Backup-btn{
+  cursor: pointer;
+  margin-left: 40%;
+  width: 150px;
+  height: 30px;
+  font-size: 12px;
+  color: white;
+  background-color: #1b2553;
+  border: 2px solid blue;
+  border-radius: 12px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.settings-rightside-Backup-content{
+  display: none;
+}
+.settings-rightside-Backup-content1{
+  border: 1px red solid;
+  padding: 10px;
+  margin-left: 10px;
+  color: rgba(255, 255, 255, 0.815);
+  background-color: rgba(255, 0, 0, 0.26);
+}
+.settings-rightside-Backup-content2{
+  border: none;
+  background-color: #11193b;
+  color: rgba(255, 255, 255, 0.688);
+  padding: 10px;
+  margin-left: 10px;
+  font-size: 25px;
+}
+.settings-rightside-Backup-copypng{
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  float: right;
+  margin-top: -40px;
+}
 
   /* MODALS */
   /* The Modal receive(background) */
@@ -1037,6 +1182,14 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
   margin-right: 10px;
   font-size: 28px;
   font-weight: bold;
+}
+.close-receive-closechannel{
+  cursor: pointer;
+  color: #aaaaaa;
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgb(25, 25, 59);
 }
 .close-tutorial1:hover,
 .close-receive:hover,.close-receive:focus,.close-newchannel:hover,

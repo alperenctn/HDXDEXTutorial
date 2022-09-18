@@ -22,6 +22,13 @@ import vortexpng from "./png/vortex.bmp"
 import walletpng from "./png/wallet.bmp"
 import btcpng from "./png/btc.png"
 import usdtpng from "./png/usdt.png"
+import assets from "./png/assets.bmp"
+import window from "./png/window.bmp"
+import version from "./png/version.bmp"
+import ux1 from "./png/ux1.bmp"
+import ux2 from "./png/ux2.bmp"
+import ux3 from "./png/ux3.bmp"
+import localization from "./png/localization.bmp"
 
 
 
@@ -317,10 +324,10 @@ function App() {
     const depositeL2Balance = (y) =>{
       const x = document.getElementById("newchannelinput");
       if(x.value>balance) {
-        alert("Not Enough Balance") 
+        alert("Not Enough Balance")
+        x.value=0
         return;
       }
-
       const tableChannelbtc = document.getElementById("tableChannelbtc");
       const tableChannelaeth = document.getElementById("tableChannelaeth");
       const tableChanneleth = document.getElementById("tableChanneleth");
@@ -334,8 +341,14 @@ function App() {
       let tdcansend = document.createElement("td");
       let tdcanreceive = document.createElement("td");
       let tdrentaltime = document.createElement("td");
-      tdchannel.textContent="Channel";
+      let tdclose = document.createElement("td");
+      tdclose.innerHTML ='&times;';
+      tdclose.className = "close-receive-closechannel";
+    //   tdclose.onclick = ()=> closeChannel()
+      
+      tdchannel.textContent="Channel" ;
       tdstatus.textContent="Active";
+      tdstatus.style.color = "green"
       if(x.value==0){
         tdcansend.textContent=0;
       }else{
@@ -354,7 +367,9 @@ function App() {
       tr.appendChild(tdcansend);
       tr.appendChild(tdcanreceive);
       tr.appendChild(tdrentaltime);
-      
+      tr.appendChild(tdclose);
+      tr.id = "asdf";
+      tr.className = "asdf"
       switch(y){
           case "AETH":
            setAethBalanceCR(Number(aethbalanceCR)+Number(inputValue))
@@ -444,6 +459,19 @@ function App() {
            return null
       }
   }
+//   const closeChannel = () => {
+//     var idbtc = document.getElementById("tableChannelbtc");
+//     var idaeth = document.getElementById("tableChannelaeth");
+//     var ideth = document.getElementById("tableChanneleth");
+//     var idhdx = document.getElementById("tableChannelhdx");
+//     var idltc = document.getElementById("tableChannelltc");
+//     var idusdc = document.getElementById("tableChannelusdc");
+//     var idusdt = document.getElementById("tableChannelusdt");
+//     var tr = document.querySelectorAll('asdf')
+//     idbtc.childNodes.forEach(e=>{
+//         e.empty()
+//     })
+// }
   const changeTable = (x) => {
     var idbtc = document.getElementById("tableChannelbtc");
     var idaeth = document.getElementById("tableChannelaeth");
@@ -752,13 +780,13 @@ function App() {
         var saniye=tarih.getSeconds();	
 	    var tarih = (yil+"/"+ay+"/"+gun+" "+saat+":"+dakika+":"+saniye);
         div.className = "dex-orderbook-order"
-        divinfo1.textContent =a;
+        divinfo1.textContent =a +" "+(firstCoin);
         divinfo1.className = "dex-orderbook-order-infox"
         divinfo2.textContent = tarih;
         divinfo2.className = "dex-orderbook-order-info-timex"
-        divinfo3.textContent = b;
+        divinfo3.textContent = b + (secondCoin);
         divinfo3.className = "dex-orderbook-order-info-sellpricex"
-        divinfo4.textContent = b;
+        divinfo4.textContent = b+ (secondCoin);
         divinfo4.className = "dex-orderbook-order-info-buypricex"
         div.appendChild(divinfo1)
         div.appendChild(divinfo2)
@@ -768,7 +796,8 @@ function App() {
             div.appendChild(divinfo3)
         }
         
-        dexrightside.appendChild(div)
+        dexrightside.appendChild(div,div)
+        
     }
 
     const openTutorial = (evt, name) => {
@@ -785,15 +814,61 @@ function App() {
         evt.currentTarget.className += " active";
       }
 
-        
-  
- 
       const tutorial1 = (e) => {
         changeTab("wallets")
         changeTabOnWallet("BTC")
         btnonclicktutorial1();
         document.documentElement.scrollTop = 0
       }
+
+      const changeSettings = (x) => {
+       
+        var header2 = document.getElementById("settings-leftside-header2");
+        var header3 = document.getElementById("settings-leftside-header3");
+        var header4 = document.getElementById("settings-leftside-header4");
+        var header5 = document.getElementById("settings-leftside-header5");
+        var header6 = document.getElementById("settings-leftside-header6");
+        var header7 = document.getElementById("settings-leftside-header7");
+        header2.style.display = "none";
+        header3.style.display = "none";
+        header4.style.display = "none";
+        header5.style.display = "none";
+        header6.style.display = "none";
+        header7.style.display = "none";
+        switch(x){
+            case "2":
+                header2.style.display = "block"
+            return;
+            case "3":
+                header3.style.display = "block"
+            return;
+            case "4":
+                header4.style.display = "block"
+            return;
+            case "5":
+                header5.style.display = "block"
+            return;
+            case "6":
+                header6.style.display = "block"
+            return;
+            case "7":
+                header7.style.display = "block"
+            return;
+            default:
+            return null
+        }
+    }
+    const [seed,setSeed] = useState("closed")
+    const showHideSeed = () => {
+        const id = document.getElementById("settings-rightside-Backup-content")
+        if(seed==="closed"){
+            id.style.display = "block"
+            setSeed("opened")
+        }else{
+            id.style.display = "none"
+            setSeed("closed")
+        }
+    }
   return (
 
     <div className="App">
@@ -1087,7 +1162,7 @@ function App() {
                         
                         <div className='modal-newrental-inputs'>
                         <div  className='modal-newrental-inputs-header'>Capacity : {inputValue} Usd</div><div></div>
-                        <input className="modal-newrental-input"type="range" id='1' max="10000"value={inputValue}  
+                        <input className="modal-newrental-input"type="range" id='1' max="100000"value={inputValue}  
                         onChange={(e)=>{setInputValue(e.target.value)}}/>
                         
                         </div>
@@ -1267,6 +1342,7 @@ function App() {
                                     <th className="wallet-channels-header">CAN SEND</th>
                                     <th className="wallet-channels-header">CAN RECEIVE</th>
                                     <th className="wallet-channels-header">RENTAL TIME</th>
+                                    <th className="wallet-channels-header"></th>
                                 </tr>
                             </table>
                         
@@ -1277,6 +1353,7 @@ function App() {
                                     <th className="wallet-channels-header">CAN SEND</th>
                                     <th className="wallet-channels-header">CAN RECEIVE</th>
                                     <th className="wallet-channels-header">RENTAL TIME</th>
+                                    <th className="wallet-channels-header"></th>
                                 </tr>
                             </table>
                         
@@ -1287,6 +1364,7 @@ function App() {
                                     <th className="wallet-channels-header">CAN SEND</th>
                                     <th className="wallet-channels-header">CAN RECEIVE</th>
                                     <th className="wallet-channels-header">RENTAL TIME</th>
+                                    <th className="wallet-channels-header"></th>
                                 </tr>
                             </table>
                         
@@ -1297,6 +1375,7 @@ function App() {
                                     <th className="wallet-channels-header">CAN SEND</th>
                                     <th className="wallet-channels-header">CAN RECEIVE</th>
                                     <th className="wallet-channels-header">RENTAL TIME</th>
+                                    <th className="wallet-channels-header"></th>
                                 </tr>
                             </table>
                         
@@ -1307,6 +1386,7 @@ function App() {
                                     <th className="wallet-channels-header">CAN SEND</th>
                                     <th className="wallet-channels-header">CAN RECEIVE</th>
                                     <th className="wallet-channels-header">RENTAL TIME</th>
+                                    <th className="wallet-channels-header"></th>
                                 </tr>
                             </table>
                         
@@ -1317,6 +1397,7 @@ function App() {
                                     <th className="wallet-channels-header">CAN SEND</th>
                                     <th className="wallet-channels-header">CAN RECEIVE</th>
                                     <th className="wallet-channels-header">RENTAL TIME</th>
+                                    <th className="wallet-channels-header"></th>
                                 </tr>
                             </table>
                         
@@ -1327,6 +1408,7 @@ function App() {
                                     <th className="wallet-channels-header">CAN SEND</th>
                                     <th className="wallet-channels-header">CAN RECEIVE</th>
                                     <th className="wallet-channels-header">RENTAL TIME</th>
+                                    <th className="wallet-channels-header"></th>
                                 </tr>
                             </table>
                         
@@ -1617,7 +1699,60 @@ function App() {
                 SWAP
             </div>
             <div className="rightside-settings" id="rightside-settings">
-                Settings
+                <div className='settings-leftside'>
+                    <div className='settings-leftside-header1'>Settings</div>
+                    <div className='settings-leftside-header2' 
+                    onClick={()=>changeSettings("2")}>Window Settings</div>
+                    <div className='settings-leftside-header3'   
+                    onClick={()=>changeSettings("3")}>Assets</div>
+                    <div className='settings-leftside-header4'   
+                    onClick={()=>changeSettings("4")}>Orderbook UX</div>
+                    <div className='settings-leftside-header5'  
+                    onClick={()=>changeSettings("5")}>Localization</div>
+                    <div className='settings-leftside-header6'  
+                    onClick={()=>changeSettings("6")}>Backup</div>
+                    <div className='settings-leftside-header7'   
+                    onClick={()=>changeSettings("7")}>Software Version</div>
+                </div>
+                <div className='settings-rightside-Window-Settings' id='settings-leftside-header2'>
+                    {/* <div className='settings-rightside-Window-Settings-header'>Minimize Button</div>
+                    <div className='settings-rightside-Window-Settings-content'>Minimizing will make the Dex hide in the system tray, reducing <br/> resource usage</div>
+                    <div className='settings-rightside-Window-Settings-header'>Enable Vortex (experimantal) - requires restart</div>
+                    <div className='settings-rightside-Window-Settings-content'>Vortex is currently under development and an experimental feature.<br/> That still has bugs</div>
+                    <div className='settings-rightside-Window-Settings-header'>Enable SSUI ( experimental) - requires restart</div>
+                    <div className='settings-rightside-Window-Settings-content'>SSUI is currently under development and an experimental feature.<br/> That still has bugs</div> */}
+                    <img src={window} className='settings-rightside-Assets-imgwindow'></img></div>
+                
+                <div className='settings-rightside-Assets' id='settings-leftside-header3'>
+                    <img src={assets} className='settings-rightside-Assets-img'></img>
+                </div>
+                <div className='settings-rightside-Orderbook-UX' id='settings-leftside-header4'>
+                    <img src={ux1} className='settings-rightside-Assets-imgux1'></img>
+                    <img src={ux2} className='settings-rightside-Assets-imgux'></img>
+                    <img src={ux3} className='settings-rightside-Assets-imgux'></img>
+                </div>
+                <div className='settings-rightside-Localization'id='settings-leftside-header5'>
+                <img src={localization} className='settings-rightside-Assets-img'></img>
+                </div>
+                <div className='settings-rightside-Backup' id='settings-leftside-header6' >
+                    <div className='settings-rightside-Backup-header'>Create Password</div>
+                    <button className='settings-rightside-Backup-btn'>CREATE</button>
+                    <hr></hr>
+                    <div className='settings-rightside-Backup-header'>Your 24 word seed phrase</div>
+                    <div className='settings-rightside-Backup-content' id='settings-rightside-Backup-content'>
+                        <div className='settings-rightside-Backup-content1'>!!! For your safety, do not share this seed phrase with anyone and don not keep a copy of this on a device that has an online connection</div>
+                        <div className='settings-rightside-Backup-content2'>cave fashion virtual vivid fatal remember wink punch concert canvas crane iron witness impulse endorse bar morning tide ivory annual flame fish electric oppose</div>
+                        <img className="settings-rightside-Backup-copypng" src={copypng}/>
+                    </div>
+                    {seed == "opened" ? <button className='settings-rightside-Backup-btn' onClick={()=>showHideSeed()}>HIDE SEED PHRASE</button>
+                    : <button className='settings-rightside-Backup-btn' onClick={()=>showHideSeed()}>SHOW SEED PHRASE</button>}
+                    
+                    
+
+                </div>
+                <div className='settings-rightside-Software-Version' id='settings-leftside-header7' >
+                    <img src={version} className='settings-rightside-Assets-img'></img>
+                </div>
             </div>
         </div>
         </div>
@@ -1638,7 +1773,7 @@ function App() {
                 <div className="turorial-content" id="turorial-content3">How to open channel </div>
                 <div className="turorial-content" id="turorial-content4">How to rent channel </div>
                 <div className="turorial-content" id="turorial-content5">How to trade on dex tab</div>
-                <div className="turorial-content" id="turorial-content6"></div>
+                <div className="turorial-content" id="turorial-content6">How to get wallet backup</div>
                 <div className="turorial-content" id="turorial-content7"></div>
             </div>
         </div>
