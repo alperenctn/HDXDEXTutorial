@@ -29,6 +29,15 @@ import ux1 from "./png/ux1.bmp"
 import ux2 from "./png/ux2.bmp"
 import ux3 from "./png/ux3.bmp"
 import localization from "./png/localization.bmp"
+import btcusdt from "./png/btcusdt.bmp"
+import usdtbtc from "./png/usdtbtc.bmp"
+import swapimg from "./png/swapchange.bmp"
+import aethhdx from "./png/aethhdx.bmp"
+import hdxaeth from "./png/hdxaeth.bmp"
+import btcltc from "./png/btcltc.bmp"
+import ltcbtc from "./png/ltcbtc.bmp"
+import btceth from "./png/btceth.bmp"
+import ethbtc from "./png/ethbtc.bmp"
 
 
 
@@ -38,6 +47,9 @@ function App() {
       changeTabOnWallet(coinname);
     })
 
+    useEffect(()=>{
+        setTotalAmount(buyPrice*tradeAmount)
+    })
   //LEFTSİDE   
   const changeTab = (x) => {
     var idportfolio = document.getElementById("rightside-portfolio");
@@ -84,6 +96,14 @@ function App() {
     const [usdcbalance,setUsdcBalance] = useState(0);
     const [usdtbalance,setUsdtBalance] = useState(0);
 
+    const [ usdtonchain, setUsdtOnchain] = useState(0)
+    const [ btconchain, setBtcOnchain] = useState(0)
+    const [ usdconchain, setUsdcOnchain] = useState(0)
+    const [ ltconchain, setLtcOnchain] = useState(0)
+    const [ aethonchain, setAethOnchain] = useState(0)
+    const [ hdxonchain, setHdxOnchain] = useState(0)
+    const [ ethonchain, setEthOnchain] = useState(0)
+
     const [aethbalanceL2,setAethBalanceL2] = useState(0);
     const [btcbalanceL2,setBtcBalanceL2] = useState(0);
     const [ethbalanceL2,setEthBalanceL2] = useState(0);
@@ -100,6 +120,7 @@ function App() {
     const [usdcbalanceCR,setUsdcBalanceCR] = useState(0);
     const [usdtbalanceCR,setUsdtBalanceCR] = useState(0);
 
+    const [onchain,setOnchain] = useState(0)
     const [img,setImg] = useState(btcpng);
     const [walletName,setWalletName] = useState("BTC Wallet");
     const [coinPrice, setCoinPrice] = useState("1 BTC = 100 usd");
@@ -110,9 +131,9 @@ function App() {
     const [balance,setBalance] = useState(btcbalance);
     const [balanceL2,setBalanceL2] = useState(btcbalanceL2);
     const [balanceCR,setBalanceCR] = useState(btcbalanceL2);
-    var totalBalance = (btcbalance+btcbalanceL2)*1000+(aethbalance+aethbalanceL2)*100+
-        (ethbalance+ethbalanceL2)*100+hdxbalance+hdxbalanceL2+(ltcbalance+ltcbalanceL2)*10+
-        usdcbalance+usdcbalanceL2+usdtbalance+usdtbalanceL2;
+    var totalBalance = (btcbalance)*1000+(aethbalance)*100+
+        (ethbalance)*100+hdxbalance+(ltcbalance)*10+
+        usdcbalance+usdtbalance;
     
     const BTC = "BTC"
     const LTC = "LTC"
@@ -125,77 +146,84 @@ function App() {
     const changeTabOnWallet = (x) => {
         switch(x){
             case "AETH":
+             setOnchain(aethonchain)
              setBalance(aethbalance);
              setImg(aethpng);
              setWalletName("AETH Wallet")
              setCoinPrice("(1 AETH = 100 usd)");
-             setBalanceValue((aethbalance+aethbalanceL2)*100);
+             setBalanceValue((aethbalance)*100);
              setCoinname("AETH")
              setBalanceL2(aethbalanceL2)
              changeTable(coinname);
              setBalanceCR(aethbalanceCR);
             return;
             case "BTC":
+             setOnchain(btconchain)
              setBalance(btcbalance);
              setImg(btcpng);
              setWalletName("BTC Wallet")
              setCoinPrice("(1 BTC = 1000 usd)");
-             setBalanceValue((btcbalance+btcbalanceL2)*1000);
+             setBalanceValue((btcbalance)*1000);
              setCoinname("BTC")
              setBalanceL2(btcbalanceL2)
              changeTable(coinname);
              setBalanceCR(btcbalanceCR);
             return;
             case "ETH":
+             setOnchain(ethonchain)
              setBalance(ethbalance);
              setImg(ethpng);
              setWalletName("ETH Wallet")
              setCoinPrice("(1 ETH = 100 usd)");
-             setBalanceValue((ethbalance+ethbalanceL2)*100);
+             setBalanceValue((ethbalance)*100);
              setCoinname("ETH")
              setBalanceL2(ethbalanceL2)
              changeTable(coinname);
              setBalanceCR(ethbalanceCR);
             return;
             case "HDX":
+             setOnchain(hdxonchain)
              setBalance(hdxbalance);
              setImg(hdxpng);
              setWalletName("HDX Wallet")
              setCoinPrice("(1 HDX = 1 usd)");
-             setBalanceValue(hdxbalance+hdxbalanceL2);
+             setBalanceValue(hdxbalance);
              setCoinname("HDX")
              setBalanceL2(hdxbalanceL2)
              changeTable(coinname);
              setBalanceCR(hdxbalanceCR);
             return;
             case "LTC":
+             setOnchain(ltconchain)
              setBalance(ltcbalance);
              setImg(ltcpng);
              setWalletName("LTC Wallet")
              setCoinPrice("(1 LTC = 10 usd)");
-             setBalanceValue((ltcbalance+ltcbalanceL2)*10);
+             setBalanceValue((ltcbalance)*10);
              setCoinname("LTC")
              setBalanceL2(ltcbalanceL2)
              changeTable(coinname);
              setBalanceCR(ltcbalanceCR);
             return;
             case "USDC":
+             setOnchain(usdconchain)
              setBalance(usdcbalance);
              setImg(usdcpng);
              setWalletName("USDC Wallet")
              setCoinPrice("(1 USDC = 1 usd)");
-             setBalanceValue((usdcbalance+usdcbalanceL2)*1);
+             setBalanceValue((usdcbalance)*1);
              setCoinname("USDC")
              setBalanceL2(usdcbalanceL2)
              changeTable(coinname);
              setBalanceCR(usdcbalanceCR);
             return;
             case "USDT":
+             setOnchain(usdtonchain)
              setBalance(usdtbalance);
              setImg(usdtpng);
              setWalletName("USDT Wallet")
              setCoinPrice("(1 USDT = 1 usd)");
-             setBalanceValue(usdtbalance+usdtbalanceL2);
+             setBalanceValue(usdtbalance);
              setCoinname("USDT")
              setBalanceL2(usdtbalanceL2)
              changeTable(coinname);
@@ -276,42 +304,49 @@ function App() {
         const x = document.getElementById("inputdeposite");
         switch(y){
             case "AETH":
+             setAethOnchain(Number(aethonchain) + Number(x.value))
              setAethBalance(Number(aethbalance)+Number(x.value));
              spanonclickreceive();
              x.value=""
              changeTabOnWallet(coinname);
             return;
             case "BTC":
+              setBtcOnchain( Number(btconchain) + Number(x.value))
               setBtcBalance(Number(btcbalance)+Number(x.value));
               changeTabOnWallet(coinname);
               spanonclickreceive();
               x.value=""
              return;
              case "ETH":
+              setEthOnchain(Number(ethonchain) + Number(x.value))
               setEthBalance(Number(ethbalance)+Number(x.value));
               changeTabOnWallet(coinname);
               spanonclickreceive();
               x.value=""
              return;
              case "HDX":
+              setHdxOnchain(Number(hdxonchain) + Number(x.value))
               setHdxBalance(Number(hdxbalance)+Number(x.value));
               changeTabOnWallet("HDX");
               spanonclickreceive();
               x.value=""
              return;
              case "LTC":
+              setLtcOnchain(Number(ltconchain) + Number(x.value))
               setLtcBalance(Number(ltcbalance)+Number(x.value));
               changeTabOnWallet("LTC");
               spanonclickreceive();
               x.value=""
              return;
              case "USDC":
+              setUsdcOnchain(Number(usdcbalance) + Number(x.value))
               setUsdcBalance(Number(usdcbalance)+Number(x.value));
               changeTabOnWallet("USDC");
               spanonclickreceive();
               x.value=""
              return;
              case "USDT":
+              setUsdtOnchain(Number(usdtonchain) + Number(x.value))
               setUsdtBalance(Number(usdtbalance)+Number(x.value));
               changeTabOnWallet("USDT");
               spanonclickreceive();
@@ -321,9 +356,10 @@ function App() {
              return null
         }
     }
+    var i = 1
     const depositeL2Balance = (y) =>{
       const x = document.getElementById("newchannelinput");
-      if(x.value>balance) {
+      if(x.value>onchain) {
         alert("Not Enough Balance")
         x.value=0
         return;
@@ -344,9 +380,8 @@ function App() {
       let tdclose = document.createElement("td");
       tdclose.innerHTML ='&times;';
       tdclose.className = "close-receive-closechannel";
-    //   tdclose.onclick = ()=> closeChannel()
-      
-      tdchannel.textContent="Channel" ;
+      tdchannel.textContent="Channel " + i;
+      i++
       tdstatus.textContent="Active";
       tdstatus.style.color = "green"
       if(x.value==0){
@@ -373,84 +408,92 @@ function App() {
       switch(y){
           case "AETH":
            setAethBalanceCR(Number(aethbalanceCR)+Number(inputValue))
-           setAethBalance(Number(aethbalance)-Number(x.value));
+           setAethOnchain(Number(aethbalance)-Number(x.value));
            setAethBalanceL2(Number(aethbalanceL2)+Number(x.value));
            changeTabOnWallet("AETH");
            spanonclicknewchannel();
            spanonclicknewrental();
+           tdclose.onclick = ()=> closeChannel("aethclose")
            tableChannelaeth.appendChild(tr)
+
            x.value=""
            setInputDuration(0);
            setInputValue(0);
           return;
           case "BTC":
+            setBtcOnchain(Number(btconchain)-Number(x.value))
             setBtcBalanceCR(Number(btcbalanceCR)+Number(inputValue))
-            setBtcBalance(Number(btcbalance)-Number(x.value));
             setBtcBalanceL2(Number(btcbalanceL2)+Number(x.value));
             spanonclicknewchannel();
             spanonclicknewrental();
             x.value=""
             changeTabOnWallet("BTC");
+            tdclose.onclick = ()=> closeChannel("btcclose")
             tableChannelbtc.appendChild(tr)
             setInputDuration(0);
             setInputValue(0);
            return;
            case "ETH":
+            setEthOnchain(Number(ethonchain)-Number(x.value))
             setEthBalanceCR(Number(ethbalanceCR)+Number(inputValue))
-            setEthBalance(Number(ethbalance)-Number(x.value));
             setEthBalanceL2(Number(ethbalanceL2)+Number(x.value));
             changeTabOnWallet("ETH");
             spanonclicknewchannel();
             spanonclicknewrental();
             x.value=""
+            tdclose.onclick = ()=> closeChannel("ethclose")
             tableChanneleth.appendChild(tr)
             setInputDuration(0);
             setInputValue(0);
            return;
            case "HDX":
+            setHdxOnchain(Number(hdxonchain)-Number(x.value))
             setHdxBalanceCR(Number(hdxbalanceCR)+Number(inputValue))
-            setHdxBalance(Number(hdxbalance)-Number(x.value));
             setHdxBalanceL2(Number(hdxbalanceL2)+Number(x.value));
             changeTabOnWallet("HDX");
             spanonclicknewchannel();
             spanonclicknewrental();
             x.value=""
+            tdclose.onclick = ()=> closeChannel("hdxclose")
             tableChannelhdx.appendChild(tr)
             setInputDuration(0);
             setInputValue(0);
            return;
            case "LTC":
+            setLtcOnchain(Number(ltconchain)-Number(x.value))
             setLtcBalanceCR(Number(ltcbalanceCR)+Number(inputValue))
-            setLtcBalance(Number(ltcbalance)-Number(x.value));
             setLtcBalanceL2(Number(ltcbalanceL2)+Number(x.value));
             changeTabOnWallet("LTC");
             spanonclicknewchannel();
             spanonclicknewrental();
             x.value=""
+            tdclose.onclick = ()=> closeChannel("ltcclose")
             tableChannelltc.appendChild(tr)
             setInputDuration(0);
             setInputValue(0);
            return;
            case "USDC":
+            setUsdcOnchain(Number(usdconchain)-Number(x.value))
             setUsdcBalanceCR(Number(usdcbalanceCR)+Number(inputValue))
-            setUsdcBalance(Number(usdcbalance)-Number(x.value));
             setUsdcBalanceL2(Number(usdcbalanceL2)+Number(x.value));
             changeTabOnWallet("USDC");
             spanonclicknewchannel();
             spanonclicknewrental();
             x.value=""
+            tdclose.onclick = ()=> closeChannel("usdcclose")
             tableChannelusdc.appendChild(tr)
             setInputDuration(0);
             setInputValue(0);
            return;
            case "USDT":
+            setUsdtOnchain(Number(usdtonchain)-Number(x.value))
             setUsdtBalanceCR(Number(usdtbalanceCR)+Number(inputValue))
-            setUsdtBalance(Number(usdtbalance)-Number(x.value));
             setUsdtBalanceL2(Number(usdtbalanceL2)+Number(x.value));
             changeTabOnWallet("USDT");
             spanonclicknewchannel();
             spanonclicknewrental();
             x.value=""
+            tdclose.onclick = ()=> closeChannel("usdtclose")
             tableChannelusdt.appendChild(tr)
             setInputDuration(0);
             setInputValue(0);
@@ -459,19 +502,83 @@ function App() {
            return null
       }
   }
-//   const closeChannel = () => {
-//     var idbtc = document.getElementById("tableChannelbtc");
-//     var idaeth = document.getElementById("tableChannelaeth");
-//     var ideth = document.getElementById("tableChanneleth");
-//     var idhdx = document.getElementById("tableChannelhdx");
-//     var idltc = document.getElementById("tableChannelltc");
-//     var idusdc = document.getElementById("tableChannelusdc");
-//     var idusdt = document.getElementById("tableChannelusdt");
-//     var tr = document.querySelectorAll('asdf')
-//     idbtc.childNodes.forEach(e=>{
-//         e.empty()
-//     })
-// }
+ useEffect(()=>{
+    setBtcOnchain(btcbalance-btcbalanceL2)
+    setEthOnchain(ethbalance-ethbalanceL2)
+    setAethOnchain(aethbalance-aethbalanceL2)
+    setLtcOnchain(ltcbalance-ltcbalanceL2)
+    setHdxOnchain(hdxbalance-hdxbalanceL2)
+    setUsdtOnchain(usdtbalance-usdtbalanceL2)
+    setUsdcOnchain(usdcbalance-usdcbalanceL2)
+ })
+  const closeChannel = (a) => {
+    var idbtc = document.getElementById("tableChannelbtc");
+    var idaeth = document.getElementById("tableChannelaeth");
+    var ideth = document.getElementById("tableChanneleth");
+    var idhdx = document.getElementById("tableChannelhdx");
+    var idltc = document.getElementById("tableChannelltc");
+    var idusdc = document.getElementById("tableChannelusdc");
+    var idusdt = document.getElementById("tableChannelusdt");
+    
+    switch(a){
+        case "btcclose":
+            
+            setBtcOnchain(btcbalance-btcbalanceL2)
+            setBtcBalanceCR(0)
+            setBtcBalanceL2(0)
+            while (idbtc.childNodes[1]) {
+                idbtc.removeChild(idbtc.childNodes[1]);
+                
+            }
+        return;
+        case "usdtclose":
+            setUsdtBalanceCR(0)
+            setUsdtBalanceL2(0)
+            while (idusdt.childNodes[1]) {
+                idusdt.removeChild(idusdt.childNodes[1]);
+            }
+        return;
+        case "aethclose":
+            setAethBalanceCR(0)
+            setAethBalanceL2(0)
+            while (idaeth.childNodes[1]) {
+                idaeth.removeChild(idaeth.childNodes[1]);
+            }
+        return;
+        case "ethclose":
+            setEthBalanceCR(0)
+            setEthBalanceL2(0)
+            while (ideth.childNodes[1]) {
+                ideth.removeChild(ideth.childNodes[1]);
+            }
+        return;
+        case "hdxclose":
+            setHdxBalanceCR(0)
+            setHdxBalanceL2(0)
+            while (idhdx.childNodes[1]) {
+                idhdx.removeChild(idhdx.childNodes[1]);
+                
+            }
+        return;
+        case "ltcclose":
+            setLtcBalanceCR(0)
+            setLtcBalanceL2(0)
+            while (idltc.childNodes[1]) {
+                idltc.removeChild(idltc.childNodes[1]);
+                
+            }
+        return;
+        case "usdcclose":
+            setUsdcBalanceCR(0)
+            setUsdcBalanceL2(0)
+            while (idusdc.childNodes[1]) {
+                idusdc.removeChild(idusdc.childNodes[1]);
+            }
+        return;
+        default:
+        return null;
+    }
+}
   const changeTable = (x) => {
     var idbtc = document.getElementById("tableChannelbtc");
     var idaeth = document.getElementById("tableChannelaeth");
@@ -618,9 +725,7 @@ function App() {
     var buyPriceInput = document.getElementById("dex-input1")
     var tradeAmountInput = document.getElementById("dex-input2")
     var totalAmountInput = document.getElementById("dex-input3")
-    useEffect(()=>{
-        setTotalAmount(buyPrice*tradeAmount)
-    })
+
     const enterBuyOrder = () => {
         setButton("sell")
         setBuyPrice(990)
@@ -649,9 +754,12 @@ function App() {
                     alert("You don't have enough 'can receive' balance for USDt. Please rent new usdt channel")
                     return;
                 }
+                
+                setBtcBalance(btcbalance-tradeAmount)
+                setUsdtBalance(Number(usdtbalance)+Number(totalAmount))
                 setBtcBalanceL2(btcbalanceL2-tradeAmount)
                 setBtcBalanceCR(Number(btcbalanceCR)+Number(tradeAmount))
-                setUsdtBalanceL2(usdtbalanceL2+totalAmount)
+                setUsdtBalanceL2(Number(usdtbalanceL2)+Number(totalAmount))
                 setUsdtBalanceCR(usdtbalanceCR-totalAmount)
                 addOrderHistory(tradeAmount,buyPrice,"sell")
                 return;
@@ -663,6 +771,8 @@ function App() {
                     alert("You don't have enough 'can receive' balance for HDX. Please rent new HDX channel")
                     return;
                 }
+                setAethBalance(aethbalance-tradeAmount)
+                setHdxBalance(Number(hdxbalance)+Number(totalAmount))
                 setAethBalanceL2(aethbalanceL2-tradeAmount)
                 setAethBalanceCR(Number(aethbalanceCR)+Number(tradeAmount))
                 setHdxBalanceL2(hdxbalanceL2+totalAmount)
@@ -677,6 +787,8 @@ function App() {
                     alert("You don't have enough 'can receive' balance for LTC. Please rent new LTC channel")
                     return;
                 }
+                setBtcBalance(btcbalance-tradeAmount)
+                setLtcBalance(Number(ltcbalance)+Number(totalAmount))
                 setBtcBalanceL2(btcbalanceL2-tradeAmount)
                 setBtcBalanceCR(Number(btcbalanceCR)+Number(tradeAmount))
                 setLtcBalanceL2(ltcbalanceL2+totalAmount)
@@ -691,6 +803,8 @@ function App() {
                     alert("You don't have enough 'can receive' balance for ETH. Please rent new ETH channel")
                     return;
                 }
+                setBtcBalance(btcbalance-tradeAmount)
+                setEthBalance(Number(ethbalance)+Number(totalAmount))
                 setBtcBalanceL2(btcbalanceL2-tradeAmount)
                 setBtcBalanceCR(Number(btcbalanceCR)+Number(tradeAmount))
                 setEthBalanceL2(ethbalanceL2+totalAmount)
@@ -711,10 +825,12 @@ function App() {
                     alert("You don't have enough 'can send' balance for USDt. Please rent new usdt channel")
                     return;
                 }
-                setBtcBalanceL2(btcbalanceL2+tradeAmount)
+                setBtcBalance(Number(btcbalance)+Number(tradeAmount))
+                setUsdtBalance(usdtbalance-totalAmount)
+                setBtcBalanceL2(Number(btcbalanceL2)+Number(tradeAmount))
                 setBtcBalanceCR(btcbalanceCR-tradeAmount)
                 setUsdtBalanceL2(usdtbalanceL2-totalAmount)
-                setUsdtBalanceCR(usdtbalanceCR+totalAmount)
+                setUsdtBalanceCR(Number(usdtbalanceCR)+Number(totalAmount))
                 addOrderHistory(tradeAmount,buyPrice,"buy")
                 return;
             case "AETH/HDX":
@@ -725,10 +841,12 @@ function App() {
                     alert("You don't have enough 'can send' balance for hdx. Please rent new hdx channel")
                     return;
                 }
-                setAethBalanceL2(aethbalanceL2+tradeAmount)
+                setAethBalance(Number(aethbalance)+Number(tradeAmount))
+                setHdxBalance(hdxbalance-totalAmount)
+                setAethBalanceL2(Number(aethbalanceL2)+Number(tradeAmount))
                 setAethBalanceCR(aethbalanceCR-tradeAmount)
                 setHdxBalanceL2(hdxbalanceL2-totalAmount)
-                setHdxBalanceCR(hdxbalanceCR+totalAmount)
+                setHdxBalanceCR(Number(hdxbalanceCR)+Number(totalAmount))
                 addOrderHistory(tradeAmount,buyPrice,"buy")                
                 return;
             case "BTC/LTC":
@@ -739,10 +857,12 @@ function App() {
                     alert("You don't have enough 'can send' balance for LTC. Please rent new LTC channel")
                     return;
                 }
-                setBtcBalanceL2(btcbalanceL2+tradeAmount)
+                setBtcBalance(Number(btcbalance)+Number(tradeAmount))
+                setLtcBalance(ltcbalance-totalAmount)
+                setBtcBalanceL2(Number(btcbalanceL2)+Number(tradeAmount))
                 setBtcBalanceCR(btcbalanceCR-tradeAmount)
                 setLtcBalanceL2(ltcbalanceL2-totalAmount)
-                setLtcBalanceCR(ltcbalanceCR+totalAmount)
+                setLtcBalanceCR(Number(ltcbalanceCR)+Number(totalAmount))
                 addOrderHistory(tradeAmount,buyPrice,"buy")
                 return;
             case "BTC/ETH":
@@ -753,10 +873,12 @@ function App() {
                     alert("You don't have enough 'can send' balance for ETH. Please rent new ETH channel")
                     return;
                 }
-                setBtcBalanceL2(btcbalanceL2+tradeAmount)
+                setBtcBalance(Number(btcbalance)+Number(tradeAmount))
+                setEthBalance(ethbalance-totalAmount)
+                setBtcBalanceL2(Number(btcbalanceL2)+Number(tradeAmount))
                 setBtcBalanceCR(btcbalanceCR-tradeAmount)
                 setEthBalanceL2(ethbalanceL2-totalAmount)
-                setEthBalanceCR(ethbalanceCR+totalAmount)
+                setEthBalanceCR(Number(ethbalanceCR)+Number(totalAmount))
                 addOrderHistory(tradeAmount,buyPrice,"buy")
                 return;
             default:
@@ -796,7 +918,7 @@ function App() {
             div.appendChild(divinfo3)
         }
         
-        dexrightside.appendChild(div,div)
+        dexrightside.appendChild(div)
         
     }
 
@@ -869,6 +991,107 @@ function App() {
             setSeed("closed")
         }
     }
+    const [changeside,setChangeSide] = useState("left")
+    const [swapcoinimg, setSwapCoinImg] = useState(btcusdt)
+    const [swapfirst,setSwapFirst] = useState("")
+    const [swapsecond,setSwapSecond] = useState("")
+    const idswapoptionfirst = document.getElementById("swap-first")
+    const idswapoptionsecond = document.getElementById("swap-second")
+    
+    const swapOption = () => {
+        if(changeside=="left"){
+            if(idswapoptionfirst.value =="1btc1"){
+            idswapoptionsecond.value = "2usdt"
+            setSwapCoinImg(btcusdt)
+            }else if(idswapoptionfirst.value =="1aeth2"){
+            idswapoptionsecond.value = "2hdx"
+            setSwapCoinImg(aethhdx)
+        }}else{
+            if(idswapoptionfirst.value =="1btc1"){
+            idswapoptionsecond.value = "2usdt"
+            setSwapCoinImg(usdtbtc)
+            }else if(idswapoptionfirst.value =="1aeth2"){
+            idswapoptionsecond.value = "2hdx"
+            setSwapCoinImg(hdxaeth)
+        }
+        }
+
+        
+        }
+        const swapOption2 = () => {
+            if(changeside=="left"){
+        if(idswapoptionsecond.value == "2usdt"){
+            idswapoptionfirst.value ="1btc1"
+            setSwapCoinImg(btcusdt)
+        }else if(idswapoptionsecond.value == "2hdx"){
+            idswapoptionfirst.value ="1aeth2"
+            setSwapCoinImg(aethhdx)
+        }else if(idswapoptionsecond.value == "2ltc"){
+            idswapoptionfirst.value ="1btc1"
+            setSwapCoinImg(btcltc)
+        }else if(idswapoptionsecond.value == "2eth"){
+            idswapoptionfirst.value ="1btc1"
+            setSwapCoinImg(btceth)
+        }}else{
+         if(idswapoptionsecond.value == "2usdt"){
+            idswapoptionfirst.value ="1btc1"
+            setSwapCoinImg(usdtbtc)
+        }else if(idswapoptionsecond.value == "2hdx"){
+            idswapoptionfirst.value ="1aeth2"
+            setSwapCoinImg(hdxaeth)
+        }else if(idswapoptionsecond.value == "2ltc"){
+            idswapoptionfirst.value ="1btc1"
+            setSwapCoinImg(ltcbtc)
+        }else if(idswapoptionsecond.value == "2eth"){
+            idswapoptionfirst.value ="1btc1"
+            setSwapCoinImg(ethbtc)
+        }
+    }
+    }
+
+    const changeSide = () => {
+        const firstdiv = document.getElementById("swap-top-left1")
+        const seconddiv = document.getElementById("swap-top-right1")
+        const option1child = document.getElementById("swap-first-div")
+        const option2child = document.getElementById("swap-second-div")
+        
+        if(changeside == "left"){
+            firstdiv.appendChild(option2child)
+            seconddiv.appendChild(option1child)
+            setChangeSide("right")
+            if(swapcoinimg == btcusdt){
+                setSwapCoinImg(usdtbtc)
+            }else if(swapcoinimg == aethhdx){
+                setSwapCoinImg(hdxaeth)
+            }
+            else if(swapcoinimg == btcltc){
+                setSwapCoinImg(ltcbtc)
+            }
+            else if(swapcoinimg == btceth){
+                setSwapCoinImg(ethbtc)
+            }
+        }else{
+            firstdiv.appendChild(option1child)
+            seconddiv.appendChild(option2child)
+            setChangeSide("left")
+            if(swapcoinimg == usdtbtc){
+                setSwapCoinImg(btcusdt)
+            }else if(swapcoinimg == hdxaeth){
+                setSwapCoinImg(aethhdx)
+            }
+            else if(swapcoinimg == ltcbtc){
+                setSwapCoinImg(btcltc)
+            }
+            else if(swapcoinimg == ethbtc){
+                setSwapCoinImg(btceth)
+            }
+        }
+    }
+    const swapOrder = () => {
+        if(changePair == "left"){
+
+        }
+    }
   return (
 
     <div className="App">
@@ -928,10 +1151,10 @@ function App() {
                             src={btcpng}/>
                             </div> 
                             <div className="portfolio-currency-left-name">Bitcoin BTC</div>
-                            <div className="portfolio-currency-left-balance">{btcbalance+btcbalanceL2} BTC (${(btcbalance+btcbalanceL2)*1000})</div>
+                            <div className="portfolio-currency-left-balance">{btcbalance} BTC (${(btcbalance)*1000})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((btcbalance+btcbalanceL2)*1000/totalBalance*100).toFixed(2)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((btcbalance)*1000/totalBalance*100).toFixed(2)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
                                 <div className="portfolio-currency-right-send">Send</div>
                                 <div className="portfolio-currency-right-receive">Receive</div>
@@ -945,10 +1168,10 @@ function App() {
                             style={{"width":"35px","height":"35x","marginLeft":"17px","marginTop":"-4px"}}
                             src={aethpng}/></div>
                             <div className="portfolio-currency-left-name" style={{"marginLeft":"12px"}}>Arbitrum AETH</div>
-                            <div className="portfolio-currency-left-balance">{aethbalance+aethbalanceL2} AETH (${(aethbalance+aethbalanceL2)*100})</div>
+                            <div className="portfolio-currency-left-balance">{aethbalance} AETH (${(aethbalance)*100})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((aethbalance+aethbalanceL2)*100/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((aethbalance)*100/totalBalance*100).toString().slice(0,5)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
                                 <div className="portfolio-currency-right-send">Send</div>
                                 <div className="portfolio-currency-right-receive">Receive</div>
@@ -962,10 +1185,10 @@ function App() {
                             src={ethpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">Ethereum ETH</div>
-                            <div className="portfolio-currency-left-balance">{ethbalance+ethbalanceL2} ETH (${(ethbalance+ethbalanceL2)*100})</div>
+                            <div className="portfolio-currency-left-balance">{ethbalance} ETH (${(ethbalance)*100})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((ethbalance+ethbalanceL2)*100/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((ethbalance)*100/totalBalance*100).toString().slice(0,5)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
                                 <div className="portfolio-currency-right-send">Send</div>
                                 <div className="portfolio-currency-right-receive">Receive</div>
@@ -979,10 +1202,10 @@ function App() {
                             src={hdxpng}/>   
                             </div>
                             <div className="portfolio-currency-left-name"> Hydranet HDX</div>   
-                            <div className="portfolio-currency-left-balance">{hdxbalance+hdxbalanceL2} HDX (${hdxbalance+hdxbalanceL2})</div>
+                            <div className="portfolio-currency-left-balance">{hdxbalance} HDX (${hdxbalance})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((hdxbalance+hdxbalanceL2)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((hdxbalance)/totalBalance*100).toString().slice(0,5)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
                                 <div className="portfolio-currency-right-send">Send</div>
                                 <div className="portfolio-currency-right-receive">Receive</div>
@@ -996,10 +1219,10 @@ function App() {
                             src={ltcpng}/>
                             </div>
                             <div className="portfolio-currency-left-name"> Litecoin LTC</div>  
-                            <div className="portfolio-currency-left-balance">{ltcbalance+ltcbalanceL2} LTC (${(ltcbalance+ltcbalanceL2)*10})</div>
+                            <div className="portfolio-currency-left-balance">{ltcbalance} LTC (${(ltcbalance)*10})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((ltcbalance+ltcbalanceL2)*10/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((ltcbalance)*10/totalBalance*100).toString().slice(0,5)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
                                 <div className="portfolio-currency-right-send">Send</div>
                                 <div className="portfolio-currency-right-receive">Receive</div>
@@ -1014,10 +1237,10 @@ function App() {
                             src={usdcpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">USD Coin USDC</div>  
-                            <div className="portfolio-currency-left-balance">{usdcbalance+usdcbalanceL2} USDC (${usdcbalance+usdcbalanceL2})</div>
+                            <div className="portfolio-currency-left-balance">{usdcbalance} USDC (${usdcbalance})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((usdcbalance+usdcbalanceL2)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((usdcbalance)/totalBalance*100).toString().slice(0,5)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
                                 <div className="portfolio-currency-right-send">Send</div>
                                 <div className="portfolio-currency-right-receive">Receive</div>
@@ -1032,10 +1255,10 @@ function App() {
                             src={usdtpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">USD Tether USDT</div>  
-                            <div className="portfolio-currency-left-balance">{usdtbalance+usdtbalanceL2} USDT (${usdtbalance+usdtbalanceL2})</div>
+                            <div className="portfolio-currency-left-balance">{usdtbalance} USDT (${usdtbalance})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((usdtbalance+usdtbalanceL2)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((usdtbalance)/totalBalance*100).toString().slice(0,5)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
                                 <div className="portfolio-currency-right-send">Send</div>
                                 <div className="portfolio-currency-right-receive">Receive</div>
@@ -1161,7 +1384,7 @@ function App() {
                         </div>
                         
                         <div className='modal-newrental-inputs'>
-                        <div  className='modal-newrental-inputs-header'>Capacity : {inputValue} Usd</div><div></div>
+                        <div  className='modal-newrental-inputs-header'>Capacity : {inputValue} {coinname}</div><div></div>
                         <input className="modal-newrental-input"type="range" id='1' max="100000"value={inputValue}  
                         onChange={(e)=>{setInputValue(e.target.value)}}/>
                         
@@ -1208,52 +1431,52 @@ function App() {
                             <img className="pnglight" src={greenpng}/>
                             <img className="pngaeth" src={aethpng}/>
                             <div>Arbitrum - AETH</div>
-                            <div>{aethbalance+aethbalanceL2} - AETH</div>
-                            <div style={{"fontSize":"10px"}}>${(aethbalance+aethbalanceL2)*100}</div>
+                            <div>{aethbalance} - AETH</div>
+                            <div style={{"fontSize":"10px"}}>${(aethbalance)*100}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("BTC")}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={btcpng}/></div>
                             <div>Bitcoin - BTC</div>
-                            <div>{btcbalance+btcbalanceL2} - BTC</div>
-                            <div style={{"fontSize":"10px"}}>${(btcbalance+btcbalanceL2)*1000}</div>
+                            <div>{btcbalance} - BTC</div>
+                            <div style={{"fontSize":"10px"}}>${(btcbalance)*1000}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("ETH")}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={ethpng}/></div>
                             <div>Ethereum - ETH</div>
-                            <div>{ethbalance+ethbalanceL2} - ETH</div>
-                            <div style={{"fontSize":"10px"}}>${(ethbalance+ethbalanceL2)*100}</div>
+                            <div>{ethbalance} - ETH</div>
+                            <div style={{"fontSize":"10px"}}>${(ethbalance)*100}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("HDX")}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={hdxpng}/></div>
                             <div>Hydranet - HDX</div>
-                            <div>{hdxbalance+hdxbalanceL2} - HDX</div>
-                            <div style={{"fontSize":"10px"}}>${hdxbalance+hdxbalanceL2}</div>
+                            <div>{hdxbalance} - HDX</div>
+                            <div style={{"fontSize":"10px"}}>${hdxbalance}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("LTC")}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={ltcpng}/></div>
                             <div>Litecoin - LTC</div>
-                            <div>{ltcbalance+ltcbalanceL2} - LTC</div>
-                            <div style={{"fontSize":"10px"}}>${(ltcbalance+ltcbalanceL2)*10}</div>
+                            <div>{ltcbalance} - LTC</div>
+                            <div style={{"fontSize":"10px"}}>${(ltcbalance)*10}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("USDC")}>
                             <img className="pnglight" src={greenpng}/>
                             <img className="png" style={{"width":"40px", "height":"40px", "marginRight":"17px","marginLeft":"12px"}} 
                             src={usdcpng}/>
                             <div>USD Coin - USDC</div>
-                            <div>{usdcbalance+usdcbalanceL2} - USDC</div>
-                            <div style={{"fontSize":"10px"}}>${usdcbalance+usdcbalanceL2}</div>
+                            <div>{usdcbalance} - USDC</div>
+                            <div style={{"fontSize":"10px"}}>${usdcbalance}</div>
                         </div>
                         <div className="wallets-coin" onClick={()=>changeTabOnWallet("USDT")}>
                             <img className="pnglight" src={greenpng}/>
                             <img className="png" style={{"width":"35px", "height":"40px", "marginRight":"17px","marginLeft":"16px"}}
                             src={usdtpng}/>
                             <div>USD Tether - USDT</div>
-                            <div>{usdtbalance+usdtbalanceL2} - USDT</div>
-                            <div style={{"fontSize":"10px"}}>${usdtbalance+usdtbalanceL2}</div>
+                            <div>{usdtbalance} - USDT</div>
+                            <div style={{"fontSize":"10px"}}>${usdtbalance}</div>
                         </div>
                     </div>
             </div>
@@ -1268,7 +1491,7 @@ function App() {
                             <div>BALANCE</div>
                             <div className='wallet-balance-value'>${balanceValue}</div>
                             <div>
-                                <div >{balance + balanceL2} {coinname}</div>
+                                <div >{balance} {coinname}</div>
                                
                             </div> <div style={{"fontSize":"12px"}}>{coinPrice}</div>
                         </div>
@@ -1287,7 +1510,7 @@ function App() {
                         <div className="wallets-slider-onchain-offchain">
                             <div className="wallets-slider-onchain">
                                 <div>On Chain</div>
-                                <div>{balance} {coinname}</div>
+                                <div>{onchain} {coinname}</div>
                             </div>
                             <div className="wallets-slider-offchain">
                                 <div >Off Chain</div>
@@ -1317,7 +1540,7 @@ function App() {
                             <div className="cansend-canreceive">
                                 <div className="cansend">
                                     <div>CAN SEND</div>
-                                    <div className="cansendreceive-balance">{balanceL2}</div>
+                                    <div className="cansendreceive-balance">{balanceL2} {coinname}</div>
                                     <div className="arrowdiv" >
                                     <img className="arrow1" src={leftpng}/>
                                 </div>
@@ -1327,7 +1550,7 @@ function App() {
                                 
                                 <div className="canreceive"> 
                                     <div>CAN RECEIVE</div>
-                                    <div className="cansendreceive-balance">{balanceCR}</div>
+                                    <div className="cansendreceive-balance">{balanceCR} {coinname}</div>
                                     <div className="arrowdiv2" >
                                     <img className="arrow2" src={leftpng}/>
                                     </div>
@@ -1696,7 +1919,41 @@ function App() {
                 Vortex
             </div>
             <div className="rightside-swap" id="rightside-swap">
-                SWAP
+                <div className="swap-header">Swap</div>
+                <div className="swap-top">
+                    <div className="swap-top-line">
+                        
+                        <div className="swap-top-left1" id='swap-top-left1'>
+                            <div id="swap-first-div">
+                                <select className='swap-top-left-select' id="swap-first" onChange={()=>swapOption()} >
+                                    <option value="1btc1" className='swap-option'>BTC Bitcoin</option>
+                                    <option value="1aeth2"className='swap-option'>AETH Arbitrum</option>
+                                </select>
+                                <input className='swap-top-left-input1' placeholder='Amount'></input>
+                                <input className='swap-top-left-input2' placeholder='$'></input>
+                            </div>
+                        </div>
+                        <div  className="swap-top-center-img" onClick={()=>changeSide()}>
+                            <img  className="swap-top-center-img"src={swapimg} />
+                        </div>
+                        <div className="swap-top-right1" id='swap-top-right1'>
+                            <div id="swap-second-div">
+                                <select className='swap-top-right-select' id="swap-second" onChange={()=>swapOption2()} >
+                                    <option value="2usdt"className='swap-option'>USDT Tether</option>
+                                    <option value="2hdx" className='swap-option'>HDX Hydranet</option>
+                                    <option value="2ltc" className='swap-option'>LTC Litecoin</option>
+                                    <option value="2eth" className='swap-option'>ETH Ethereum</option>
+                                </select>
+                                <input className='swap-top-right-input1' placeholder='Amount'></input>
+                                <input className='swap-top-right-input2' placeholder='$'></input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="swap-bottom">
+                    <img className="swap-bottom-img"src={swapcoinimg}/>
+                </div>
+                <button className='swap-button'>Confirm</button>
             </div>
             <div className="rightside-settings" id="rightside-settings">
                 <div className='settings-leftside'>
@@ -1766,6 +2023,7 @@ function App() {
                 <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content5')}>Tutorial 5</div>
                 <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content6')}>Tutorial 6</div>
                 <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 7</div>
+                
             </div>
             <div className="turorial-contents">
                 <div className="turorial-content" id="turorial-content1">How to deposit funds to wallet</div>

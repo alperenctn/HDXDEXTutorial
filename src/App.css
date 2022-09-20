@@ -1030,6 +1030,15 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
   margin-left: 25px;
   margin-top: 8px;
 }
+
+.settings-leftside-header2:hover
+,.settings-leftside-header3:hover
+,.settings-leftside-header4:hover
+,.settings-leftside-header5:hover
+,.settings-leftside-header6:hover
+,.settings-leftside-header7:hover{
+  color: white;
+}
 .settings-leftside-header1{
   cursor:auto;
   margin-left: 25px;
@@ -1146,6 +1155,120 @@ display: block;
   float: right;
   margin-top: -40px;
 }
+.rightside-swap{
+  background-color: #02071a;
+}
+.swap-header{
+  height: 30px;
+  width: 90%;
+  text-align: left;
+  padding: 20px;
+  font-size: 30px;
+  margin-left: 10px;
+}
+.swap-top{
+  height: 420px;
+  width: 96%;
+  margin-left: 30px;
+  background-color: #0b122aea;
+}
+.swap-bottom{
+  height: 300px;
+  width: 96%;
+  margin-left: 30px;
+}
+.swap-bottom-img{
+  height: 300px;
+  width: 100%;
+}
+.swap-top-line{
+  float: left;
+  height: 300px;
+  width: 100%;
+  margin-top: 7%;
+}
+.swap-top-center-img{
+  cursor: pointer;
+  float: left;
+  height: 160px;
+  margin-top: 10px;
+}
+.swap-top-left-select,.swap-top-right-select{
+  cursor: pointer;
+  float: left;
+  height: 40%;
+  width: 85%;
+  background-color:#3c3e3f6d ;
+  border: none;
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.517);
+  padding: 15px;
+}
+.swap-top-left-option{
+  float: left;
+  background-color: #7a4bc6;
+  padding: 16px;
+  margin-top: 5px;
+}
+.swap-option{
+  background-color: #1b2553;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  box-sizing: content-box;
+  line-height: 30px;
+}
+.swap-top-left1{
+  float: left;
+  width: 30%;
+  padding: 40px;
+  margin-left: 70px;
+}
+.swap-top-right1{ 
+  float: left;
+  width: 30%;
+  padding: 40px;
+  margin-left: 70px;
+  
+
+}
+.swap-top-left-input1,.swap-top-right-input1{
+  height: 9%;
+  float: left;
+  width: 50%;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.105);
+  background-color: #0f142a;
+  color: rgba(255, 255, 255, 0.734);
+  padding: 10px;
+  margin-left: 5px;
+}
+.swap-top-left-input2,.swap-top-right-input2{
+  float: left;
+  width: 20%;
+  margin-left: 5px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.164);
+  background-color: #0f142a;
+  color: rgba(255, 255, 255, 0.734);
+  padding: 10px;
+}
+.swap-button{
+  cursor: pointer;
+  position: absolute;
+  width: 300px;
+  height: 40px;
+  margin-top: -70px;
+  margin-left: -180px;
+  border-radius: 10px;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.649);
+  border: 2px solid rgba(7, 118, 7, 0.419);
+
+}
+
 
   /* MODALS */
   /* The Modal receive(background) */
