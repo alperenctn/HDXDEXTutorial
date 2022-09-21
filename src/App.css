@@ -476,14 +476,11 @@ background: linear-gradient(90deg, rgba(4,9,77,0.4939017843465511) 0%, rgba(11,1
   margin-top: 6px;
 }
 .wallets-channels{
-  position: relative;
   float: left;
-  margin-top: 10px;
-  margin-left: 1px;
-  width: 69%;
-  height: 290px;
-
+  width: 68%;
+  height: 230px;
 }
+
 .wallet-channels-tab{
   display: none;
   height: 310px;
@@ -529,21 +526,56 @@ background: linear-gradient(90deg, rgba(4,9,77,0.4939017843465511) 0%, rgba(11,1
 }
 td{
   background-color: rgb(25, 25, 59);
+  border: none;
+  height: 29px;
+  padding: 4px;
+}
+.ethchannels{
+  float: left;
+  border: none;
+  height: 38px;
+  width: 98%;
+  background-color: rgb(25, 25, 59);
+}
+#ethchannel,
+#hdxchannel,
+#aethchannel,
+#usdtchannel,
+#usdcchannel,
+#btcchannel,
+#ltcchannel{
+  display: none;
+}
+.ethchannel,.ethchannellast{
+  float: left;
+  border: none;
+  padding: 9px;
+  width: 14.5%;
+  font-size: 14px;
+}
+.ethchannellast{
+  width: 11%;
 }
 .wallets-channels-headers{
+  margin-top: 10px;
+  float: left;
   color: rgba(240, 248, 255, 0.528);
   border: transparent;
   height: 40px;
   background: rgb(47,65,149);
-  background: linear-gradient(0deg, rgba(47,65,149,0.9224732129179797) 0%, rgba(17,22,70,1) 47%, rgba(10,13,29,1) 100%);
-  font-size: 15px;
+  background: linear-gradient(0deg, rgba(41, 53, 106, 0.922) 10%, rgb(22, 26, 63) 40%, rgb(13, 16, 36) 88%);
+  font-size: 14px;
   font-weight: 700;
-  width: 97%;
+  width:67%;
 }
 
-.wallet-channels-header{
+.wallet-channels-header,.wallet-channels-headerlast{
+  float: left;
   padding: 7px;
-  width: 1%;
+  width: 15%;
+}
+.wallet-channels-headerlast{
+  width: 11%;
 }
 
 
@@ -554,7 +586,7 @@ table{
   font-size: 13px;
 }
 #tableChannelbtc{
-  display: block;
+  display: none;
   overflow: hidden;
 }
 #tableChannelaeth{
@@ -581,11 +613,7 @@ table{
   display: none;
   overflow: hidden;
 }
-td{
-  border: none;
-  height: 23px;
-  
-}
+
 
     /* dex tab */
 
@@ -952,6 +980,10 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
   color: rgba(255, 255, 255, 0.772);
 
 }
+.dex-orderbook-order:hover{
+  background: linear-gradient(180deg, rgba(14, 15, 39, 0.648) 0%, rgba(10, 10, 51, 0.679) 50%, rgba(42, 42, 42, 0.88) 100%);
+  color: rgba(255, 255, 255, 0.772);
+}
 .dex-orderbook-order-info,.dex-orderbook-order-info-sellprice,.dex-orderbook-order-info-buyprice{
   float: left;
   width: 25%;
@@ -1015,8 +1047,9 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
 .settings-leftside{
   float: left;
   width: 15%;
-  height: 800px;
+  height: 710px;
   background-color: rgba(5, 8, 18, 0.576);
+  padding-top: 90px;
 }
 .settings-leftside-header1,
 .settings-leftside-header2,
@@ -1040,6 +1073,7 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
   color: white;
 }
 .settings-leftside-header1{
+  position: absolute;
   cursor:auto;
   margin-left: 25px;
   height: 70px;
@@ -1047,6 +1081,7 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
   padding-top: 30px;
   font-size: 28px;
   font-weight: 700;
+  width: 5%;
 }
 
 
@@ -1190,8 +1225,9 @@ display: block;
 .swap-top-center-img{
   cursor: pointer;
   float: left;
-  height: 160px;
+  height: 70%;
   margin-top: 10px;
+  margin-left: 2.5%;
 }
 .swap-top-left-select,.swap-top-right-select{
   cursor: pointer;
@@ -1221,14 +1257,16 @@ display: block;
 .swap-top-left1{
   float: left;
   width: 30%;
-  padding: 40px;
-  margin-left: 70px;
+  padding-left: 3%;
+  padding-top: 3%;
+  margin-left: 5%;
 }
 .swap-top-right1{ 
   float: left;
   width: 30%;
-  padding: 40px;
-  margin-left: 70px;
+  padding-left: 3%;
+  padding-top: 3%;
+  margin-left: 5%;
   
 
 }
