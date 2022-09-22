@@ -136,6 +136,9 @@ function App() {
     var totalBalance = (btcbalance)*1000+(aethbalance)*100+
         (ethbalance)*100+hdxbalance+(ltcbalance)*10+
         usdcbalance+usdtbalance;
+    const [dexprice, setDexPrice] = useState("")
+    const [sendamount, setSendAmount] = useState("0")
+    const [rangeValue,setRangeValue] = useState(1)
     
     const changeTabOnWallet = (x) => {
         switch(x){
@@ -251,6 +254,14 @@ function App() {
     }
     const spanonclicknewchannel = () => {
     var modal3 = document.getElementById("myModal-newchannel");
+    modal3.style.display = "none";
+    }
+    const btnonclicknewchannelslider = () => {
+    var modal3 = document.getElementById("myModal-newchannel-slider");
+    modal3.style.display = "block";
+    }
+    const spanonclicknewchannelslider = () => {
+    var modal3 = document.getElementById("myModal-newchannel-slider");
     modal3.style.display = "none";
     }
     const btnonclicknewrental = () => {
@@ -632,7 +643,77 @@ function App() {
         return null;
     }
 }
-  const changeTable = (x) => {
+    const sendCoin = () => {
+        switch(coinname){
+            case "BTC":
+                if(btconchain>=sendamount){
+                    setBtcBalance(btcbalance-sendamount)
+                }else{
+                    alert("Enter less amount from your BTC on-Chain amount")
+                }
+                spanonclicksend();
+                setSendAmount("");
+                
+            return;
+            case "USDT":
+                if(usdtonchain>=sendamount){
+                    setUsdtBalance(usdtbalance-sendamount)
+                }else{
+                    alert("Enter less amount from your USDT on-Chain amount")
+                }
+                spanonclicksend();
+                setSendAmount("");
+            return;
+            case "AETH":
+                if(aethonchain>=sendamount){
+                    setAethBalance(aethbalance-sendamount)
+                }else{
+                    alert("Enter less amount from your AETH on-Chain amount")
+                }
+                spanonclicksend();
+                setSendAmount("");
+            return;
+            case "ETH":
+                if(ethonchain>=sendamount){
+                    setEthBalance(ethbalance-sendamount)
+                }else{
+                    alert("Enter less amount from your ETH onChain amount")
+                }
+                spanonclicksend();
+                setSendAmount("");
+            return;
+            case "HDX":
+                if(hdxonchain>=sendamount){
+                    setHdxBalance(hdxbalance-sendamount)
+                }else{
+                    alert("Enter less amount from your HDX onChain amount")
+                }
+                spanonclicksend();
+                setSendAmount("");
+            return;
+            case "LTC":
+                if(ltconchain>=sendamount){
+                    setLtcBalance(ltcbalance-sendamount)
+                }else{
+                    alert("Enter less amount from your Ltc onChain amount")
+                }
+                spanonclicksend();
+                setSendAmount("");
+            return;
+            case "USDC":
+                if(usdconchain>=sendamount){
+                    setUsdcBalance(usdcbalance-sendamount)
+                }else{
+                    alert("Enter less amount from your USDC onChain amount")
+                }
+                spanonclicksend();
+                setSendAmount("");
+            return;
+            default:
+            return null;
+        }
+    }
+    const changeTable = (x) => {
 
     var walletchannels = document.getElementById("wallet-channels-tab")
     var array = []
@@ -728,6 +809,7 @@ function App() {
                 setSelectedPair2img(usdtpng)
                 setFirstCoin("BTC")
                 setSecondCoin("USDT")
+                setDexPrice(1000)
                 return;
             case "AETH/HDX":
                 setSelectedPair1L2(aethbalanceL2+" AETH");
@@ -742,6 +824,7 @@ function App() {
                 setSelectedPair2img(hdxpng)
                 setFirstCoin("AETH")
                 setSecondCoin("HDX")
+                setDexPrice(100)
                 return;
             case "BTC/LTC":
                 setSelectedPair1L2(btcbalanceL2+" BTC");
@@ -756,6 +839,7 @@ function App() {
                 setSelectedPair2img(ltcpng)
                 setFirstCoin("BTC")
                 setSecondCoin("LTC")
+                setDexPrice(100)
                 return;
             case "BTC/ETH":
                 setSelectedPair1L2(btcbalanceL2+" BTC");
@@ -770,6 +854,7 @@ function App() {
                 setSelectedPair2img(ethpng)
                 setFirstCoin("BTC")
                 setSecondCoin("ETH")
+                setDexPrice(10)
                 return;
             default:
                 return null;
@@ -965,13 +1050,13 @@ function App() {
         var saniye=tarih.getSeconds();	
 	    var tarih = (yil+"/"+ay+"/"+gun+" "+saat+":"+dakika+":"+saniye);
         div.className = "dex-orderbook-order"
-        divinfo1.textContent =a +" "+(firstCoin);
+        divinfo1.textContent =a ;
         divinfo1.className = "dex-orderbook-order-infox"
         divinfo2.textContent = tarih;
         divinfo2.className = "dex-orderbook-order-info-timex"
-        divinfo3.textContent = b + (secondCoin);
+        divinfo3.textContent = b ;
         divinfo3.className = "dex-orderbook-order-info-sellpricex"
-        divinfo4.textContent = b+ (secondCoin);
+        divinfo4.textContent = b;
         divinfo4.className = "dex-orderbook-order-info-buypricex"
         div.appendChild(divinfo1)
         div.appendChild(divinfo2)
@@ -1349,7 +1434,7 @@ function App() {
                                 <img className="modal-img"src={img}/>
                             </div>  
                             <div className="modal-modal-asset-name">
-                                <div className="modal-modal-asset-name1">Receive {coinname}</div>
+                                <div className="modal-modal-asset-name1">Send {coinname}</div>
                                 <div className="modal-modal-asset-name2">ON-CHAIN : {balance} {coinname} = {balanceValue} USD</div>
                             </div>
                         </div>
@@ -1357,12 +1442,12 @@ function App() {
                         placeholder='Address'/>
                         <div className='modal-input-send-coinname'>{coinname}</div>
                         <input id="newchannelinput1"className='modal-input-send1' type="number" min="1"
-                        placeholder='Amount'/>
+                        placeholder='Amount' value={sendamount} onChange={(e)=>{setSendAmount(e.target.value)}}/>
                         <input id="newchannelinput1"className='modal-input-send2' type="number" min="1"
                         placeholder='Amount'/>
                         <div className='modal-input-send-usd'>USD</div>
                         <button className='modal-input-send-button'>MAX</button>
-                        <button className='modal-input-send-button-send'>SEND</button>
+                        <button className='modal-input-send-button-send' onClick={sendCoin}>SEND</button>
                     </div>
                 </div>
                 <div id="myModal-newchannel" class="modal-newchannel">
@@ -1389,6 +1474,20 @@ function App() {
                         <input id="newchannelinput"className='modal-input-newchannel' type="number" value={newchannelinput}
                         placeholder='Enter channel capacity (min = 1 , max = 200.000.000)' onChange={(e)=>{setNewChannelInput(e.target.value)}}/>
                         </div>
+                        <div className='modal-newchannel-bottom'>Network Fee Rate: " 1 satoshi/vbyte</div>
+                        <div className='modal-newchannel-buttons'>
+                            <button className='modal-newchannel-button'>LOW</button>
+                            <button className='modal-newchannel-button'>MEDIUM</button>
+                            <button className='modal-newchannel-button'>HIGH</button>
+                        </div>
+                        <div className='modal-newchannel-openbuttons'>
+                        <button className='modal-newchannel-openbutton' onClick={()=>depositeL2Balance(coinname)}>OPEN</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="myModal-newchannel-slider" class="modal-newchannel-slider">
+                    <div className="modal-content-newchannel-slider">
+                        <span className="close-newchannel" onClick={spanonclicknewchannelslider}>&times;</span>
                         <div className='modal-newchannel-bottom'>Network Fee Rate: " 1 satoshi/vbyte</div>
                         <div className='modal-newchannel-buttons'>
                             <button className='modal-newchannel-button'>LOW</button>
@@ -1524,8 +1623,8 @@ function App() {
                         <div className="portfolio-currency-right">
                             <div className="portfolio-currency-right-ratio">{((btcbalance)*1000/totalBalance*100).toFixed(2)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send" >Send</div>
-                                <div className="portfolio-currency-right-receive"onClick={()=>btnonclickreceive()}>Receive</div>
+                                <div className="portfolio-currency-right-send" onClick={()=>{setCoinname("BTC");btnonclicksend()}}>Send</div>
+                                <div className="portfolio-currency-right-receive"onClick={()=>{setCoinname("BTC");btnonclickreceive()}}>Receive</div>
                             </div>
                         </div>
                     </div>
@@ -1539,10 +1638,10 @@ function App() {
                             <div className="portfolio-currency-left-balance">{aethbalance} AETH (${(aethbalance)*100})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((aethbalance)*100/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((aethbalance)*100/totalBalance*100).toFixed(2)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
+                                <div className="portfolio-currency-right-send" onClick={()=>{setCoinname("AETH");btnonclicksend()}}>Send</div>
+                                <div className="portfolio-currency-right-receive" onClick={()=>{setCoinname("AETH");btnonclickreceive()}}>Receive</div>
                             </div>
                         </div>
                     </div>
@@ -1556,10 +1655,10 @@ function App() {
                             <div className="portfolio-currency-left-balance">{ethbalance} ETH (${(ethbalance)*100})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((ethbalance)*100/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((ethbalance)*100/totalBalance*100).toFixed(2)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
+                                <div className="portfolio-currency-right-send"  onClick={()=>{setCoinname("ETH");btnonclicksend()}}>Send</div>
+                                <div className="portfolio-currency-right-receive" onClick={()=>{setCoinname("ETH");btnonclickreceive()}}>Receive</div>
                             </div>
                         </div>
                     </div>
@@ -1573,10 +1672,10 @@ function App() {
                             <div className="portfolio-currency-left-balance">{hdxbalance} HDX (${hdxbalance})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((hdxbalance)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((hdxbalance)/totalBalance*100).toFixed(2)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
+                                <div className="portfolio-currency-right-send" onClick={()=>{setCoinname("HDX");btnonclicksend()}}>Send</div>
+                                <div className="portfolio-currency-right-receive" onClick={()=>{setCoinname("HDX");btnonclickreceive()}}>Receive</div>
                             </div>
                         </div>
                     </div>
@@ -1590,10 +1689,10 @@ function App() {
                             <div className="portfolio-currency-left-balance">{ltcbalance} LTC (${(ltcbalance)*10})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((ltcbalance)*10/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((ltcbalance)*10/totalBalance*100).toFixed(2)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
+                                <div className="portfolio-currency-right-send" onClick={()=>{setCoinname("LTC");btnonclicksend()}}>Send</div>
+                                <div className="portfolio-currency-right-receive" onClick={()=>{setCoinname("LTC");btnonclickreceive()}}>Receive</div>
                             </div>
                         </div>
                     </div>
@@ -1608,10 +1707,10 @@ function App() {
                             <div className="portfolio-currency-left-balance">{usdcbalance} USDC (${usdcbalance})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((usdcbalance)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((usdcbalance)/totalBalance*100).toFixed(2)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
+                                <div className="portfolio-currency-right-send" onClick={()=>{setCoinname("USDC");btnonclicksend()}}>Send</div>
+                                <div className="portfolio-currency-right-receive" onClick={()=>{setCoinname("USDC");btnonclickreceive()}}>Receive</div>
                             </div>
                         </div>
                     </div>
@@ -1626,10 +1725,10 @@ function App() {
                             <div className="portfolio-currency-left-balance">{usdtbalance} USDT (${usdtbalance})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((usdtbalance)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-ratio">{Number(((usdtbalance)/totalBalance*100).toFixed(2))}%</div>
                             <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
+                                <div className="portfolio-currency-right-send" onClick={()=>{setCoinname("USDT");btnonclicksend()}}>Send</div>
+                                <div className="portfolio-currency-right-receive" onClick={()=>{setCoinname("USDT");btnonclickreceive()}}>Receive</div>
                             </div>
                         </div>
                     </div>
@@ -1743,12 +1842,13 @@ function App() {
                             </div>
                         </div>
                         <div className="slider">
-                            <input type="range" className="slider"/>
+                            <input type="range" className="slider" min="1" max={onchain} value={rangeValue} 
+                            onChange={e=>setRangeValue(e.target.value)}/>
                         </div>
                         <div className="input-bottom">
                             <div className="dex-refunds">DEX Refunds:<bold>0.00 USD</bold></div>
-                            <div className="apply-button"><button className="apply-button1">Apply</button></div>
-                            <div className="slider-ratio">45%</div>
+                            <div className="apply-button"><button className="apply-button1" onClick={btnonclicknewchannelslider}>Apply</button></div>
+                            <div className="slider-ratio">{Math.floor(rangeValue*100/onchain)}%</div>
                         </div>
                     </div>
                     <div className="wallet-channels-tab" id="wallet-channels-tab">
@@ -1916,7 +2016,7 @@ function App() {
                         <div className="dex-dexheader">DEX</div>
                         <div  className="dex-dexheader-online">ONLINE</div>
                     </div>
-                    <div className="dex-market">MARKET{element}</div>
+                    <div className="dex-market">MARKET</div>
                     <div className="dex-option">
                         <select className="dex-select" id="dex-select"  onChange={(e)=>setElement(e.target.value)}>
                             <option value="" selected disabled hidden>Select Pair</option>
@@ -1971,7 +2071,7 @@ function App() {
                             onChange={(e)=>setBuyPrice(e.target.value)}></input>
                             
                         </div>
-                        <div className="dex-input-number">$0.00</div>
+                        <div className="dex-input-number">${buyPrice}</div>
                     </div>
                     <div className="dex-inputs">
                         <div>
@@ -1980,7 +2080,7 @@ function App() {
                             <div className="dex-input-top">Amount to spend</div>}
                             <input  className="dex-input2" id="dex-input2" type="number" value={tradeAmount} 
                             onChange={(e)=>setTradeAmount(e.target.value)}></input></div>
-                        <div className="dex-input-number">$0.00</div>
+                        <div className="dex-input-number">${tradeAmount*buyPrice}</div>
                     </div>
                     <div className="dex-ratio-numbers">
                         <div className="dex-ratio-number">25%</div>
@@ -1992,7 +2092,7 @@ function App() {
                     <div className="dex-inputs">
                         <div><input  className="dex-input2" id="dex-input3"type="number" placeholder="Total"  value={totalAmount} 
                             onChange={(e)=>setTotalAmount(e.target.value)}></input></div>
-                        <div className="dex-input-number">$0.00</div>
+                        <div className="dex-input-number">${tradeAmount*buyPrice}</div>
                     </div>
                     <div style={{"fontSize":"10px"}}>Place order fee:0.000000001BTC</div>
                         {button == "buy" ? <div><button className="dex-buy-button" onClick={()=>sellFnc()}>BUY</button></div> : 
@@ -2192,7 +2292,7 @@ function App() {
                             </div>
                         </div>
                         <div  className="swap-top-center-img" onClick={()=>changeSide()}>
-                            <img  className="swap-top-center-img"src={swapimg} />
+                            <img  className="swap-top-center-img"src={swapimg} /><div id='swap-price'>1 btc = 1000 usdt</div>
                         </div>
                         <div className="swap-top-right1" id='swap-top-right1'>
                             <div id="swap-second-div">
@@ -2208,8 +2308,8 @@ function App() {
                                 value={changeside=="left" ? firstswapinput*swapPrice : firstswapinput*swapPrice}></input>
                             </div>
                         </div>
+                    
                     </div>
-                    <div id='swap-price'>1 btc = 1000 usdt</div>
                 </div>
                 
                 <div className="swap-bottom">
@@ -2285,9 +2385,9 @@ function App() {
                 <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content5')}>Tutorial 5</div>
                 <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content6')}>Tutorial 6</div>
                 <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 7</div>
-                
             </div>
             <div className="turorial-contents">
+                <div className="turorial-title" id="tutorial1" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 16</div>
                 <div className="turorial-content" id="turorial-content1">How to deposit funds to wallet</div>
                 <div className="turorial-content" id="turorial-content2">How to withdraw funds from wallet</div>
                 <div className="turorial-content" id="turorial-content3">How to open channel </div>
@@ -2295,6 +2395,17 @@ function App() {
                 <div className="turorial-content" id="turorial-content5">How to trade on dex tab</div>
                 <div className="turorial-content" id="turorial-content6">How to get wallet backup</div>
                 <div className="turorial-content" id="turorial-content7"></div>
+                <div className="turorial-title" id="tutorial1" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 8</div>
+            </div>
+            <div className="turorial-titles">
+                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content1')}
+                onClick={(e)=>tutorial1(e)}>Tutorial 15</div>
+                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content2')}>Tutorial 14</div>
+                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content3')}>Tutorial 13</div>
+                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content4')}>Tutorial 12</div>
+                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content5')}>Tutorial 11</div>
+                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content6')}>Tutorial 10</div>
+                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 9</div>
             </div>
         </div>
     </div>
