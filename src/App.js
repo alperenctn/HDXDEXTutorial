@@ -41,6 +41,7 @@ import ethbtc from "./png/ethbtc.bmp"
 
 
 
+
 function App() {
   
   useEffect(()=>{
@@ -997,6 +998,61 @@ function App() {
         document.getElementById(name).style.display = "block";
         evt.currentTarget.className += " active";
       }
+      
+      const changecss = (evt, name) => {
+        var i, tabcontent, tablinks;
+        tablinks = document.getElementsByClassName("wallets-header-transaction");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      const changetabcss = (evt, name) => {
+        var i, tabcontent, tablinks;
+        tablinks = document.getElementsByClassName("left-tab-title");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      const changecointabcss = (evt, name) => {
+        var i, tabcontent, tablinks;
+        tablinks = document.getElementsByClassName("wallets-coin");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      const changeordertabcss = (evt, name) => {
+        var i, tabcontent, tablinks;
+        tablinks = document.getElementsByClassName("dex-orderbook-tab");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      const changebtncss = (evt, name) => {
+        var i, tabcontent, tablinks;
+        tablinks = document.getElementsByClassName("dex-button1");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      const changebtn1css = (evt, name) => {
+        var i, tabcontent, tablinks;
+        tablinks = document.getElementsByClassName("dex-button2");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(name).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
 
       const tutorial1 = (e) => {
         changeTab("wallets")
@@ -1246,175 +1302,8 @@ function App() {
         </div>
         <div className="App1">
         <div className="dex">
-            <div className="leftside">
-                <div style={{"fontSize":"13px"}}>
-                    <img className="hdxlogo "src={HYDRANETpng}/>
-                    
-                </div>
-                <hr className="hr"/>
-                <div style={{"fontSize":"10px"}}>My Balance</div>
-                <div style={{"fontSize":"13px"}}>${totalBalance}</div>
-                <div className="left-tab-names">
-                    <img src={portfoliopng} className="left-img"/>
-                    <div className="left-tab-name" onClick={()=> changeTab("portfolio")}>Portfolio</div>
-                    <img src={walletpng} className="left-img"/>
-                    <div className="left-tab-name" onClick={()=> changeTab("wallets")}>Wallets</div>
-                    <img src={dexpng} className="left-img"/>
-                    <div className="left-tab-name" onClick={()=> changeTab("dex")}>Dex</div>
-                    <img src={vortexpng} className="left-img"/>
-                    <div className="left-tab-name" onClick={()=> changeTab("vortex")}>Vortex</div>
-                    <img src={swappng} className="left-img"/>
-                    <div className="left-tab-name" onClick={()=> changeTab("swap")}>Swap</div>
-                </div>
-                
-                <div className="left-tab-name-setting" onClick={()=> changeTab("settings")}>
-                    <img src={settingspng} className="left-img"/>Settings</div>
-            </div>
-            <div className="rightside-portfolio" id="rightside-portfolio">
-                <p style={{"float":"left", "marginLeft":"80px"}}>Portfolio</p>
-                <div className="portfolio-balance"><div style={{"position":"absolute", "marginLeft":"5%","marginTop":"20px"}}>${totalBalance}</div></div>
-                <div style={{"marginTop":"0px"}}>
-                    <div style={{"marginTop":"40px"}}>
-                        <div style={{"position":"absolute", "marginLeft":"5%"}}> Wallets </div>
-                        <div >Search Wallets</div>
-                    </div>
-                    
-                    <div className="portfolio-currencies">
-                        <div className="portfolio-currency-left">
-                            <div className="portfolio-currency-left-name">Currency</div>
-                            <div className="portfolio-currency-left-balance">Balance</div>
-                        </div>
-                        <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">Portfolio</div>
-                            <div className="portfolio-currency-right-sendreceive">
-                            </div>
-                        </div>
-                    </div>
-                    <div className="portfolio-currencies">
-                        <div className="portfolio-currency-left">
-                            <div className="portfolio-currency-left-name">
-                            <img className="pngportfolio" 
-                            src={btcpng}/>
-                            </div> 
-                            <div className="portfolio-currency-left-name">Bitcoin BTC</div>
-                            <div className="portfolio-currency-left-balance">{btcbalance} BTC (${(btcbalance)*1000})</div>
-                        </div>
-                        <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((btcbalance)*1000/totalBalance*100).toFixed(2)}%</div>
-                            <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="portfolio-currencies">
-                        <div className="portfolio-currency-left">
-                            <div className="portfolio-currency-left-name">
-                            <img  
-                            style={{"width":"35px","height":"35x","marginLeft":"17px","marginTop":"-4px"}}
-                            src={aethpng}/></div>
-                            <div className="portfolio-currency-left-name" style={{"marginLeft":"12px"}}>Arbitrum AETH</div>
-                            <div className="portfolio-currency-left-balance">{aethbalance} AETH (${(aethbalance)*100})</div>
-                        </div>
-                        <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((aethbalance)*100/totalBalance*100).toString().slice(0,5)}%</div>
-                            <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="portfolio-currencies">
-                        <div className="portfolio-currency-left">
-                            <div className="portfolio-currency-left-name">
-                            <img className="pngportfolio" 
-                            src={ethpng}/>
-                            </div>
-                            <div className="portfolio-currency-left-name">Ethereum ETH</div>
-                            <div className="portfolio-currency-left-balance">{ethbalance} ETH (${(ethbalance)*100})</div>
-                        </div>
-                        <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((ethbalance)*100/totalBalance*100).toString().slice(0,5)}%</div>
-                            <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="portfolio-currencies">
-                        <div className="portfolio-currency-left">
-                            <div className="portfolio-currency-left-name">
-                            <img className="pngportfolio" 
-                            src={hdxpng}/>   
-                            </div>
-                            <div className="portfolio-currency-left-name"> Hydranet HDX</div>   
-                            <div className="portfolio-currency-left-balance">{hdxbalance} HDX (${hdxbalance})</div>
-                        </div>
-                        <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((hdxbalance)/totalBalance*100).toString().slice(0,5)}%</div>
-                            <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="portfolio-currencies">
-                        <div className="portfolio-currency-left">
-                            <div className="portfolio-currency-left-name">
-                            <img className="pngportfolio" 
-                            src={ltcpng}/>
-                            </div>
-                            <div className="portfolio-currency-left-name"> Litecoin LTC</div>  
-                            <div className="portfolio-currency-left-balance">{ltcbalance} LTC (${(ltcbalance)*10})</div>
-                        </div>
-                        <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((ltcbalance)*10/totalBalance*100).toString().slice(0,5)}%</div>
-                            <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="portfolio-currencies">
-                        <div className="portfolio-currency-left">
-                            <div className="portfolio-currency-left-name">
-                            <img className="pngportfolio" 
-                            style={{"width":"35px", "height":"35px", "marginRight":"0px","marginLeft":"17px"}} 
-                            src={usdcpng}/>
-                            </div>
-                            <div className="portfolio-currency-left-name">USD Coin USDC</div>  
-                            <div className="portfolio-currency-left-balance">{usdcbalance} USDC (${usdcbalance})</div>
-                        </div>
-                        <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((usdcbalance)/totalBalance*100).toString().slice(0,5)}%</div>
-                            <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="portfolio-currencies">
-                        <div className="portfolio-currency-left">
-                            <div className="portfolio-currency-left-name">
-                            <img className="pngportfolio" 
-                            style={{"width":"30px", "height":"30px", "marginRight":"2px","marginLeft":"19px"}}
-                            src={usdtpng}/>
-                            </div>
-                            <div className="portfolio-currency-left-name">USD Tether USDT</div>  
-                            <div className="portfolio-currency-left-balance">{usdtbalance} USDT (${usdtbalance})</div>
-                        </div>
-                        <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((usdtbalance)/totalBalance*100).toString().slice(0,5)}%</div>
-                            <div className="portfolio-currency-right-sendreceive">
-                                <div className="portfolio-currency-right-send">Send</div>
-                                <div className="portfolio-currency-right-receive">Receive</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="rightside-wallet" id="rightside-wallet">
-                <div id="myModal-receive" class="modal-receive">
+            <div  className="modals">
+            <div id="myModal-receive" class="modal-receive">
                     <div className="modal-content-receive">
                         <span className="close-receive" onClick={spanonclickreceive}>&times;</span>
                         <div className="modal-div1">
@@ -1564,51 +1453,241 @@ function App() {
                         <div className="myModal-tutorial1-step3">STEP 3</div>
                     </div>
                 </div>
+            </div>
+            <div className="leftside">
+                <div style={{"fontSize":"13px"}}>
+                    <img className="hdxlogo "src={HYDRANETpng}/>
+                    
+                </div>
+                <hr className="hr"/>
+                <div style={{"fontSize":"10px"}}>My Balance</div>
+                <div style={{"fontSize":"13px"}}>${totalBalance}</div>
+                <div className="left-tab-names">
+                    <div className='left-tab-title' id="portfolio" onClick={ (event)=> changetabcss(event, 'portfolio')}>
+                        <img src={portfoliopng} className="left-img"/>
+                        <div className="left-tab-name" onClick={()=> changeTab("portfolio")}>Portfolio</div>
+                    </div>
+                    <div className='left-tab-title active' id="wallet" onClick={ (event)=> changetabcss(event, 'wallet')}>
+                        <img src={walletpng} className="left-img" />
+                        <div className="left-tab-name" onClick={()=> changeTab("wallets")}>Wallets</div>
+                    </div>
+                    <div className='left-tab-title' id="dex" onClick={ (event)=> changetabcss(event, 'dex')}>
+                        <img src={dexpng} className="left-img"/>
+                        <div className="left-tab-name" onClick={()=> changeTab("dex")}>Dex</div>
+                    </div>
+                    <div className='left-tab-title' id="vortex" onClick={ (event)=> changetabcss(event, 'vortex')}>
+                        <img src={vortexpng} className="left-img"/>
+                        <div className="left-tab-name" onClick={()=> changeTab("vortex")}>Vortex</div>
+                    </div>
+                    <div className='left-tab-title' id="swap" onClick={ (event)=> changetabcss(event, 'swap')}>
+                        <img src={swappng} className="left-img"/>
+                        <div className="left-tab-name" onClick={()=> changeTab("swap")}>Swap</div>
+                    </div >
+                    <div className='left-tab-title' id="settings" onClick={ (event)=> changetabcss(event, 'settings')}>
+                        <img src={settingspng} className="left-img"/>
+                        <div className="left-tab-name-setting" onClick={()=> changeTab("settings")}>Settings</div>
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            <div className="rightside-portfolio" id="rightside-portfolio">
+                <p style={{"float":"left", "marginLeft":"80px"}}>Portfolio</p>
+                <div className="portfolio-balance"><div style={{"position":"absolute", "marginLeft":"5%","marginTop":"20px"}}>${totalBalance}</div></div>
+                <div style={{"marginTop":"0px"}}>
+                    <div style={{"marginTop":"40px"}}>
+                        <div style={{"position":"absolute", "marginLeft":"5%"}}> Wallets </div>
+                        <div >Search Wallets</div>
+                    </div>
+                    
+                    <div className="portfolio-currencies">
+                        <div className="portfolio-currency-left">
+                            <div className="portfolio-currency-left-name">Currency</div>
+                            <div className="portfolio-currency-left-balance">Balance</div>
+                        </div>
+                        <div className="portfolio-currency-right">
+                            <div className="portfolio-currency-right-ratio">Portfolio</div>
+                            <div className="portfolio-currency-right-sendreceive">
+                            </div>
+                        </div>
+                    </div>
+                    <div className="portfolio-currencies">
+                        <div className="portfolio-currency-left">
+                            <div className="portfolio-currency-left-name">
+                            <img className="pngportfolio" 
+                            src={btcpng}/>
+                            </div> 
+                            <div className="portfolio-currency-left-name">Bitcoin BTC</div>
+                            <div className="portfolio-currency-left-balance">{btcbalance} BTC (${(btcbalance)*1000})</div>
+                        </div>
+                        <div className="portfolio-currency-right">
+                            <div className="portfolio-currency-right-ratio">{((btcbalance)*1000/totalBalance*100).toFixed(2)}%</div>
+                            <div className="portfolio-currency-right-sendreceive">
+                                <div className="portfolio-currency-right-send" >Send</div>
+                                <div className="portfolio-currency-right-receive"onClick={()=>btnonclickreceive()}>Receive</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="portfolio-currencies">
+                        <div className="portfolio-currency-left">
+                            <div className="portfolio-currency-left-name">
+                            <img  
+                            style={{"width":"35px","height":"35x","marginLeft":"17px","marginTop":"-4px"}}
+                            src={aethpng}/></div>
+                            <div className="portfolio-currency-left-name" style={{"marginLeft":"12px"}}>Arbitrum AETH</div>
+                            <div className="portfolio-currency-left-balance">{aethbalance} AETH (${(aethbalance)*100})</div>
+                        </div>
+                        <div className="portfolio-currency-right">
+                            <div className="portfolio-currency-right-ratio">{((aethbalance)*100/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-sendreceive">
+                                <div className="portfolio-currency-right-send">Send</div>
+                                <div className="portfolio-currency-right-receive">Receive</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="portfolio-currencies">
+                        <div className="portfolio-currency-left">
+                            <div className="portfolio-currency-left-name">
+                            <img className="pngportfolio" 
+                            src={ethpng}/>
+                            </div>
+                            <div className="portfolio-currency-left-name">Ethereum ETH</div>
+                            <div className="portfolio-currency-left-balance">{ethbalance} ETH (${(ethbalance)*100})</div>
+                        </div>
+                        <div className="portfolio-currency-right">
+                            <div className="portfolio-currency-right-ratio">{((ethbalance)*100/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-sendreceive">
+                                <div className="portfolio-currency-right-send">Send</div>
+                                <div className="portfolio-currency-right-receive">Receive</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="portfolio-currencies">
+                        <div className="portfolio-currency-left">
+                            <div className="portfolio-currency-left-name">
+                            <img className="pngportfolio" 
+                            src={hdxpng}/>   
+                            </div>
+                            <div className="portfolio-currency-left-name"> Hydranet HDX</div>   
+                            <div className="portfolio-currency-left-balance">{hdxbalance} HDX (${hdxbalance})</div>
+                        </div>
+                        <div className="portfolio-currency-right">
+                            <div className="portfolio-currency-right-ratio">{((hdxbalance)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-sendreceive">
+                                <div className="portfolio-currency-right-send">Send</div>
+                                <div className="portfolio-currency-right-receive">Receive</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="portfolio-currencies">
+                        <div className="portfolio-currency-left">
+                            <div className="portfolio-currency-left-name">
+                            <img className="pngportfolio" 
+                            src={ltcpng}/>
+                            </div>
+                            <div className="portfolio-currency-left-name"> Litecoin LTC</div>  
+                            <div className="portfolio-currency-left-balance">{ltcbalance} LTC (${(ltcbalance)*10})</div>
+                        </div>
+                        <div className="portfolio-currency-right">
+                            <div className="portfolio-currency-right-ratio">{((ltcbalance)*10/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-sendreceive">
+                                <div className="portfolio-currency-right-send">Send</div>
+                                <div className="portfolio-currency-right-receive">Receive</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="portfolio-currencies">
+                        <div className="portfolio-currency-left">
+                            <div className="portfolio-currency-left-name">
+                            <img className="pngportfolio" 
+                            style={{"width":"35px", "height":"35px", "marginRight":"0px","marginLeft":"17px"}} 
+                            src={usdcpng}/>
+                            </div>
+                            <div className="portfolio-currency-left-name">USD Coin USDC</div>  
+                            <div className="portfolio-currency-left-balance">{usdcbalance} USDC (${usdcbalance})</div>
+                        </div>
+                        <div className="portfolio-currency-right">
+                            <div className="portfolio-currency-right-ratio">{((usdcbalance)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-sendreceive">
+                                <div className="portfolio-currency-right-send">Send</div>
+                                <div className="portfolio-currency-right-receive">Receive</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="portfolio-currencies">
+                        <div className="portfolio-currency-left">
+                            <div className="portfolio-currency-left-name">
+                            <img className="pngportfolio" 
+                            style={{"width":"30px", "height":"30px", "marginRight":"2px","marginLeft":"19px"}}
+                            src={usdtpng}/>
+                            </div>
+                            <div className="portfolio-currency-left-name">USD Tether USDT</div>  
+                            <div className="portfolio-currency-left-balance">{usdtbalance} USDT (${usdtbalance})</div>
+                        </div>
+                        <div className="portfolio-currency-right">
+                            <div className="portfolio-currency-right-ratio">{((usdtbalance)/totalBalance*100).toString().slice(0,5)}%</div>
+                            <div className="portfolio-currency-right-sendreceive">
+                                <div className="portfolio-currency-right-send">Send</div>
+                                <div className="portfolio-currency-right-receive">Receive</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="rightside-wallet" id="rightside-wallet">
+               
                 
             <div className="wallets-headers">
-                <div className="wallets-header-transaction" onClick={changetotxs}><div className="transaction">TRANSACTIONS</div></div>
+                <div id="wallets-header-transaction" className="wallets-header-transaction active"
+                    onClick={(event)=>{changetotxs();changecss(event, 'wallets-header-transaction')}}>
+                    <div className="transaction">TRANSACTIONS</div>
+                </div>
                 
-                <div className="wallets-header-channel" onClick={changetochannels}><div className="transaction">CHANNELS</div></div>
+                <div id="wallets-header-channel" className="wallets-header-transaction"
+                    onClick={(event)=>{changetochannels();changecss(event, 'wallets-header-channel')}}>
+                    <div className="transaction">CHANNELS</div>
+                </div>
             </div>
             <div className="wallets-leftside">
                     <div style={{"textAlign":"left","padding":"10px","fontSize":"13px"}}>7 wallets total</div> 
                     <div>
-                        <div className="wallets-coin" onClick={()=>changeTabOnWallet("AETH")}>
+                        <div className="wallets-coin" id="aeth"onClick={(e)=>{changeTabOnWallet("AETH");changecointabcss(e, 'aeth')}}>
                             <img className="pnglight" src={greenpng}/>
                             <img className="pngaeth" src={aethpng}/>
                             <div>Arbitrum - AETH</div>
                             <div>{aethbalance} - AETH</div>
                             <div style={{"fontSize":"10px"}}>${(aethbalance)*100}</div>
                         </div>
-                        <div className="wallets-coin" onClick={()=>changeTabOnWallet("BTC")}>
+                        <div className="wallets-coin active" id="btc"onClick={(e)=>{changeTabOnWallet("BTC");changecointabcss(e, 'btc')}}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={btcpng}/></div>
                             <div>Bitcoin - BTC</div>
                             <div>{Number(btcbalance)} - BTC</div>
                             <div style={{"fontSize":"10px"}}>${(btcbalance)*1000}</div>
                         </div>
-                        <div className="wallets-coin" onClick={()=>changeTabOnWallet("ETH")}>
+                        <div className="wallets-coin" id="eth"onClick={(e)=>{changeTabOnWallet("ETH");changecointabcss(e, 'eth')}}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={ethpng}/></div>
                             <div>Ethereum - ETH</div>
                             <div>{ethbalance} - ETH</div>
                             <div style={{"fontSize":"10px"}}>${(ethbalance)*100}</div>
                         </div>
-                        <div className="wallets-coin" onClick={()=>changeTabOnWallet("HDX")}>
+                        <div className="wallets-coin" id="hdx"onClick={(e)=>{changeTabOnWallet("HDX");changecointabcss(e, 'hdx')}}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={hdxpng}/></div>
                             <div>Hydranet - HDX</div>
                             <div>{hdxbalance} - HDX</div>
                             <div style={{"fontSize":"10px"}}>${hdxbalance}</div>
                         </div>
-                        <div className="wallets-coin" onClick={()=>changeTabOnWallet("LTC")}>
+                        <div className="wallets-coin" id="ltc"onClick={(e)=>{changeTabOnWallet("LTC");changecointabcss(e, 'ltc')}}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={ltcpng}/></div>
                             <div>Litecoin - LTC</div>
                             <div>{ltcbalance} - LTC</div>
                             <div style={{"fontSize":"10px"}}>${(ltcbalance)*10}</div>
                         </div>
-                        <div className="wallets-coin" onClick={()=>changeTabOnWallet("USDC")}>
+                        <div className="wallets-coin" id="usdc"onClick={(e)=>{changeTabOnWallet("USDC");changecointabcss(e, 'usdc')}}>
                             <img className="pnglight" src={greenpng}/>
                             <img className="png" style={{"width":"40px", "height":"40px", "marginRight":"17px","marginLeft":"12px"}} 
                             src={usdcpng}/>
@@ -1616,7 +1695,7 @@ function App() {
                             <div>{usdcbalance} - USDC</div>
                             <div style={{"fontSize":"10px"}}>${usdcbalance}</div>
                         </div>
-                        <div className="wallets-coin" onClick={()=>changeTabOnWallet("USDT")}>
+                        <div className="wallets-coin" id="usdt"onClick={(e)=>{changeTabOnWallet("USDT");changecointabcss(e, 'usdt')}}>
                             <img className="pnglight" src={greenpng}/>
                             <img className="png" style={{"width":"35px", "height":"40px", "marginRight":"17px","marginLeft":"16px"}}
                             src={usdtpng}/>
@@ -1870,12 +1949,16 @@ function App() {
                     </div>
                     <div className="dex-buttons">
                         <div className="dex-buysell-button1">
-                            <button className="dex-button1" onClick={()=>setButton("buy")}>Buy</button>
-                            <button className="dex-button1"  onClick={()=>setButton("sell")}>Sell</button>
+                            <button className="dex-button1 active" id="dex-button11"
+                            onClick={(event)=>{setButton("buy");changebtncss(event, 'dex-button11')}}>Buy</button>
+                            <button className="dex-button1" id="dex-button12"
+                            onClick={(event)=>{setButton("sell");changebtncss(event, 'dex-button12')}}>Sell</button>
                         </div>
                         <div className="dex-buysell-button2">
-                            <button className="dex-button2" onClick>Limit</button>
-                            <button className="dex-button2" >Market</button>
+                            <button className="dex-button2 active" id="dex-button21"
+                            onClick={(event)=>{changebtn1css(event, 'dex-button21')}}>Limit</button>
+                            <button className="dex-button2" id="dex-button22"
+                            onClick={(event)=>{changebtn1css(event, 'dex-button22')}}>Market</button>
                         </div>
                     </div>
                     <div className="dex-inputs">
@@ -1925,17 +2008,20 @@ function App() {
                     </div>
                     <div className='dex-orderbook'>
                         <div className='dex-orderbook-tabs'>
-                            <div className='dex-orderbook-tab1' onClick={()=>openorderbook()}>
+                            <div className='dex-orderbook-tab active' id="dex-orderbook-tab1" 
+                            onClick={(event)=>{openorderbook();changeordertabcss(event, 'dex-orderbook-tab1')}}>
                                 <div style={{"marginTop":"15px"}} >
                                     <div className="dex-orderbook-tab-inside">ORDER BOOK</div>
                                 </div>
                             </div>
-                            <div className='dex-orderbook-tab2' onClick={()=>openopenorders()}>
+                            <div className='dex-orderbook-tab' id="dex-orderbook-tab2" 
+                            onClick={(event)=>{openopenorders();changeordertabcss(event, 'dex-orderbook-tab2')}}>
                                 <div style={{"marginTop":"15px"}} >
                                     <div className="dex-orderbook-tab-inside">OPEN ORDERS</div>
                                 </div>
                             </div>
-                            <div className='dex-orderbook-tab3'onClick={()=>openmytradehistory()}>
+                            <div className='dex-orderbook-tab' id="dex-orderbook-tab3"
+                            onClick={(event)=>{openmytradehistory();changeordertabcss(event, 'dex-orderbook-tab3')}}>
                                 <div style={{"marginTop":"15px"}} >
                                     <div className="dex-orderbook-tab-inside">MY TRADE HISTORY</div> 
                                 </div>
@@ -1959,33 +2045,32 @@ function App() {
                                 {
                                     element=="" ? null :
                                 <div>    
-                                <div id="orders1">
-                                    <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                        <div className="dex-orderbook-order-info">990</div>
-                                        <div className="dex-orderbook-order-info">990</div>
-                                        <div className="dex-orderbook-order-info">1</div>
-                                        <div className="dex-orderbook-order-info-buyprice">990</div>
+                                    <div id="orders1">
+                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
+                                            <div className="dex-orderbook-order-info">990</div>
+                                            <div className="dex-orderbook-order-info">990</div>
+                                            <div className="dex-orderbook-order-info">1</div>
+                                            <div className="dex-orderbook-order-info-buyprice">990</div>
+                                        </div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}> 
+                                            <div className="dex-orderbook-order-info">2950</div>
+                                            <div className="dex-orderbook-order-info">1960 </div>
+                                            <div className="dex-orderbook-order-info">2</div>
+                                            <div className="dex-orderbook-order-info-buyprice">980 </div>
+                                        </div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
+                                            <div className="dex-orderbook-order-info">5860</div>
+                                            <div className="dex-orderbook-order-info">2910</div>
+                                            <div className="dex-orderbook-order-info">3</div>
+                                            <div className="dex-orderbook-order-info-buyprice">970</div>
+                                        </div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
+                                            <div className="dex-orderbook-order-info">7780</div>
+                                            <div className="dex-orderbook-order-info">1920</div>
+                                            <div className="dex-orderbook-order-info">4</div>
+                                            <div className="dex-orderbook-order-info-buyprice">960</div>
+                                        </div>
                                     </div>
-                                    <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}> 
-                                        <div className="dex-orderbook-order-info">2950</div>
-                                        <div className="dex-orderbook-order-info">1960 </div>
-                                        <div className="dex-orderbook-order-info">2</div>
-                                        <div className="dex-orderbook-order-info-buyprice">980 </div>
-                                    </div>
-                                    <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                        <div className="dex-orderbook-order-info">5860</div>
-                                        <div className="dex-orderbook-order-info">2910</div>
-                                        <div className="dex-orderbook-order-info">3</div>
-                                        <div className="dex-orderbook-order-info-buyprice">970</div>
-                                    </div>
-                                    <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                        <div className="dex-orderbook-order-info">7780</div>
-                                        <div className="dex-orderbook-order-info">1920</div>
-                                        <div className="dex-orderbook-order-info">4</div>
-                                        <div className="dex-orderbook-order-info-buyprice">960</div>
-                                    </div>
-                                    </div>
-                                    
                                 </div>
                                 
                                 }
@@ -2033,9 +2118,6 @@ function App() {
                                             <div className="dex-orderbook-order-info">5600</div>
                                             <div className="dex-orderbook-order-info">13000</div>
                                         </div>
-                                    
-                                        
-                                        
                                     </div>
                                 }
                             </div>
@@ -2090,7 +2172,7 @@ function App() {
                 </div>
             </div>
             <div className="rightside-vortex"  id="rightside-vortex">
-                Vortex
+                
             </div>
             <div className="rightside-swap" id="rightside-swap">
                 <div className="swap-header">Swap</div>

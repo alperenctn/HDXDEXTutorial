@@ -61,9 +61,10 @@ background-color: rgb(79, 88, 171);
   cursor: pointer;
 }
 .left-tab-name{
-  height: 30px;
+  padding: 8px;
   text-align: left;
   margin-left: 35px;
+  height: 25px;
 }
 .left-tab-names{
   margin-top: 20px;
@@ -74,15 +75,19 @@ background-color: rgb(79, 88, 171);
   width: 17px;
   float: left;
   margin-left: 10px;
-  margin-top: 3px;
+  margin-top: 8px;
 }
 .left-tab-name-setting{
+  margin-top: 5px;
+}
+#settings{
+  cursor: pointer;
   position: absolute;
-  bottom:0;
-  height: 30px;
-  text-align: left;
-  margin-left: 35px;
+  float: left;
+  bottom: 0;
   width: 100px;
+  padding: 3px;
+  margin-bottom: 10px;
 }
 .left-tab-name-setting:hover{
   color: azure;
@@ -90,6 +95,16 @@ background-color: rgb(79, 88, 171);
 }
 p{
   text-align: left;
+}
+.left-tab-title{
+  height: 33px;
+}
+.left-tab-title.active{
+  background: rgb(56,132,187);
+  background: linear-gradient(90deg, rgba(56, 78, 187, 0.543) 0%, rgba(25, 126, 173, 0.201) 50%, rgba(24,195,111,0) 100%);
+  border-radius: 6px;
+  border-left: 4px solid rgb(79, 98, 246);
+  height: 33px;
 }
 .pngportfolio{
   width: 31px;
@@ -201,17 +216,17 @@ p{
   margin-top: 15px;
   transform: skew(-30deg);
 }
-.wallets-header-channel:hover,
-.wallets-header-transaction:hover{
+
+
+.wallets-header-transaction.active{
   background: rgb(133,138,213);
   background: linear-gradient(180deg, rgba(133,138,213,0.647963408996411) 0%, rgba(37,37,97,0.6787757339263831) 50%, rgba(6,6,52,0.8804564061952906) 100%);
 }
-.wallets-header-channel{
+#wallets-header-channel{
   width: 120px;
-}
-.wallets-header-channel{
   margin-left: -40px;
 }
+
 .wallets-leftside{
   float: left;
   width: 17%;
@@ -225,6 +240,7 @@ p{
   margin: 10px 10px;
   margin-left: 20px;
 }
+
 .wallets-coin{
   font-size: 11px;
   text-align: left;
@@ -232,10 +248,14 @@ p{
   margin-left: 15px;
   margin-top: 5px;
   background: rgb(8,17,52);
-  background: linear-gradient(180deg, rgba(8,17,52,1) 0%, rgba(21,30,69,1) 63%, rgba(38,51,108,1) 100%);
+  background: linear-gradient(180deg, rgb(7, 16, 52) 0%, rgb(12, 23, 70) 63%, rgb(28, 45, 118) 100%);
   border-radius: 10px;
   padding: 7px;
   width: 90%;
+}
+
+.wallets-coin.active{
+  border-left: 6px solid rgb(37, 79, 231);
 }
 .wallets-send-img{
   height: 20px;
@@ -752,25 +772,34 @@ table{
   
 }
 
-.dex-button:hover,
-.dex-button1,.dex-button2{
+.dex-button1{
+  float: left;
   cursor: pointer;
   font-size: 12px;
-  width: 100px;
+  width:100px;
   background-color:rgba(65, 66, 70, 0.67);
   color: aliceblue;
   border-radius: 5px;
   padding: 5px;
   border: none; 
-  
 }
-.dex-button1:focus,
-.dex-button1:focus{
+.dex-button2{
+  float: left;
+  cursor: pointer;
+  font-size: 12px;
+  width:100px;
+  background-color:rgba(65, 66, 70, 0.67);
+  color: aliceblue;
+  border-radius: 5px;
+  padding: 5px;
+  border: none; 
+}
+.dex-button1.active{
   background-color:rgba(99, 104, 125, 0.661);
 }
-.dex-button2:focus,
-.dex-button2:focus {
-  background-color:rgba(99, 104, 125, 0.469);
+
+.dex-button2.active{
+  background-color:rgba(99, 104, 125, 0.661);
 }
 
 input::-webkit-outer-spin-button,
@@ -849,36 +878,37 @@ input::-webkit-inner-spin-button {
   z-index: 0;
   margin-left: -13px;
 }
-.dex-orderbook-tab1,.dex-orderbook-tab2,.dex-orderbook-tab3{
+.dex-orderbook-tab{
   float: left;
   font-weight: 700;
   font-size: 10px;
   background: rgb(76,84,204);
-background: linear-gradient(0deg, rgba(36, 43, 132, 0.928) 0%, rgba(7, 7, 53, 0.914) 100%, rgba(6, 6, 83, 0.92) 114%);
+  background: linear-gradient(0deg, rgba(36, 43, 132, 0.928) 0%, rgba(7, 7, 53, 0.914) 100%, rgba(6, 6, 83, 0.92) 114%);
   height: 40px;
   width: 20%;
   border: 1px solid black;
   transform: skew(30deg);
   z-index: 0;
 }
-.dex-orderbook-tab1:hover,.dex-orderbook-tab2:hover,.dex-orderbook-tab3:hover{
-  background: rgb(76,84,204);
-background: linear-gradient(0deg, rgba(88, 94, 176, 0.928) 0%, rgba(12, 12, 53, 0.914) 100%, rgba(8, 8, 88, 0.92) 114%);
-}
+
 .dex-orderbook-tab-inside{
   transform: skew(-30deg);
 }
-.dex-orderbook-tab1:hover{
+#dex-orderbook-tab1:hover{
   cursor: pointer;
   color: white;
 }
-.dex-orderbook-tab2:hover{
+#dex-orderbook-tab2:hover{
   cursor: pointer;
   color: white;
 }
-.dex-orderbook-tab3:hover{
+#dex-orderbook-tab3:hover{
   cursor: pointer;
   color: white;
+}
+.dex-orderbook-tab.active{
+  background: rgb(76,84,204);
+background: linear-gradient(0deg, rgba(88, 94, 176, 0.928) 0%, rgba(12, 12, 53, 0.914) 100%, rgba(8, 8, 88, 0.92) 114%);
 }
 .dex-orderbook-order-bottoms{
   float: left;
@@ -1267,7 +1297,11 @@ display: block;
   padding-left: 3%;
   padding-top: 3%;
   margin-left: 5%;
-  
+}
+#swap-price{
+  float: right;
+  height: 30px;
+  width: 200px;
 
 }
 .swap-top-left-input1,.swap-top-right-input1{
@@ -1316,7 +1350,7 @@ display: block;
 ,.modal-send,.modal-tutorial1 {
   display: none; 
   position: fixed; 
-  z-index: 1; 
+  z-index: 2; 
   padding-top: 250px; 
   left: 0;
   top: 0;
@@ -1809,7 +1843,7 @@ color: rgba(255, 255, 255, 0.689);
   padding-bottom: 0px;
 
 }
-.turorial-title:hover,
+
 .turorial-title{
   cursor: pointer;
   float: left;
