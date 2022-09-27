@@ -1840,13 +1840,13 @@ function App() {
                 <div id="myModal-tutorial11" class="modal-tutorial1">
                     <div className="modal-content-tutorial1">
                         <span className="close-tutorial1" onClick={spanonclicktutorial11}>&times;</span>
-                        <img className="tutorial1-img1"src={postbuy}/>
+                        <img className="tutorial1-img11"src={postbuy}/>
                     </div>
                 </div>
                 <div id="myModal-tutorial12" class="modal-tutorial1">
                     <div className="modal-content-tutorial1">
                         <span className="close-tutorial1" onClick={spanonclicktutorial12}>&times;</span>
-                        <img className="tutorial1-img1"src={cancelorder}/>
+                        <img className="tutorial1-img11"src={cancelorder}/>
                     </div>
                 </div>
             </div>
