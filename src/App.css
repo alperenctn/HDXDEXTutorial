@@ -20,7 +20,7 @@ padding-top: 9px;
   font-weight: 700;
   color: rgba(195, 238, 204, 0.922);
 }
-.turorial-titles{
+.tutorial-titles{
   
 }
 .hdxlogo{
@@ -208,13 +208,13 @@ p{
   width: 180px; 
   height: 50px;
   border-top-left-radius:  6px;
-  transform: skew(30deg);
+  transform: skew(25deg);
   border-top-right-radius: 6px; 
 }
 .transaction{
   margin-right: 5px;
   margin-top: 15px;
-  transform: skew(-30deg);
+  transform: skew(-25deg);
 }
 
 
@@ -223,8 +223,8 @@ p{
   background: linear-gradient(180deg, rgba(133,138,213,0.647963408996411) 0%, rgba(37,37,97,0.6787757339263831) 50%, rgba(6,6,52,0.8804564061952906) 100%);
 }
 #wallets-header-channel{
-  width: 120px;
-  margin-left: -40px;
+  width: 130px;
+  margin-left: -30px;
 }
 
 .wallets-leftside{
@@ -309,6 +309,7 @@ p{
   
 }
 .wallets-slider{
+
   background: linear-gradient(90deg, rgba(26, 23, 57, 0.686) 0%, rgba(28, 53, 136, 0.743) 50%, rgba(5, 17, 41, 0.703) 100%);
   height: 180px;
   border-radius: 15px;
@@ -386,6 +387,7 @@ background: linear-gradient(90deg, rgba(4,9,77,0.4939017843465511) 0%, rgba(11,1
   font-size: 12px;
 }
 .slider{
+  cursor: pointer;
   padding: 14px;
   width: 95%;
 }
@@ -668,10 +670,10 @@ table{
 .dex-center-btcusdt{
   position: absolute;
   z-index: 1;
-  font-size: 12px;
+  font-size: 11px;
   background-color: rgb(16, 16, 16);
-  margin-left: 45px;
-  margin-top: 5px;
+  margin-left: 32px;
+  margin-top: 2px;
 }
 .dex-rightside{
   float: left;
@@ -870,7 +872,8 @@ input::-webkit-inner-spin-button {
   float: left;
   height: 340px;
   width: 100%;
-
+  overflow: hidden;
+  flex-direction: row;
 }
 .dex-orderbook-tabs{
   float: left ;
@@ -916,10 +919,12 @@ background: linear-gradient(0deg, rgba(88, 94, 176, 0.928) 0%, rgba(12, 12, 53, 
   float: left;
   width:100%;
   font-weight: 700;
+  margin-top: -10px;
 }
 .dex-orderbook-order-bottom{
   float: left;
   width: 50%;
+
   
 }
 
@@ -965,6 +970,8 @@ background: linear-gradient(0deg, rgba(88, 94, 176, 0.928) 0%, rgba(12, 12, 53, 
   float: left;
   height: 300px;
   width: 100%;
+  overflow: hidden;
+  flex-direction: row;
 }
 .dex-orderbook-myorderhistory{
   display: none;
@@ -1012,12 +1019,33 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
   color: rgba(255, 255, 255, 0.772);
 
 }
+#star11,  #star12,  #star13,  #star14,#star15{
+  display: none;
+  position: absolute;
+  margin-left: 3px;
+  height: 12px;
+  
+}
+#star21,  #star22,  #star23,  #star24,#star25{
+  display: none;
+  float: right;
+  height: 12px;
+
+  }
+  #usersellorder{
+    display: none;
+  }
+  #userbuyorder{
+    display: none;
+  }
+
 .dex-orderbook-order:hover{
   background: linear-gradient(180deg, rgba(14, 15, 39, 0.648) 0%, rgba(10, 10, 51, 0.679) 50%, rgba(42, 42, 42, 0.88) 100%);
   color: rgba(255, 255, 255, 0.772);
 }
 .dex-orderbook-order-info,.dex-orderbook-order-info-sellprice,.dex-orderbook-order-info-buyprice{
   float: left;
+
   width: 25%;
   font-size: 12px;
   padding-top: 8px;
@@ -1042,6 +1070,64 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
 }
 .dex-orderbook-order-info-timex{
   width: 40%;
+}
+.dex-orderbook-openorders-headers{
+  background: rgb(65,72,171);
+  background: linear-gradient(180deg, rgba(3, 5, 45, 0.928) 10%, rgba(4, 4, 54, 0.92) 37%, rgba(32, 30, 116, 0.914) 100%, rgba(10, 7, 61, 0.914) 100%);
+  float: left;
+  width: 100%;
+  height: 25px;
+  padding: 5px;
+  padding-top: 12px;
+  font-size: 14px;
+  margin-top: 8px;
+
+}
+.dex-orderbook-openorders-header{
+  float: left;
+  width: 14%;
+}
+.dex-orderbook-openorders-orders{
+  background-color: rgba(1, 11, 40, 0.99);
+  float: left;
+  width: 100%;
+  height: 25px;
+  padding: 3px;
+  padding-top: 12px;
+  font-size: 11px;
+}
+.dex-orderbook-openorders-order{
+  float: left;
+  width: 14%;
+}
+.dex-orderbook-myorders-orders{
+  background-color: rgba(1, 11, 40, 0.99);
+  float: left;
+  width: 100%;
+  height: 14px;
+  padding: 3px;
+  padding-top: 12px;
+  font-size: 11px;
+  border-bottom: 1px solid black;
+}
+.dex-orderbook-myorders-order{
+  float: left;
+  width: 19%;
+}
+.dex-orderbook-myorders-headers{
+  background: rgb(65,72,171);
+  background: linear-gradient(180deg, rgba(3, 5, 45, 0.928) 10%, rgba(4, 4, 54, 0.92) 37%, rgba(32, 30, 116, 0.914) 100%, rgba(10, 7, 61, 0.914) 100%);
+  float: left;
+  width: 100%;
+  height: 25px;
+  padding: 5px;
+  padding-top: 12px;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.dex-orderbook-myorders-header{
+  float: left;
+  width: 19%;
 }
 .dex-rightside-header-th{
   height: 40px;
@@ -1072,6 +1158,11 @@ background: linear-gradient(180deg, rgba(9, 10, 29, 0.648) 0%, rgba(10, 10, 51, 
 .dex-rightside-header{
   float: left;
   width: 30%;
+}
+.dex-rightside-history{
+  display: none;
+  width: 100%;
+  height: 760px;
 }
 
 /* settings tab */
@@ -1583,6 +1674,20 @@ display: block;
 
 }
 
+ /* modal open channel with slider */
+
+ .modal-content-newchannel-slider-text{
+  padding: 15px;
+  float: left;
+  font-size: 15px;
+  width: 80%;
+  color: rgba(255, 255, 255, 0.744);
+  text-align: left;
+ }
+ .modal-content-newchannel-slider{
+  margin-top: 30px;
+  height: 200px;
+ }
 /* The Modal send(background) */
 
 
@@ -1748,99 +1853,10 @@ color: rgba(255, 255, 255, 0.689);
   border: 1px solid rgb(86, 133, 195);
 }
 
-/* TUTORIAL MODAL */
-.modal-tutorial1{
-
-}
-.modal-content-tutorial1{
-
-}
-.close-tutorial1{
-  font-size: 80px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-right: 40px;
-}
-.tutorial1-img1{
-  height: 80px;
-  float: left;
-  margin-left: 100px;
-  transform: rotate(20deg);
-  margin-top: -80px;
-}
-.myModal-tutorial1-empty1{
-  border: 4px solid red;
-  height: 27px;
-  width:90px;
-  background-color: transparent;
-  margin-left: 30px;
-  margin-top: -40px;
-}
-.myModal-tutorial1-step1{
-  float: left;
-  margin-left: 170px;
-  margin-top: -140px;
-  font-size: 30px;
-  padding: 10px;
-  color: red;
-  font-weight: 700;
-}
-.tutorial1-img2{
-  height: 80px;
-  float: left;
-  margin-left: 430px;
-  transform: rotate(90deg);
-  margin-top: 20px;
-}
-.myModal-tutorial1-empty2{
-  border: 4px solid red;
-  height: 75px;
-  width:260px;
-  background-color: transparent;
-  margin-left: 150px;
-  margin-top: -20px;
-}
-.myModal-tutorial1-step2{
-  float: left;
-  margin-left: px;
-  margin-top:0;
-  font-size: 30px;
-  padding: 10px;
-  color: red;
-  font-weight: 700;
-}
-.tutorial1-img3{
-  height: 80px;
-  position: absolute;
-  margin-right: 330px;
-  transform: rotate(30deg);
-  margin-top: -100px;
-  right: 0;
-}
-.myModal-tutorial1-empty3{
-  position: absolute;
-  border: 4px solid red;
-  right: 0;
-  height: 45px;
-  width:120px;
-  margin-right: 185px;
-  margin-top: -115px;
-}
-.myModal-tutorial1-step3{
-  position: absolute;
-  right: 0;
-  margin-right: 370px;
-  margin-top:-40px;
-  font-size: 30px;
-  padding: 10px;
-  color: red;
-  font-weight: 700;
-}
 
 /* TUTORIAL */
 
-.turorial-titles{
+.tutorial-titles{
   float: left;
   height: 100px;
   width: 97%;
@@ -1851,7 +1867,7 @@ color: rgba(255, 255, 255, 0.689);
 
 }
 
-.turorial-title{
+.tutorial-title{
   cursor: pointer;
   float: left;
   text-align: center;
@@ -1866,14 +1882,14 @@ color: rgba(255, 255, 255, 0.689);
   margin-top: 10px;
 
 }
-.turorial-contents{
+.tutorial-contents{
   float: left;
   width: 98.2%;
   background-color: rgb(79, 88, 171);
   padding: 15px;
   padding-top: 0px;
 }
-.turorial-content{
+.tutorial-content{
   float: left;
   display: none;
   margin-left: 8%;
@@ -1884,13 +1900,17 @@ color: rgba(255, 255, 255, 0.689);
   height: 25px;
   color: rgba(227, 213, 162, 0.954);
   border: 2px solid rgba(15, 45, 93, 0.717);
+  text-align: center;
+}
+#tutorial-content1{
+  display: block;
 }
 
-.turorial-title:hover {
+.tutorial-title:hover {
   background-color: #357EC7;
 }
 
-.turorial-title.active {
+.tutorial-title.active {
   background-color: #357EC7;
 }
 
@@ -1901,4 +1921,27 @@ color: rgba(255, 255, 255, 0.689);
 }
 #tutorial1{
   margin-left: 40px;
+}
+#tutorial2{
+ margin-left: 5%;
+}
+
+/* TUTORIAL MODAL */
+
+.close-tutorial1{
+  font-size: 90px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 40px;
+  margin-top: 20px;
+}
+
+.modal-tutorial1{
+  padding-top: 60px;
+  padding-left: 10px;
+}
+.tutorial1-img1{
+  height: 810px;
+  float: left;
 }

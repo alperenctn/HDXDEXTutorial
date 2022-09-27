@@ -38,19 +38,47 @@ import btcltc from "./png/btcltc.bmp"
 import ltcbtc from "./png/ltcbtc.bmp"
 import btceth from "./png/btceth.bmp"
 import ethbtc from "./png/ethbtc.bmp"
-
-
-
+import star from "./png/star.png"
+import depositgif from "./png/deposit.gif"
+import seedgif from "./png/24seedgif.gif"
+import withdrawgif from "./png/withdrawgif.gif"
+import newchanelmanuel from "./png/newchanelmanuel.gif"
+import newchannelslider from "./png/newchannelslider.gif"
+import rentgif from "./png/rentgif.gif"
+import ssui1 from "./png/ssui1.gif"
+import ssui2 from "./png/ssui2.gif"
+import tradeondex from "./png/tradeondex.gif"
+import postsell from "./png/postsell.gif"
+import postbuy from "./png/postbuy.gif"
+import cancelorder from "./png/cancelorder.gif"
 
 function App() {
-  
+
   useEffect(()=>{
       changeTabOnWallet(coinname);
+      setTotalAmount(buyPrice*tradeAmount)
+      setBtcOnchain(btcbalance-btcbalanceL2)
+      setEthOnchain(ethbalance-ethbalanceL2)
+      setAethOnchain(aethbalance-aethbalanceL2)
+      setLtcOnchain(ltcbalance-ltcbalanceL2)
+      setHdxOnchain(hdxbalance-hdxbalanceL2)
+      setUsdtOnchain(usdtbalance-usdtbalanceL2)
+      setUsdcOnchain(usdcbalance-usdcbalanceL2)
+      changePair()
+        if(button=="buy"){
+        document.getElementById("dex-button11").className ="dex-button1 active";
+        document.getElementById("dex-button12").className ="dex-button1";
+        }else{
+            document.getElementById("dex-button11").className ="dex-button1";
+            document.getElementById("dex-button12").className ="dex-button1 active";
+        }
+        if(element===""){
+            document.getElementById("dex-rightside").style.display = "none"
+        }else{
+            document.getElementById("dex-rightside").style.display = "block"
+        }
     })
 
-    useEffect(()=>{
-        setTotalAmount(buyPrice*tradeAmount)
-    })
   //LEFTSİDE   
   const changeTab = (x) => {
     var idportfolio = document.getElementById("rightside-portfolio");
@@ -125,15 +153,15 @@ function App() {
     const [img,setImg] = useState(btcpng);
     const [walletName,setWalletName] = useState("BTC Wallet");
     const [coinPrice, setCoinPrice] = useState("1 BTC = 100 usd");
-    const [balanceValue, setBalanceValue] = useState(btcbalance*1000)
+    const [balanceValue, setBalanceValue] = useState(btcbalance*100)
     const [coinname,setCoinname] = useState("BTC")
     const [inputValue,setInputValue] = useState(0)
     const [inputDuration,setInputDuration] = useState(0)
-    const [newchannelinput,setNewChannelInput] = useState("")
+    const [newchannelinput,setNewChannelInput] = useState(0)
     const [balance,setBalance] = useState(btcbalance);
     const [balanceL2,setBalanceL2] = useState(btcbalanceL2);
     const [balanceCR,setBalanceCR] = useState(btcbalanceL2);
-    var totalBalance = (btcbalance)*1000+(aethbalance)*100+
+    var totalBalance = (btcbalance)*100+(aethbalance)*100+
         (ethbalance)*100+hdxbalance+(ltcbalance)*10+
         usdcbalance+usdtbalance;
     const [dexprice, setDexPrice] = useState("")
@@ -159,8 +187,8 @@ function App() {
              setBalance(btcbalance);
              setImg(btcpng);
              setWalletName("BTC Wallet")
-             setCoinPrice("(1 BTC = 1000 usd)");
-             setBalanceValue((btcbalance)*1000);
+             setCoinPrice("(1 BTC = 100 usd)");
+             setBalanceValue((btcbalance)*100);
              setCoinname("BTC")
              setBalanceL2(btcbalanceL2)
              changeTable(coinname);
@@ -231,60 +259,135 @@ function App() {
         }
     }
 
-    
-    const btnonclickreceive = () => {
     var modal1 = document.getElementById("myModal-receive");
-    modal1.style.display = "block";
+    var modal2 = document.getElementById("myModal-send");   
+    var modal3 = document.getElementById("myModal-newchannel");    
+    var modal7 = document.getElementById("myModal-newchannel-slider");
+    var modal4 = document.getElementById("myModal-newrental");
+    var modalt1 = document.getElementById("myModal-tutorial1");
+    var modalt2 = document.getElementById("myModal-tutorial2");
+    var modalt3 = document.getElementById("myModal-tutorial3");
+    var modalt4 = document.getElementById("myModal-tutorial4");
+    var modalt5 = document.getElementById("myModal-tutorial5");
+    var modalt6 = document.getElementById("myModal-tutorial6");
+    var modalt7 = document.getElementById("myModal-tutorial7");
+    var modalt8 = document.getElementById("myModal-tutorial8");
+    var modalt9 = document.getElementById("myModal-tutorial9");
+    var modalt10 = document.getElementById("myModal-tutorial10");
+    var modalt11 = document.getElementById("myModal-tutorial11");
+    var modalt12 = document.getElementById("myModal-tutorial12");
+
+    const btnonclickreceive = () => {
+        modal1.style.display = "block";
     }
     const spanonclickreceive = () => {
-      var modal1 = document.getElementById("myModal-receive");
-    modal1.style.display = "none";
+        modal1.style.display = "none";
     }
     const btnonclicksend = () => {
-    var modal2 = document.getElementById("myModal-send");
-    modal2.style.display = "block";
+        modal2.style.display = "block";
     }
     const spanonclicksend = () => {
-    var modal2 = document.getElementById("myModal-send");
-    modal2.style.display = "none";
+        modal2.style.display = "none";
     }
     const btnonclicknewchannel = () => {
-    var modal3 = document.getElementById("myModal-newchannel");
-    modal3.style.display = "block";
+        modal3.style.display = "block";
     }
     const spanonclicknewchannel = () => {
-    var modal3 = document.getElementById("myModal-newchannel");
-    modal3.style.display = "none";
+        modal3.style.display = "none";
     }
     const btnonclicknewchannelslider = () => {
-    var modal3 = document.getElementById("myModal-newchannel-slider");
-    modal3.style.display = "block";
+        modal7.style.display = "block";
     }
     const spanonclicknewchannelslider = () => {
-    var modal3 = document.getElementById("myModal-newchannel-slider");
-    modal3.style.display = "none";
+        modal7.style.display = "none";
     }
-    const btnonclicknewrental = () => {
-    var modal4 = document.getElementById("myModal-newrental");
-    modal4.style.display = "block";
+    const btnonclicknewrental = () => { 
+        modal4.style.display = "block";
     }
     const spanonclicknewrental = () => {
-    var modal4 = document.getElementById("myModal-newrental");
-    modal4.style.display = "none";
+        modal4.style.display = "none";
     }
-    const btnonclicktutorial1 = () => {
-    var modal5 = document.getElementById("myModal-tutorial1");
-    modal5.style.display = "block";
+    const tutorial1 = () => {
+        modalt1.style.display = "block";
     }
     const spanonclicktutorial1 = () => {
-    var modal5 = document.getElementById("myModal-tutorial1");
-    modal5.style.display = "none";
+        modalt1.style.display = "none";
+    }          
+     // document.documentElement.scrollTop = 0 
+    const tutorial2 = () => {
+        modalt2.style.display = "block";
     }
+    const spanonclicktutorial2 = () => {
+        modalt2.style.display = "none";
+    }
+    const tutorial3 = () => {
+        modalt3.style.display = "block";
+    }
+    const spanonclicktutorial3 = () => {
+        modalt3.style.display = "none";
+    }
+    const tutorial4= () => {
+        modalt4.style.display = "block";
+    }
+    const spanonclicktutorial4 = () => {
+        modalt4.style.display = "none";
+    }
+    const tutorial5 = () => {
+        modalt5.style.display = "block";
+    }
+    const spanonclicktutorial5 = () => {
+        modalt5.style.display = "none";
+    }
+    const tutorial6= () => {
+        modalt6.style.display = "block";
+    }
+    const spanonclicktutorial6 = () => {
+        modalt6.style.display = "none";
+    }
+    const tutorial7 = () => {
+        modalt7.style.display = "block";
+    }
+    const spanonclicktutorial7 = () => {
+        modalt7.style.display = "none";
+    }
+    const tutorial8= () => {
+        modalt8.style.display = "block";
+    }
+    const spanonclicktutorial8 = () => {
+        modalt8.style.display = "none";
+    }
+    const tutorial9 = () => {
+        modalt9.style.display = "block";
+    }
+    const spanonclicktutorial9 = () => {
+        modalt9.style.display = "none";
+    }
+    const tutorial10= () => {
+        modalt10.style.display = "block";
+    }
+    const spanonclicktutorial10 = () => {
+        modalt10.style.display = "none";
+    }
+    const tutorial11 = () => {
+        modalt11.style.display = "block";
+    }
+    const spanonclicktutorial11 = () => {
+        modalt11.style.display = "none";
+    }
+    const tutorial12= () => {
+        modalt12.style.display = "block";
+    }
+    const spanonclicktutorial12 = () => {
+        modalt12.style.display = "none";
+    }
+
+
+
+
     var openorderbookid = document.getElementById("dex-orderbook-orderbook");
     var openopenordersid = document.getElementById("dex-orderbook-openorders");
     var openmytradehistoryid = document.getElementById("dex-orderbook-myorderhistory");
     var openorderbookbottomid = document.getElementById("dex-orderbook-order-bottoms");
-    
     
     const openorderbook = () => {
     openorderbookid.style.display = "block";
@@ -416,7 +519,7 @@ function App() {
 
     // }
 
-    const depositeL2Balance = (y) =>{
+    const depositeL2Balance = () =>{
  
       if(newchannelinput>onchain) {
         alert("Not Enough Balance")
@@ -424,7 +527,7 @@ function App() {
         return;
       }
   
-      switch(y){
+      switch(coinname){
           case "AETH":
             setAethBalanceCR(Number(aethbalanceCR)+Number(inputValue))
             setAethOnchain(Number(aethbalance)-Number(newchannelinput));
@@ -432,6 +535,7 @@ function App() {
             changeTabOnWallet("AETH");
             spanonclicknewchannel();
             spanonclicknewrental();
+            spanonclicknewchannelslider();
             aethchannel.style.display = "block"
             setNewChannelInput("")
             setInputDuration(0);
@@ -443,6 +547,7 @@ function App() {
             setBtcBalanceL2(Number(btcbalanceL2)+Number(newchannelinput));
             spanonclicknewchannel();
             spanonclicknewrental();
+            spanonclicknewchannelslider();
             setNewChannelInput("")
             changeTabOnWallet("BTC");
             btcchannel.style.display = "block"
@@ -457,6 +562,7 @@ function App() {
             ethchannel.style.display = "block"
             spanonclicknewchannel();
             spanonclicknewrental();
+            spanonclicknewchannelslider();
             setNewChannelInput("")
             setInputDuration(0);
             setInputValue(0);
@@ -468,6 +574,7 @@ function App() {
             changeTabOnWallet("HDX");
             spanonclicknewchannel();
             spanonclicknewrental();
+            spanonclicknewchannelslider();
             setNewChannelInput("")
             hdxchannel.style.display = "block"
             setInputDuration(0);
@@ -480,6 +587,7 @@ function App() {
             changeTabOnWallet("LTC");
             spanonclicknewchannel();
             spanonclicknewrental();
+            spanonclicknewchannelslider();
             setNewChannelInput("")
             ltcchannel.style.display = "block"
             setInputDuration(0);
@@ -492,6 +600,7 @@ function App() {
             changeTabOnWallet("USDC");
             spanonclicknewchannel();
             spanonclicknewrental();
+            spanonclicknewchannelslider();
             setNewChannelInput("")
             usdcchannel.style.display = "block"
             setInputDuration(0);
@@ -504,6 +613,7 @@ function App() {
             changeTabOnWallet("USDT");
             spanonclicknewchannel();
             spanonclicknewrental();
+            spanonclicknewchannelslider();
             setNewChannelInput("")
             usdtchannel.style.display = "block"
             setInputDuration(0);
@@ -592,15 +702,7 @@ function App() {
     //     return null
     // }
     // }
- useEffect(()=>{
-    setBtcOnchain(btcbalance-btcbalanceL2)
-    setEthOnchain(ethbalance-ethbalanceL2)
-    setAethOnchain(aethbalance-aethbalanceL2)
-    setLtcOnchain(ltcbalance-ltcbalanceL2)
-    setHdxOnchain(hdxbalance-hdxbalanceL2)
-    setUsdtOnchain(usdtbalance-usdtbalanceL2)
-    setUsdcOnchain(usdcbalance-usdcbalanceL2)
- })
+
   const closeChannel = (a) => {
 
     switch(a){
@@ -774,11 +876,8 @@ function App() {
     }
     //dex tab
 
-    const [element,setElement] = useState("")
-    useEffect(()=>{
-        changePair()
-    })
 
+    const [element,setElement] = useState("")
     const [selectedPair1L2,setSelectedPair1L2] = useState(0)
     const [selectedPair1CR,setSelectedPair1CR] = useState(0)
     const [selectedPair1img,setSelectedPair1img] = useState("")
@@ -801,15 +900,15 @@ function App() {
                 setSelectedPair2L2(usdtbalanceL2+" USDT");
                 setSelectedPair1CR(btcbalanceCR);
                 setSelectedPair2CR(usdtbalanceCR);
-                setSelectedPair1L2Value(btcbalanceL2*1000);
-                setSelectedPair1CRValue(btcbalanceCR*1000);
+                setSelectedPair1L2Value(btcbalanceL2*100);
+                setSelectedPair1CRValue(btcbalanceCR*100);
                 setSelectedPair2L2Value(usdtbalanceL2);
                 setSelectedPair2CRValue(usdtbalanceCR);
                 setSelectedPair1img(btcpng)
                 setSelectedPair2img(usdtpng)
                 setFirstCoin("BTC")
                 setSecondCoin("USDT")
-                setDexPrice(1000)
+                setDexPrice(100)
                 return;
             case "AETH/HDX":
                 setSelectedPair1L2(aethbalanceL2+" AETH");
@@ -831,8 +930,8 @@ function App() {
                 setSelectedPair2L2(ltcbalanceL2+" LTC");
                 setSelectedPair1CR(btcbalanceCR);
                 setSelectedPair2CR(ltcbalanceCR);
-                setSelectedPair1L2Value(btcbalanceL2*1000);
-                setSelectedPair1CRValue(btcbalanceCR*1000);
+                setSelectedPair1L2Value(btcbalanceL2*100);
+                setSelectedPair1CRValue(btcbalanceCR*100);
                 setSelectedPair2L2Value(ltcbalanceL2*10);
                 setSelectedPair2CRValue(ltcbalanceCR*10);
                 setSelectedPair1img(btcpng)
@@ -846,8 +945,8 @@ function App() {
                 setSelectedPair2L2(ethbalanceL2+" ETH");
                 setSelectedPair1CR(btcbalanceCR);
                 setSelectedPair2CR(ethbalanceCR);
-                setSelectedPair1L2Value(btcbalanceL2*1000);
-                setSelectedPair1CRValue(btcbalanceCR*1000);
+                setSelectedPair1L2Value(btcbalanceL2*100);
+                setSelectedPair1CRValue(btcbalanceCR*100);
                 setSelectedPair2L2Value(ethbalanceL2*100);
                 setSelectedPair2CRValue(ethbalanceCR*100);
                 setSelectedPair1img(btcpng)
@@ -868,19 +967,19 @@ function App() {
     var tradeAmountInput = document.getElementById("dex-input2")
     var totalAmountInput = document.getElementById("dex-input3")
 
-    const enterBuyOrder = () => {
+    const enterBuyOrder = (a,b) => {
         setButton("sell")
-        setBuyPrice(990)
-        setTradeAmount(1)
+        setBuyPrice(a)
+        setTradeAmount(b)
         setTotalAmount(buyPrice*tradeAmount)
         buyPriceInput.value = buyPrice;
         tradeAmountInput.value = tradeAmount;
         totalAmountInput.value = totalAmount
     }
-    const enterSellOrder = () => {
+    const enterSellOrder = (a,b) => {
         setButton("buy")
-        setBuyPrice(1100)
-        setTradeAmount(1)
+        setBuyPrice(a)
+        setTradeAmount(b)
         setTotalAmount(buyPrice*tradeAmount)
         buyPriceInput.value = buyPrice;
         tradeAmountInput.value = tradeAmount;
@@ -888,12 +987,43 @@ function App() {
     }
 
 
-    const buyFnc = (x,a,b,c) => {
-        if(x=="swap"){
-            setTradeAmount(a)
-            setTotalAmount(b)
-            setBuyPrice(c)
+    const buyFnc = () => {
+        // if(x=="swap"){
+        //     setTradeAmount(a)
+        //     setTotalAmount(b)
+        //     setBuyPrice(c)
+        // }
+        if(buyPrice>99 && buyPrice<=101){
+            document.getElementById("star21").style.display = "block"
+            document.getElementById("orderbook21").innerHTML = tradeAmount
+            pushOpenOrder("sell",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice>101 && buyPrice<103){
+            document.getElementById("star22").style.display = "block"
+            document.getElementById("orderbook22").innerHTML = tradeAmount
+            pushOpenOrder("sell",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice>=103 && buyPrice<104){
+            document.getElementById("star23").style.display = "block"
+            document.getElementById("orderbook22").innerHTML = tradeAmount
+            pushOpenOrder("sell",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice>=104 && buyPrice<105){
+            document.getElementById("star24").style.display = "block"
+            document.getElementById("orderbook22").innerHTML = tradeAmount
+            pushOpenOrder("sell",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice>=105){
+            document.getElementById("usersellorder").style.display = "block"
+            document.getElementById("usersellprice").innerHTML = buyPrice
+            document.getElementById("star25").style.display = "block"
+            document.getElementById("orderbook25").innerHTML = tradeAmount
+            pushOpenOrder("sell",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice<=99){
+            setBuyPrice(99)
         }
+        pushMyHistory("sell",buyPrice,totalAmount,tradeAmount)
         switch(element){
             case "BTC/USDT":
                 if(btcbalanceL2<tradeAmount){ 
@@ -910,6 +1040,7 @@ function App() {
                 setUsdtBalanceL2(Number(usdtbalanceL2)+Number(totalAmount))
                 setUsdtBalanceCR(usdtbalanceCR-totalAmount)
                 addOrderHistory(Number(tradeAmount),Number(buyPrice),"sell")
+                
                 return;
             case "AETH/HDX":
                 if(aethbalanceL2<tradeAmount){ 
@@ -964,6 +1095,37 @@ function App() {
         }
     }
     const sellFnc = () => {
+        if(buyPrice>=99 && buyPrice<101){
+            document.getElementById("star11").style.display = "block"
+            document.getElementById("orderbook11").innerHTML = tradeAmount
+            pushOpenOrder("buy",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice>97 && buyPrice<99){
+            document.getElementById("star12").style.display = "block"
+            document.getElementById("orderbook12").innerHTML = tradeAmount
+            pushOpenOrder("buy",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice>=97 && buyPrice<98){
+            document.getElementById("star13").style.display = "block"
+            document.getElementById("orderbook13").innerHTML = tradeAmount
+            pushOpenOrder("buy",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice>=96 && buyPrice<97){
+            document.getElementById("star14").style.display = "block"
+            document.getElementById("orderbook14").innerHTML = tradeAmount
+            pushOpenOrder("buy",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice<=95){
+            document.getElementById("userbuyorder").style.display = "block"
+            document.getElementById("userbuyprice").innerHTML = buyPrice
+            document.getElementById("star15").style.display = "block"
+            document.getElementById("orderbook15").innerHTML = tradeAmount
+            pushOpenOrder("buy",buyPrice,totalAmount,tradeAmount)
+            return;
+        }else if(buyPrice<=99){
+            setBuyPrice(99)
+        }
+        pushMyHistory("buy",buyPrice,totalAmount,tradeAmount)
         switch(element){
             case "BTC/USDT":
                 if(btcbalanceCR<tradeAmount){ 
@@ -1033,23 +1195,70 @@ function App() {
                 return null;
         }
     }
+    const pushOpenOrder = (sidee,pricee,amountt,totall) =>{
+        
+        let openorderdiv = document.getElementById("dex-orderbook-openorders");
+        let orderdiv = document.createElement("div");
+        let type = document.createElement("div");
+        let side = document.createElement("div");
+        let price = document.createElement("div");
+        let amount = document.createElement("div");
+        let filled = document.createElement("div");
+        let total = document.createElement("div");
+        let actions = document.createElement("div");
+        orderdiv.className = "dex-orderbook-openorders-orders"
+        type.innerHTML = "Limit";
+        side.innerHTML = sidee;
+        if(sidee=="sell"){
+            side.style.color = "red"
+        }else{
+            side.style.color = "green"
+        }
+        price.innerHTML = pricee;
+        amount.innerHTML = amountt;
+        filled.innerHTML = "0.00% (0.0)";
+        total.innerHTML = totall;
+        actions.innerHTML = "CANCEL";
+        actions.onclick = (e) => {deleteOpenOrder(e)}
+        actions.style.color = "red"
+        actions.style.cursor = "pointer"
+        orderdiv.appendChild(type);
+        orderdiv.appendChild(side);
+        orderdiv.appendChild(price);
+        orderdiv.appendChild(amount);
+        orderdiv.appendChild(filled);
+        orderdiv.appendChild(total);
+        orderdiv.appendChild(actions);
+        openorderdiv.appendChild(orderdiv)
+        orderdiv.childNodes.forEach((e)=>{
+            e.className = "dex-orderbook-openorders-order"
+        })
+    }
+    const deleteOpenOrder = (e) => {
+        e.currentTarget.parentElement.style.display = "none";
+    } 
+    var tarih=new Date();
+    var yil=tarih.getFullYear();
+    var ay=tarih.getMonth();
+    var gun=tarih.getDay();
+    var saat=tarih.getHours();
+    var dakika=tarih.getMinutes();
+    var saniye=tarih.getSeconds();	
+    var tarih = (yil+"/"+ay+"/"+gun+" "+saat+":"+dakika+":"+saniye);
     var y = 20 
+
+    
+
     const addOrderHistory = (a,b,c) => {
+        
         const dexrightside = document.getElementById("dex-rightside")
-        let div = document.createElement("div")
+        
+        let div1 = document.createElement("div")
         let divinfo1 = document.createElement("div")
         let divinfo2 = document.createElement("div")
         let divinfo3 = document.createElement("div")
         let divinfo4 = document.createElement("div")
-        var tarih=new Date();
-        var yil=tarih.getFullYear();
-        var ay=tarih.getMonth();
-        var gun=tarih.getDay();
-        var saat=tarih.getHours();
-        var dakika=tarih.getMinutes();
-        var saniye=tarih.getSeconds();	
-	    var tarih = (yil+"/"+ay+"/"+gun+" "+saat+":"+dakika+":"+saniye);
-        div.className = "dex-orderbook-order"
+        div1.className = "dex-orderbook-order"
         divinfo1.textContent =a ;
         divinfo1.className = "dex-orderbook-order-infox"
         divinfo2.textContent = tarih;
@@ -1058,25 +1267,55 @@ function App() {
         divinfo3.className = "dex-orderbook-order-info-sellpricex"
         divinfo4.textContent = b;
         divinfo4.className = "dex-orderbook-order-info-buypricex"
-        div.appendChild(divinfo1)
-        div.appendChild(divinfo2)
+        div1.appendChild(divinfo1)
+        div1.appendChild(divinfo2)
         if(c=="buy"){
-            div.appendChild(divinfo4)
+            div1.appendChild(divinfo4)
         }else{
-            div.appendChild(divinfo3)
+            div1.appendChild(divinfo3)
         }
-        
-        dexrightside.appendChild(div)
-        
+        dexrightside.insertBefore(div1,dexrightside.firstChild)
     }
+        
+     const pushMyHistory = (sidee,pricee,amountt,totall) => {
+        const myorders = document.getElementById("dex-orderbook-myorderhistory")
+        let div2 = document.createElement("div")
+        let divinfo1 = document.createElement("div")
+        let divinfo2 = document.createElement("div")
+        let divinfo3 = document.createElement("div")
+        let divinfo4 = document.createElement("div")
+        let divinfo5 = document.createElement("div")
+        divinfo1.innerHTML = tarih;
+        divinfo2.innerHTML = sidee;
+        if(sidee=="buy"){
+            divinfo2.style.color= "green"
+        }else{
+            divinfo2.style.color= "red"
+        }
+        divinfo3.innerHTML = pricee;
+        divinfo4.innerHTML = amountt;
+        divinfo5.innerHTML = totall;
+        div2.className = "dex-orderbook-myorders-orders";
+        div2.appendChild(divinfo1)
+        div2.appendChild(divinfo2)
+        div2.appendChild(divinfo3)
+        div2.appendChild(divinfo4)
+        div2.appendChild(divinfo5)
+        div2.childNodes.forEach((e)=>{
+            e.className = "dex-orderbook-myorders-order"
+        })
+        myorders.insertBefore(div2,myorders.childNodes[1])
+    }
+        
+    
 
     const openTutorial = (evt, name) => {
         var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("turorial-content");
+        tabcontent = document.getElementsByClassName("tutorial-content");
         for (i = 0; i < tabcontent.length; i++) {
           tabcontent[i].style.display = "none";
         }
-        tablinks = document.getElementsByClassName("turorial-title");
+        tablinks = document.getElementsByClassName("tutorial-title");
         for (i = 0; i < tablinks.length; i++) {
           tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
@@ -1139,12 +1378,7 @@ function App() {
         evt.currentTarget.className += " active";
       }
 
-      const tutorial1 = (e) => {
-        changeTab("wallets")
-        changeTabOnWallet("BTC")
-        btnonclicktutorial1();
-        document.documentElement.scrollTop = 0
-      }
+
 
       const changeSettings = (x) => {
         // const settingleftside = document.getElementById("settings-leftside")
@@ -1206,14 +1440,14 @@ function App() {
     const [swapsecond,setSwapSecond] = useState("")
     const idswapoptionfirst = document.getElementById("swap-first")
     const idswapoptionsecond = document.getElementById("swap-second")
-    const [swapPrice,setSwapPrice] = useState(1000)
+    const [swapPrice,setSwapPrice] = useState(100)
 
     const swapOption = () => {
         if(changeside=="left"){
             if(idswapoptionfirst.value =="1btc1"){
             idswapoptionsecond.value = "2usdt"
             setSwapCoinImg(btcusdt)
-            setSwapPrice(1000)
+            setSwapPrice(100)
             }else if(idswapoptionfirst.value =="1aeth2"){
             idswapoptionsecond.value = "2hdx"
             setSwapCoinImg(aethhdx)
@@ -1221,7 +1455,7 @@ function App() {
             if(idswapoptionfirst.value =="1btc1"){
             idswapoptionsecond.value = "2usdt"
             setSwapCoinImg(usdtbtc)
-            setSwapPrice(1000)
+            setSwapPrice(100)
             }else if(idswapoptionfirst.value =="1aeth2"){
             idswapoptionsecond.value = "2hdx"
             setSwapCoinImg(hdxaeth)
@@ -1234,7 +1468,7 @@ function App() {
         if(idswapoptionsecond.value == "2usdt"){
             idswapoptionfirst.value ="1btc1"
             setSwapCoinImg(btcusdt)
-            setSwapPrice(1000)
+            setSwapPrice(100)
         }else if(idswapoptionsecond.value == "2hdx"){
             idswapoptionfirst.value ="1aeth2"
             setSwapCoinImg(aethhdx)
@@ -1248,7 +1482,7 @@ function App() {
          if(idswapoptionsecond.value == "2usdt"){
             idswapoptionfirst.value ="1btc1"
             setSwapCoinImg(usdtbtc)
-            setSwapPrice(1000)
+            setSwapPrice(100)
         }else if(idswapoptionsecond.value == "2hdx"){
             idswapoptionfirst.value ="1aeth2"
             setSwapCoinImg(hdxaeth)
@@ -1275,19 +1509,19 @@ function App() {
             setChangeSide("right")
             if(swapcoinimg == btcusdt){
                 setSwapCoinImg(usdtbtc)
-                setSwapPrice(1000)
-                pricediv.innerHTML="1 Usdt = 0.001 Btc"
+                setSwapPrice(100)
+                pricediv.innerHTML="1 Usdt = 0.01 Btc"
             }else if(swapcoinimg == aethhdx){
                 setSwapCoinImg(hdxaeth)
-                pricediv.innerHTML="1 hdx = 990 aeth";
+                pricediv.innerHTML="1 hdx = 99 aeth";
             }
             else if(swapcoinimg == btcltc){
                 setSwapCoinImg(ltcbtc)
-                pricediv.innerHTML="1 ltc = 990 btc"
+                pricediv.innerHTML="1 ltc = 99 btc"
             }
             else if(swapcoinimg == btceth){
                 setSwapCoinImg(ethbtc)
-                pricediv.innerHTML="1 eth = 990 btc"
+                pricediv.innerHTML="1 eth = 99 btc"
             }
         }else{
             firstdiv.appendChild(option1child)
@@ -1295,19 +1529,19 @@ function App() {
             setChangeSide("left")
             if(swapcoinimg == usdtbtc){
                 setSwapCoinImg(btcusdt)
-                setSwapPrice(1000)
-                pricediv.innerHTML="1 Btc = 1000 Usdt"
+                setSwapPrice(100)
+                pricediv.innerHTML="1 Btc = 100 Usdt"
             }else if(swapcoinimg == hdxaeth){
                 setSwapCoinImg(aethhdx)
-                pricediv.innerHTML="1 aeth = 990 hdx"
+                pricediv.innerHTML="1 aeth = 99 hdx"
             }
             else if(swapcoinimg == ltcbtc){
                 setSwapCoinImg(btcltc)
-                pricediv.innerHTML="1 btc = 990 ltc"
+                pricediv.innerHTML="1 btc = 99 ltc"
             }
             else if(swapcoinimg == ethbtc){
                 setSwapCoinImg(btceth)
-                pricediv.innerHTML="1 btc = 990 eth"
+                pricediv.innerHTML="1 btc = 99 eth"
             }
         }
     }
@@ -1339,7 +1573,7 @@ function App() {
                 setUsdtBalanceL2(Number(usdtbalanceL2)+Number(secondswapinput))
                 setBtcBalance(btcbalance-firstswapinput) 
                 setUsdtBalance(Number(usdtbalance)+Number(secondswapinput)) 
-                addOrderHistory(firstswapinput,1000,"sell")
+                addOrderHistory(firstswapinput,100,"sell")
                 btcchannel.style.display = "block"
                 usdtchannel.style.display = "block"
                 setFirstSwapInput("")
@@ -1367,7 +1601,7 @@ function App() {
                 setBtcBalanceL2(Number(btcbalanceL2)+Number(firstswapinput))
                 setUsdtBalance(usdtbalance-secondswapinput) 
                 setBtcBalance(Number(btcbalance)+Number(firstswapinput)) 
-                addOrderHistory(secondswapinput,0.001,"sell")
+                addOrderHistory(secondswapinput,0.01,"sell")
                 usdtchannel.style.display = "block"
                 btcchannel.style.display = "block"
                 setFirstSwapInput("")
@@ -1464,11 +1698,11 @@ function App() {
                         </div>
                         <div>
                             <select className="modal-option">
-                                <option>{coinname}</option>                         
+                                <option>{coinname}</option>
                             </select>
                         </div>
                         <select className="modal-input-newchannel-option">
-                                <option>HUB Node 1  (a345sd687sf6g876a........dfgdfg786)</option>                         
+                                <option>HUB Node 1  (a345sd687sf6g876a........dfgdfg786)</option>
                         </select>
                         <div >
                         <input id="newchannelinput"className='modal-input-newchannel' type="number" value={newchannelinput}
@@ -1481,12 +1715,17 @@ function App() {
                             <button className='modal-newchannel-button'>HIGH</button>
                         </div>
                         <div className='modal-newchannel-openbuttons'>
-                        <button className='modal-newchannel-openbutton' onClick={()=>depositeL2Balance(coinname)}>OPEN</button>
+                        <button className='modal-newchannel-openbutton' onClick={()=>depositeL2Balance()}>OPEN</button>
                         </div>
                     </div>
                 </div>
                 <div id="myModal-newchannel-slider" class="modal-newchannel-slider">
                     <div className="modal-content-newchannel-slider">
+                        <div className='modal-content-newchannel-slider-text'>
+                            You are about to move {newchannelinput} {coinname} ({100*newchannelinput}USD) on-chain to
+                                off-chain and you will need to wait for 3 confirmations (~20 ~30 minutes)
+                                <br/>Please confirm to continue.
+                        </div>
                         <span className="close-newchannel" onClick={spanonclicknewchannelslider}>&times;</span>
                         <div className='modal-newchannel-bottom'>Network Fee Rate: " 1 satoshi/vbyte</div>
                         <div className='modal-newchannel-buttons'>
@@ -1495,7 +1734,7 @@ function App() {
                             <button className='modal-newchannel-button'>HIGH</button>
                         </div>
                         <div className='modal-newchannel-openbuttons'>
-                        <button className='modal-newchannel-openbutton' onClick={()=>depositeL2Balance(coinname)}>OPEN</button>
+                        <button className='modal-newchannel-openbutton' onClick={()=>depositeL2Balance()}>OPEN</button>
                         </div>
                     </div>
                 </div>
@@ -1534,22 +1773,80 @@ function App() {
                         <div className='modal-new-rental-bottom1'><br/> : {inputValue}<br/> : {inputDuration} <br/>
                             : 0.0000001 BTC (2.5 Usd)<br/> : 0.0000001 BTC (0.25 Usd)<br/> : 0.00000011 BTC (2.75 Usd)
                         </div>
-                        <div><button className="modal-newrental-button" type='button' onClick={()=>depositeL2Balance(coinname)}>CONFIRM</button></div>
+                        <div><button className="modal-newrental-button" type='button' onClick={()=>depositeL2Balance()}>CONFIRM</button></div>
 
                     </div>
                 </div>
                 <div id="myModal-tutorial1" class="modal-tutorial1">
                     <div className="modal-content-tutorial1">
                         <span className="close-tutorial1" onClick={spanonclicktutorial1}>&times;</span>
-                        <img className="tutorial1-img1"src={arrowpng}/>
-                        <div className="myModal-tutorial1-empty1"></div>
-                        <div className="myModal-tutorial1-step1">STEP 1</div>
-                        <img className="tutorial1-img2"src={arrowpng}/>
-                        <div className="myModal-tutorial1-empty2"></div>
-                        <div className="myModal-tutorial1-step2">STEP 2</div>
-                        <img className="tutorial1-img3"src={arrowpng}/>
-                        <div className="myModal-tutorial1-empty3"></div>
-                        <div className="myModal-tutorial1-step3">STEP 3</div>
+                        <img className="tutorial1-img1"src={seedgif}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial2" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial2}>&times;</span>
+                        <img className="tutorial1-img1"src={depositgif}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial3" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial3}>&times;</span>
+                        <img className="tutorial1-img1"src={withdrawgif}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial4" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial4}>&times;</span>
+                        <img className="tutorial1-img1"src={newchannelslider}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial5" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial5}>&times;</span>
+                        <img className="tutorial1-img1"src={newchanelmanuel}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial6" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial6}>&times;</span>
+                        <img className="tutorial1-img1"src={rentgif}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial7" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial7}>&times;</span>
+                        <img className="tutorial1-img1"src={ssui1}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial8" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial8}>&times;</span>
+                        <img className="tutorial1-img1"src={ssui2}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial9" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial9}>&times;</span>
+                        <img className="tutorial1-img1"src={tradeondex}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial10" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial10}>&times;</span>
+                        <img className="tutorial1-img1"src={postsell}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial11" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial11}>&times;</span>
+                        <img className="tutorial1-img1"src={postbuy}/>
+                    </div>
+                </div>
+                <div id="myModal-tutorial12" class="modal-tutorial1">
+                    <div className="modal-content-tutorial1">
+                        <span className="close-tutorial1" onClick={spanonclicktutorial12}>&times;</span>
+                        <img className="tutorial1-img1"src={cancelorder}/>
                     </div>
                 </div>
             </div>
@@ -1560,7 +1857,7 @@ function App() {
                 </div>
                 <hr className="hr"/>
                 <div style={{"fontSize":"10px"}}>My Balance</div>
-                <div style={{"fontSize":"13px"}}>${totalBalance}</div>
+                <div style={{"fontSize":"13px"}}>${totalBalance.toFixed(2)}</div>
                 <div className="left-tab-names">
                     <div className='left-tab-title' id="portfolio" onClick={ (event)=> changetabcss(event, 'portfolio')}>
                         <img src={portfoliopng} className="left-img"/>
@@ -1593,7 +1890,7 @@ function App() {
             </div>
             <div className="rightside-portfolio" id="rightside-portfolio">
                 <p style={{"float":"left", "marginLeft":"80px"}}>Portfolio</p>
-                <div className="portfolio-balance"><div style={{"position":"absolute", "marginLeft":"5%","marginTop":"20px"}}>${totalBalance}</div></div>
+                <div className="portfolio-balance"><div style={{"position":"absolute", "marginLeft":"5%","marginTop":"20px"}}>${totalBalance.toFixed(2)}</div></div>
                 <div style={{"marginTop":"0px"}}>
                     <div style={{"marginTop":"40px"}}>
                         <div style={{"position":"absolute", "marginLeft":"5%"}}> Wallets </div>
@@ -1618,10 +1915,10 @@ function App() {
                             src={btcpng}/>
                             </div> 
                             <div className="portfolio-currency-left-name">Bitcoin BTC</div>
-                            <div className="portfolio-currency-left-balance">{btcbalance} BTC (${(btcbalance)*1000})</div>
+                            <div className="portfolio-currency-left-balance">{btcbalance.toFixed(2)} BTC (${((btcbalance)*100).toFixed(2)})</div>
                         </div>
                         <div className="portfolio-currency-right">
-                            <div className="portfolio-currency-right-ratio">{((btcbalance)*1000/totalBalance*100).toFixed(2)}%</div>
+                            <div className="portfolio-currency-right-ratio">{((btcbalance)*100/totalBalance*100).toFixed(2)}%</div>
                             <div className="portfolio-currency-right-sendreceive">
                                 <div className="portfolio-currency-right-send" onClick={()=>{setCoinname("BTC");btnonclicksend()}}>Send</div>
                                 <div className="portfolio-currency-right-receive"onClick={()=>{setCoinname("BTC");btnonclickreceive()}}>Receive</div>
@@ -1635,7 +1932,7 @@ function App() {
                             style={{"width":"35px","height":"35x","marginLeft":"17px","marginTop":"-4px"}}
                             src={aethpng}/></div>
                             <div className="portfolio-currency-left-name" style={{"marginLeft":"12px"}}>Arbitrum AETH</div>
-                            <div className="portfolio-currency-left-balance">{aethbalance} AETH (${(aethbalance)*100})</div>
+                            <div className="portfolio-currency-left-balance">{aethbalance.toFixed(2)} AETH (${((aethbalance)*100).toFixed(2)})</div>
                         </div>
                         <div className="portfolio-currency-right">
                             <div className="portfolio-currency-right-ratio">{((aethbalance)*100/totalBalance*100).toFixed(2)}%</div>
@@ -1652,7 +1949,7 @@ function App() {
                             src={ethpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">Ethereum ETH</div>
-                            <div className="portfolio-currency-left-balance">{ethbalance} ETH (${(ethbalance)*100})</div>
+                            <div className="portfolio-currency-left-balance">{ethbalance.toFixed(2)} ETH (${((ethbalance)*100).toFixed(2)})</div>
                         </div>
                         <div className="portfolio-currency-right">
                             <div className="portfolio-currency-right-ratio">{((ethbalance)*100/totalBalance*100).toFixed(2)}%</div>
@@ -1669,7 +1966,7 @@ function App() {
                             src={hdxpng}/>   
                             </div>
                             <div className="portfolio-currency-left-name"> Hydranet HDX</div>   
-                            <div className="portfolio-currency-left-balance">{hdxbalance} HDX (${hdxbalance})</div>
+                            <div className="portfolio-currency-left-balance">{hdxbalance.toFixed(2)} HDX (${hdxbalance.toFixed(2)})</div>
                         </div>
                         <div className="portfolio-currency-right">
                             <div className="portfolio-currency-right-ratio">{((hdxbalance)/totalBalance*100).toFixed(2)}%</div>
@@ -1686,7 +1983,7 @@ function App() {
                             src={ltcpng}/>
                             </div>
                             <div className="portfolio-currency-left-name"> Litecoin LTC</div>  
-                            <div className="portfolio-currency-left-balance">{ltcbalance} LTC (${(ltcbalance)*10})</div>
+                            <div className="portfolio-currency-left-balance">{ltcbalance.toFixed(2)} LTC (${((ltcbalance)*10).toFixed(2)})</div>
                         </div>
                         <div className="portfolio-currency-right">
                             <div className="portfolio-currency-right-ratio">{((ltcbalance)*10/totalBalance*100).toFixed(2)}%</div>
@@ -1704,7 +2001,7 @@ function App() {
                             src={usdcpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">USD Coin USDC</div>  
-                            <div className="portfolio-currency-left-balance">{usdcbalance} USDC (${usdcbalance})</div>
+                            <div className="portfolio-currency-left-balance">{usdcbalance.toFixed(2)} USDC (${usdcbalance.toFixed(2)})</div>
                         </div>
                         <div className="portfolio-currency-right">
                             <div className="portfolio-currency-right-ratio">{((usdcbalance)/totalBalance*100).toFixed(2)}%</div>
@@ -1722,7 +2019,7 @@ function App() {
                             src={usdtpng}/>
                             </div>
                             <div className="portfolio-currency-left-name">USD Tether USDT</div>  
-                            <div className="portfolio-currency-left-balance">{usdtbalance} USDT (${usdtbalance})</div>
+                            <div className="portfolio-currency-left-balance">{usdtbalance.toFixed(2)} USDT (${usdtbalance.toFixed(2)})</div>
                         </div>
                         <div className="portfolio-currency-right">
                             <div className="portfolio-currency-right-ratio">{Number(((usdtbalance)/totalBalance*100).toFixed(2))}%</div>
@@ -1755,52 +2052,52 @@ function App() {
                             <img className="pnglight" src={greenpng}/>
                             <img className="pngaeth" src={aethpng}/>
                             <div>Arbitrum - AETH</div>
-                            <div>{aethbalance} - AETH</div>
-                            <div style={{"fontSize":"10px"}}>${(aethbalance)*100}</div>
+                            <div>{aethbalance.toFixed(2)} - AETH</div>
+                            <div style={{"fontSize":"10px"}}>${((aethbalance)*100).toFixed(2)}</div>
                         </div>
                         <div className="wallets-coin active" id="btc"onClick={(e)=>{changeTabOnWallet("BTC");changecointabcss(e, 'btc')}}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={btcpng}/></div>
                             <div>Bitcoin - BTC</div>
-                            <div>{Number(btcbalance)} - BTC</div>
-                            <div style={{"fontSize":"10px"}}>${(btcbalance)*1000}</div>
+                            <div>{(btcbalance).toFixed(2)} - BTC</div>
+                            <div style={{"fontSize":"10px"}}>${((btcbalance)*100).toFixed(2)}</div>
                         </div>
                         <div className="wallets-coin" id="eth"onClick={(e)=>{changeTabOnWallet("ETH");changecointabcss(e, 'eth')}}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={ethpng}/></div>
                             <div>Ethereum - ETH</div>
-                            <div>{ethbalance} - ETH</div>
-                            <div style={{"fontSize":"10px"}}>${(ethbalance)*100}</div>
+                            <div>{ethbalance.toFixed(2)} - ETH</div>
+                            <div style={{"fontSize":"10px"}}>${((ethbalance)*100).toFixed(2)}</div>
                         </div>
                         <div className="wallets-coin" id="hdx"onClick={(e)=>{changeTabOnWallet("HDX");changecointabcss(e, 'hdx')}}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={hdxpng}/></div>
                             <div>Hydranet - HDX</div>
-                            <div>{hdxbalance} - HDX</div>
-                            <div style={{"fontSize":"10px"}}>${hdxbalance}</div>
+                            <div>{hdxbalance.toFixed(2)} - HDX</div>
+                            <div style={{"fontSize":"10px"}}>${hdxbalance.toFixed(2)}</div>
                         </div>
                         <div className="wallets-coin" id="ltc"onClick={(e)=>{changeTabOnWallet("LTC");changecointabcss(e, 'ltc')}}>
                             <img className="pnglight" src={greenpng}/>
                             <div className="png"><img className="pngb" src={ltcpng}/></div>
                             <div>Litecoin - LTC</div>
-                            <div>{ltcbalance} - LTC</div>
-                            <div style={{"fontSize":"10px"}}>${(ltcbalance)*10}</div>
+                            <div>{ltcbalance.toFixed(2)} - LTC</div>
+                            <div style={{"fontSize":"10px"}}>${((ltcbalance)*10).toFixed(2)}</div>
                         </div>
                         <div className="wallets-coin" id="usdc"onClick={(e)=>{changeTabOnWallet("USDC");changecointabcss(e, 'usdc')}}>
                             <img className="pnglight" src={greenpng}/>
                             <img className="png" style={{"width":"40px", "height":"40px", "marginRight":"17px","marginLeft":"12px"}} 
                             src={usdcpng}/>
                             <div>USD Coin - USDC</div>
-                            <div>{usdcbalance} - USDC</div>
-                            <div style={{"fontSize":"10px"}}>${usdcbalance}</div>
+                            <div>{usdcbalance.toFixed(2)} - USDC</div>
+                            <div style={{"fontSize":"10px"}}>${usdcbalance.toFixed(2)}</div>
                         </div>
                         <div className="wallets-coin" id="usdt"onClick={(e)=>{changeTabOnWallet("USDT");changecointabcss(e, 'usdt')}}>
                             <img className="pnglight" src={greenpng}/>
                             <img className="png" style={{"width":"35px", "height":"40px", "marginRight":"17px","marginLeft":"16px"}}
                             src={usdtpng}/>
                             <div>USD Tether - USDT</div>
-                            <div>{usdtbalance} - USDT</div>
-                            <div style={{"fontSize":"10px"}}>${usdtbalance}</div>
+                            <div>{usdtbalance.toFixed(2)} - USDT</div>
+                            <div style={{"fontSize":"10px"}}>${usdtbalance.toFixed(2)}</div>
                         </div>
                     </div>
             </div>
@@ -1813,9 +2110,9 @@ function App() {
                         </div>
                         <div className="wallets-balance-right">
                             <div>BALANCE</div>
-                            <div className='wallet-balance-value'>${balanceValue}</div>
+                            <div className='wallet-balance-value'>${balanceValue.toFixed(2)}</div>
                             <div>
-                                <div >{balance} {coinname}</div>
+                                <div >{balance.toFixed(2)} {coinname}</div>
                                
                             </div> <div style={{"fontSize":"12px"}}>{coinPrice}</div>
                         </div>
@@ -1834,21 +2131,21 @@ function App() {
                         <div className="wallets-slider-onchain-offchain">
                             <div className="wallets-slider-onchain">
                                 <div>On Chain</div>
-                                <div>{onchain} {coinname}</div>
+                                <div>{onchain.toFixed(2)} {coinname}</div>
                             </div>
                             <div className="wallets-slider-offchain">
                                 <div >Off Chain</div>
-                                <div>{balanceL2} {coinname}</div>
+                                <div>{balanceL2.toFixed(2)} {coinname}</div>
                             </div>
                         </div>
                         <div className="slider">
-                            <input type="range" className="slider" min="1" max={onchain} value={rangeValue} 
-                            onChange={e=>setRangeValue(e.target.value)}/>
+                            <input type="range" className="slider" min="1" max={onchain} value={newchannelinput} 
+                            onChange={e=>setNewChannelInput(e.target.value)}/>
                         </div>
                         <div className="input-bottom">
                             <div className="dex-refunds">DEX Refunds:<bold>0.00 USD</bold></div>
                             <div className="apply-button"><button className="apply-button1" onClick={btnonclicknewchannelslider}>Apply</button></div>
-                            <div className="slider-ratio">{Math.floor(rangeValue*100/onchain)}%</div>
+                            <div className="slider-ratio">{Math.floor(newchannelinput*100/onchain)}%</div>
                         </div>
                     </div>
                     <div className="wallet-channels-tab" id="wallet-channels-tab">
@@ -2033,8 +2330,8 @@ function App() {
                         </div>
                         <div className="dex-firstcoin-balance">
                             <div className='dex-firstcoin-balance-value'>{selectedPair1L2}</div> 
-                            <br/> = ${selectedPair1L2Value} <br/> Can Receive: 
-                            <br/>${selectedPair1CRValue}
+                            <br/> = ${selectedPair1L2Value.toFixed(2)} <br/> Can Receive: 
+                            <br/>${selectedPair1CRValue.toFixed(2)}
                             
                         </div>
                     </div>
@@ -2044,7 +2341,7 @@ function App() {
                         </div >
                         <div className="dex-secondcoin-balance">
                         <div className='dex-firstcoin-balance-value'>{selectedPair2L2}</div>   
-                        <br/> = ${selectedPair2L2Value} <br/> Can Receive: <br/>${selectedPair2CRValue} 
+                        <br/> = ${selectedPair2L2Value.toFixed(2)} <br/> Can Receive: <br/>${selectedPair2CRValue.toFixed(2)} 
                         </div>
                     </div>
                     <div className="dex-buttons">
@@ -2146,29 +2443,42 @@ function App() {
                                     element=="" ? null :
                                 <div>    
                                     <div id="orders1">
-                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                            <div className="dex-orderbook-order-info">990</div>
-                                            <div className="dex-orderbook-order-info">990</div>
-                                            <div className="dex-orderbook-order-info">1</div>
-                                            <div className="dex-orderbook-order-info-buyprice">990</div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder(99,1)}>
+                                           
+                                            <div className="dex-orderbook-order-info"> 
+                                            <img src={star} id="star11"/>99</div>
+                                            <div className="dex-orderbook-order-info">99</div>
+                                            <div className="dex-orderbook-order-info" id='orderbook11'>1</div>
+                                            <div className="dex-orderbook-order-info-buyprice">99</div>
+                                            
                                         </div>
-                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}> 
-                                            <div className="dex-orderbook-order-info">2950</div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder(98,2)}> 
+                                            <div className="dex-orderbook-order-info">
+                                            <img src={star} id="star12"/>2950</div>
                                             <div className="dex-orderbook-order-info">1960 </div>
-                                            <div className="dex-orderbook-order-info">2</div>
-                                            <div className="dex-orderbook-order-info-buyprice">980 </div>
+                                            <div className="dex-orderbook-order-info"  id='orderbook12'>2</div>
+                                            <div className="dex-orderbook-order-info-buyprice">98 </div>
                                         </div>
-                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                            <div className="dex-orderbook-order-info">5860</div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder(97,3)}>
+                                            <div className="dex-orderbook-order-info">
+                                            <img src={star} id="star13"/>5860</div>
                                             <div className="dex-orderbook-order-info">2910</div>
-                                            <div className="dex-orderbook-order-info">3</div>
-                                            <div className="dex-orderbook-order-info-buyprice">970</div>
+                                            <div className="dex-orderbook-order-info"  id='orderbook13'>3</div>
+                                            <div className="dex-orderbook-order-info-buyprice">97</div>
                                         </div>
-                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder()}>
-                                            <div className="dex-orderbook-order-info">7780</div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterBuyOrder(96,4)}>
+                                            <div className="dex-orderbook-order-info">
+                                            <img src={star} id="star14"/>7780</div>
                                             <div className="dex-orderbook-order-info">1920</div>
-                                            <div className="dex-orderbook-order-info">4</div>
-                                            <div className="dex-orderbook-order-info-buyprice">960</div>
+                                            <div className="dex-orderbook-order-info" id='orderbook14'>4</div>
+                                            <div className="dex-orderbook-order-info-buyprice">96</div>
+                                        </div>
+                                        <div className="dex-orderbook-order" id="userbuyorder"onClick={()=>enterBuyOrder(95,5)}>
+                                            <div className="dex-orderbook-order-info">
+                                            <img src={star} id="star15"/>14780</div>
+                                            <div className="dex-orderbook-order-info">7920</div>
+                                            <div className="dex-orderbook-order-info" id='orderbook15'>5</div>
+                                            <div className="dex-orderbook-order-info-buyprice" id='userbuyprice'>95</div>
                                         </div>
                                     </div>
                                 </div>
@@ -2194,29 +2504,40 @@ function App() {
                                 {
                                     element=="" ? null : 
                                     <div id="orders2">
-                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
-                                            <div className="dex-orderbook-order-info-sellprice">1100</div>
-                                            <div className="dex-orderbook-order-info">1</div>
-                                            <div className="dex-orderbook-order-info">1100</div>
-                                            <div className="dex-orderbook-order-info">1100</div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder(101,1)}>
+                                            <div className="dex-orderbook-order-info-sellprice">101</div>
+                                            <div className="dex-orderbook-order-info" id='orderbook21'>1</div>
+                                            <div className="dex-orderbook-order-info">101</div>
+                                            <div className="dex-orderbook-order-info">101
+                                            <img src={star} id="star21"/></div>
                                         </div>
-                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
-                                            <div className="dex-orderbook-order-info-sellprice">1200</div>
-                                            <div className="dex-orderbook-order-info">2</div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder(102,2)}>
+                                            <div className="dex-orderbook-order-info-sellprice">102</div>
+                                            <div className="dex-orderbook-order-info" id='orderbook22'>2</div>
                                             <div className="dex-orderbook-order-info">2400</div>
-                                            <div className="dex-orderbook-order-info">3500</div>
+                                            <div className="dex-orderbook-order-info">3500
+                                            <img src={star} id="star22"/></div>
                                         </div>
-                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
-                                            <div className="dex-orderbook-order-info-sellprice">1300</div>
-                                            <div className="dex-orderbook-order-info">3</div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder(103,3)}>
+                                            <div className="dex-orderbook-order-info-sellprice">103</div>
+                                            <div className="dex-orderbook-order-info" id='orderbook23'>3</div>
                                             <div className="dex-orderbook-order-info">3900</div>
-                                            <div className="dex-orderbook-order-info">7400</div>
+                                            <div className="dex-orderbook-order-info">7400
+                                            <img src={star} id="star23"/></div>
                                         </div>
-                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder()}>
-                                            <div className="dex-orderbook-order-info-sellprice">1400</div>
-                                            <div className="dex-orderbook-order-info">4</div>
+                                        <div className="dex-orderbook-order" onClick={()=>enterSellOrder(104,4)}>
+                                            <div className="dex-orderbook-order-info-sellprice">104</div>
+                                            <div className="dex-orderbook-order-info" id='orderbook24'>4</div>
                                             <div className="dex-orderbook-order-info">5600</div>
-                                            <div className="dex-orderbook-order-info">13000</div>
+                                            <div className="dex-orderbook-order-info">13000
+                                            <img src={star} id="star24"/></div>
+                                        </div>
+                                        <div className="dex-orderbook-order" id="usersellorder" onClick={()=>enterSellOrder(105,5)}>
+                                            <div className="dex-orderbook-order-info-sellprice" id="usersellprice">105</div>
+                                            <div className="dex-orderbook-order-info" id='orderbook25'>5</div>
+                                            <div className="dex-orderbook-order-info">9600</div>
+                                            <div className="dex-orderbook-order-info">73000
+                                            <img src={star} id="star25"/></div>
                                         </div>
                                     </div>
                                 }
@@ -2253,21 +2574,136 @@ function App() {
                             </div>
                         </div>
                         <div className="dex-orderbook-openorders" id="dex-orderbook-openorders">
-                        dex-orderbook-openorders
+                            <div className='dex-orderbook-openorders-headers'>
+                                <div className='dex-orderbook-openorders-header'>TYPE</div>
+                                <div className='dex-orderbook-openorders-header'>SIDE</div>
+                                <div className='dex-orderbook-openorders-header'>PRICE({firstCoin})</div>
+                                <div className='dex-orderbook-openorders-header'>AMOUNT({secondCoin})</div>
+                                <div className='dex-orderbook-openorders-header'>FILLED({secondCoin})</div>
+                                <div className='dex-orderbook-openorders-header'>TOTAL({firstCoin})</div>
+                                <div className='dex-orderbook-openorders-header'>ACTIONS</div>
+                            </div>
                             
                         </div>
                         <div className="dex-orderbook-myorderhistory" id="dex-orderbook-myorderhistory">
-                        dex-orderbook-myorderhistory
-                            
+                            <div className='dex-orderbook-myorders-headers'>
+                                <div className='dex-orderbook-myorders-header'>DATE</div>
+                                <div className='dex-orderbook-myorders-header'>SIDE</div>
+                                <div className='dex-orderbook-myorders-header'>PRICE({firstCoin})</div>
+                                <div className='dex-orderbook-myorders-header'>FILLED({secondCoin})</div>
+                                <div className='dex-orderbook-myorders-header'>TOTAL({firstCoin})</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="dex-rightside" id="dex-rightside">
+                <div className="dex-rightside" >
                     <div className="dex-rightside-title">TRADE HISTORY</div>
                     <div className="dex-rightside-headers">
                         <div className="dex-rightside-header">AMOUNT({firstCoin})</div>
                         <div className="dex-rightside-header">TIME</div>
                         <div className="dex-rightside-header">PRICE({secondCoin})</div>
+                    </div>
+                    <div className="dex-rightside-history" id="dex-rightside">
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">1</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">44</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">16</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">56</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">1</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-buypricex">101</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">13</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">1</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-buypricex">101</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">35</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">2</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">15</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-buypricex">101</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">62</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-buypricex">101</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">4</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-buypricex">101</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">15</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">51</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-buypricex">101</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">1</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">65</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">14</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">3</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-buypricex">101</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">1</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
+                        <div class="dex-orderbook-order">
+                            <div class="dex-orderbook-order-infox">5</div>
+                            <div class="dex-orderbook-order-info-timex">{tarih}</div>
+                            <div class="dex-orderbook-order-info-sellpricex">99</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2292,7 +2728,7 @@ function App() {
                             </div>
                         </div>
                         <div  className="swap-top-center-img" onClick={()=>changeSide()}>
-                            <img  className="swap-top-center-img"src={swapimg} /><div id='swap-price'>1 btc = 1000 usdt</div>
+                            <img  className="swap-top-center-img"src={swapimg} /><div id='swap-price'>1 btc = 100 usdt</div>
                         </div>
                         <div className="swap-top-right1" id='swap-top-right1'>
                             <div id="swap-second-div">
@@ -2376,36 +2812,56 @@ function App() {
         </div>
         </div>
         <div>
-            <div className="turorial-titles">
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content1')}
+            <div className="tutorial-titles">
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content1')}
                 onClick={(e)=>tutorial1(e)}>Tutorial 1</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content2')}>Tutorial 2</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content3')}>Tutorial 3</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content4')}>Tutorial 4</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content5')}>Tutorial 5</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content6')}>Tutorial 6</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 7</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content2')}
+                onClick={(e)=>tutorial2(e)}>Tutorial 2</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content3')}
+                onClick={(e)=>tutorial3(e)}>Tutorial 3</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content4')}
+                onClick={(e)=>tutorial4(e)}>Tutorial 4</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content5')}
+                onClick={(e)=>tutorial5(e)}>Tutorial 5</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content6')}
+                onClick={(e)=>tutorial6(e)}>Tutorial 6</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content7')}
+                onClick={(e)=>tutorial7(e)}>Tutorial 7</div>
             </div>
-            <div className="turorial-contents">
-                <div className="turorial-title" id="tutorial1" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 16</div>
-                <div className="turorial-content" id="turorial-content1">How to deposit funds to wallet</div>
-                <div className="turorial-content" id="turorial-content2">How to withdraw funds from wallet</div>
-                <div className="turorial-content" id="turorial-content3">How to open channel </div>
-                <div className="turorial-content" id="turorial-content4">How to rent channel </div>
-                <div className="turorial-content" id="turorial-content5">How to trade on dex tab</div>
-                <div className="turorial-content" id="turorial-content6">How to get wallet backup</div>
-                <div className="turorial-content" id="turorial-content7"></div>
-                <div className="turorial-title" id="tutorial1" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 8</div>
+            <div className="tutorial-contents">
+                <div className="tutorial-title" id="tutorial1" onMouseOver={(event)=>openTutorial(event, 'tutorial-content16')}>Tutorial 16</div>
+                <div className="tutorial-content" id="tutorial-content1">How to get wallet backup</div>
+                <div className="tutorial-content" id="tutorial-content2">How to deposit funds to wallet</div>
+                <div className="tutorial-content" id="tutorial-content3">How to withdraw funds from wallet </div>
+                <div className="tutorial-content" id="tutorial-content4">How to open channel with slider</div>
+                <div className="tutorial-content" id="tutorial-content5">How to open channel manually</div>
+                <div className="tutorial-content" id="tutorial-content6">How to rent channel</div>
+                <div className="tutorial-content" id="tutorial-content7">How to trade with swap tab without opening any channel</div>
+                <div className="tutorial-content" id="tutorial-content8">How to trade with swap tab with opened channels</div>
+                <div className="tutorial-content" id="tutorial-content9">How to trade on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content10">How to post limit sell order on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content11">How to post limit buy order on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content12">How to cancel my order on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content13">How to trade on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content14">How to trade on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content15">How to trade on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content16">How to trade on dex tab</div>
+                <div className="tutorial-title" id="tutorial2" onMouseOver={(event)=>openTutorial(event, 'tutorial-content8')}
+                onClick={(e)=>tutorial8(e)}>Tutorial 8</div>
             </div>
-            <div className="turorial-titles">
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content1')}
+            <div className="tutorial-titles">
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content15')}
                 onClick={(e)=>tutorial1(e)}>Tutorial 15</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content2')}>Tutorial 14</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content3')}>Tutorial 13</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content4')}>Tutorial 12</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content5')}>Tutorial 11</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content6')}>Tutorial 10</div>
-                <div className="turorial-title" onMouseOver={(event)=>openTutorial(event, 'turorial-content7')}>Tutorial 9</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content14')}>Tutorial 14</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content13')}>Tutorial 13</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content12')}
+                onClick={(e)=>tutorial12(e)}>Tutorial 12</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content11')}
+                onClick={(e)=>tutorial11(e)}>Tutorial 11</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content10')}
+                onClick={(e)=>tutorial10(e)}>Tutorial 10</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content9')}
+                onClick={(e)=>tutorial9(e)}>Tutorial 9</div>
             </div>
         </div>
     </div>
