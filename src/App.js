@@ -1619,7 +1619,62 @@ function App() {
         <div className="titles">
             <div className="title">HYDRANET DEX SIMULATION/TUTORIAL</div>
         </div>
+        <div>
+            <div className="tutorial-titles">
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content1')}
+                onClick={(e)=>tutorial1(e)}>Tutorial 1</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content2')}
+                onClick={(e)=>tutorial2(e)}>Tutorial 2</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content3')}
+                onClick={(e)=>tutorial3(e)}>Tutorial 3</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content4')}
+                onClick={(e)=>tutorial4(e)}>Tutorial 4</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content5')}
+                onClick={(e)=>tutorial5(e)}>Tutorial 5</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content6')}
+                onClick={(e)=>tutorial6(e)}>Tutorial 6</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content7')}
+                onClick={(e)=>tutorial7(e)}>Tutorial 7</div>
+            </div>
+            <div className="tutorial-contents">
+                <div className="tutorial-title" id="tutorial1" onMouseOver={(event)=>openTutorial(event, 'tutorial-content16')}>Tutorial 16</div>
+                <div className="tutorial-content" id="tutorial-content1">How to get wallet backup</div>
+                <div className="tutorial-content" id="tutorial-content2">How to deposit funds to wallet</div>
+                <div className="tutorial-content" id="tutorial-content3">How to withdraw funds from wallet </div>
+                <div className="tutorial-content" id="tutorial-content4">How to open channel with slider</div>
+                <div className="tutorial-content" id="tutorial-content5">How to open channel manually</div>
+                <div className="tutorial-content" id="tutorial-content6">How to rent channel</div>
+                <div className="tutorial-content" id="tutorial-content7">How to trade with swap tab without opening any channel</div>
+                <div className="tutorial-content" id="tutorial-content8">How to trade with swap tab with opened channels</div>
+                <div className="tutorial-content" id="tutorial-content9">How to trade on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content10">How to post limit sell order on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content11">How to post limit buy order on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content12">How to cancel my order on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content13">How to trade on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content14">How to trade on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content15">How to trade on dex tab</div>
+                <div className="tutorial-content" id="tutorial-content16">How to trade on dex tab</div>
+                <div className="tutorial-title" id="tutorial2" onMouseOver={(event)=>openTutorial(event, 'tutorial-content8')}
+                onClick={(e)=>tutorial8(e)}>Tutorial 8</div>
+            </div>
+            <div className="tutorial-titles">
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content15')}
+                onClick={(e)=>tutorial1(e)}>Tutorial 15</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content14')}>Tutorial 14</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content13')}>Tutorial 13</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content12')}
+                onClick={(e)=>tutorial12(e)}>Tutorial 12</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content11')}
+                onClick={(e)=>tutorial11(e)}>Tutorial 11</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content10')}
+                onClick={(e)=>tutorial10(e)}>Tutorial 10</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content9')}
+                onClick={(e)=>tutorial9(e)}>Tutorial 9</div>
+            </div>
+        </div>
         <div className="App1">
+        
+
         <div className="dex">
             <div  className="modals">
             <div id="myModal-receive" class="modal-receive">
@@ -2811,59 +2866,7 @@ function App() {
             </div>
         </div>
         </div>
-        <div>
-            <div className="tutorial-titles">
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content1')}
-                onClick={(e)=>tutorial1(e)}>Tutorial 1</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content2')}
-                onClick={(e)=>tutorial2(e)}>Tutorial 2</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content3')}
-                onClick={(e)=>tutorial3(e)}>Tutorial 3</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content4')}
-                onClick={(e)=>tutorial4(e)}>Tutorial 4</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content5')}
-                onClick={(e)=>tutorial5(e)}>Tutorial 5</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content6')}
-                onClick={(e)=>tutorial6(e)}>Tutorial 6</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content7')}
-                onClick={(e)=>tutorial7(e)}>Tutorial 7</div>
-            </div>
-            <div className="tutorial-contents">
-                <div className="tutorial-title" id="tutorial1" onMouseOver={(event)=>openTutorial(event, 'tutorial-content16')}>Tutorial 16</div>
-                <div className="tutorial-content" id="tutorial-content1">How to get wallet backup</div>
-                <div className="tutorial-content" id="tutorial-content2">How to deposit funds to wallet</div>
-                <div className="tutorial-content" id="tutorial-content3">How to withdraw funds from wallet </div>
-                <div className="tutorial-content" id="tutorial-content4">How to open channel with slider</div>
-                <div className="tutorial-content" id="tutorial-content5">How to open channel manually</div>
-                <div className="tutorial-content" id="tutorial-content6">How to rent channel</div>
-                <div className="tutorial-content" id="tutorial-content7">How to trade with swap tab without opening any channel</div>
-                <div className="tutorial-content" id="tutorial-content8">How to trade with swap tab with opened channels</div>
-                <div className="tutorial-content" id="tutorial-content9">How to trade on dex tab</div>
-                <div className="tutorial-content" id="tutorial-content10">How to post limit sell order on dex tab</div>
-                <div className="tutorial-content" id="tutorial-content11">How to post limit buy order on dex tab</div>
-                <div className="tutorial-content" id="tutorial-content12">How to cancel my order on dex tab</div>
-                <div className="tutorial-content" id="tutorial-content13">How to trade on dex tab</div>
-                <div className="tutorial-content" id="tutorial-content14">How to trade on dex tab</div>
-                <div className="tutorial-content" id="tutorial-content15">How to trade on dex tab</div>
-                <div className="tutorial-content" id="tutorial-content16">How to trade on dex tab</div>
-                <div className="tutorial-title" id="tutorial2" onMouseOver={(event)=>openTutorial(event, 'tutorial-content8')}
-                onClick={(e)=>tutorial8(e)}>Tutorial 8</div>
-            </div>
-            <div className="tutorial-titles">
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content15')}
-                onClick={(e)=>tutorial1(e)}>Tutorial 15</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content14')}>Tutorial 14</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content13')}>Tutorial 13</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content12')}
-                onClick={(e)=>tutorial12(e)}>Tutorial 12</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content11')}
-                onClick={(e)=>tutorial11(e)}>Tutorial 11</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content10')}
-                onClick={(e)=>tutorial10(e)}>Tutorial 10</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content9')}
-                onClick={(e)=>tutorial9(e)}>Tutorial 9</div>
-            </div>
-        </div>
+        
     </div>
   );
 }
