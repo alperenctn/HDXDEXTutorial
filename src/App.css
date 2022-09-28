@@ -20,9 +20,7 @@ padding-top: 9px;
   font-weight: 700;
   color: rgba(195, 238, 204, 0.922);
 }
-.tutorial-titles{
-  
-}
+
 .hdxlogo{
   height: 60px;
   width: 100%;
@@ -1859,7 +1857,7 @@ color: rgba(255, 255, 255, 0.689);
 .tutorial-titles{
   float: left;
   height: 100px;
-  width: 97%;
+  width: 100%;
   background-color: rgb(79, 88, 171);
   padding: 10px;
   padding-left: 40px;
@@ -1884,7 +1882,7 @@ color: rgba(255, 255, 255, 0.689);
 }
 .tutorial-contents{
   float: left;
-  width: 98.2%;
+  width: 100%;
   background-color: rgb(79, 88, 171);
   padding: 15px;
   padding-top: 0px;
@@ -1892,8 +1890,8 @@ color: rgba(255, 255, 255, 0.689);
 .tutorial-content{
   float: left;
   display: none;
-  margin-left: 8%;
-  width: 52%;
+  margin-left: 10px;
+  width: 65%;
   background-color: #357EC7;
   padding: 15px;
   margin-top: 15px;
@@ -1923,7 +1921,7 @@ color: rgba(255, 255, 255, 0.689);
   margin-left: 40px;
 }
 #tutorial2{
- margin-left: 5%;
+
 }
 
 /* TUTORIAL MODAL */
@@ -1942,7 +1940,8 @@ color: rgba(255, 255, 255, 0.689);
   padding-left: 10px;
 }
 .tutorial1-img1{
-  height: 810px;
+  width: 98%;
+
   float: left;
 }
 .tutorial1-img11{
