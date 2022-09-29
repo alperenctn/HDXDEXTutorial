@@ -51,6 +51,9 @@ import tradeondex from "./png/tradeondex.gif"
 import postsell from "./png/postsell.gif"
 import postbuy from "./png/postbuy.gif"
 import cancelorder from "./png/cancelorder.gif"
+import hydra from "./png/hydra.png"
+import compare from "./png/compare.bmp"
+import features from "./png/features.bmp"
 
 function App() {
 
@@ -1635,9 +1638,19 @@ function App() {
                 onClick={(e)=>tutorial6(e)}>Tutorial 6</div>
                 <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content7')}
                 onClick={(e)=>tutorial7(e)}>Tutorial 7</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content8')}
+                onClick={(e)=>tutorial8(e)}>Tutorial 8</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content9')}
+                onClick={(e)=>tutorial9(e)}>Tutorial 9</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content10')}
+                onClick={(e)=>tutorial10(e)}>Tutorial 10</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content11')}
+                onClick={(e)=>tutorial11(e)}>Tutorial 11</div>
+                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content12')}
+                onClick={(e)=>tutorial12(e)}>Tutorial 12</div>
+
             </div>
             <div className="tutorial-contents">
-                <div className="tutorial-title" id="tutorial1" onMouseOver={(event)=>openTutorial(event, 'tutorial-content16')}>Tutorial 16</div>
                 <div className="tutorial-content" id="tutorial-content1">How to get wallet backup</div>
                 <div className="tutorial-content" id="tutorial-content2">How to deposit funds to wallet</div>
                 <div className="tutorial-content" id="tutorial-content3">How to withdraw funds from wallet </div>
@@ -1654,27 +1667,10 @@ function App() {
                 <div className="tutorial-content" id="tutorial-content14">How to trade on dex tab</div>
                 <div className="tutorial-content" id="tutorial-content15">How to trade on dex tab</div>
                 <div className="tutorial-content" id="tutorial-content16">How to trade on dex tab</div>
-                <div className="tutorial-title" id="tutorial2" onMouseOver={(event)=>openTutorial(event, 'tutorial-content8')}
-                onClick={(e)=>tutorial8(e)}>Tutorial 8</div>
-            </div>
-            <div className="tutorial-titles">
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content15')}
-                onClick={(e)=>tutorial1(e)}>Tutorial 15</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content14')}>Tutorial 14</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content13')}>Tutorial 13</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content12')}
-                onClick={(e)=>tutorial12(e)}>Tutorial 12</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content11')}
-                onClick={(e)=>tutorial11(e)}>Tutorial 11</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content10')}
-                onClick={(e)=>tutorial10(e)}>Tutorial 10</div>
-                <div className="tutorial-title" onMouseOver={(event)=>openTutorial(event, 'tutorial-content9')}
-                onClick={(e)=>tutorial9(e)}>Tutorial 9</div>
             </div>
         </div>
         <div className="App1">
         
-
         <div className="dex">
             <div  className="modals">
             <div id="myModal-receive" class="modal-receive">
@@ -2865,8 +2861,34 @@ function App() {
                 </div>
             </div>
         </div>
-        </div>
         
+        </div>
+        <div className="tutorial-bottom">
+            <hr className='hr-bottom'/>
+            <div className="tutorial-bottom-content0">Not: If you dont want to struggle with channels, you can easly swap assets in the swap tab without opening channels :-). 
+            </div>
+            <div className="tutorial-bottom-content0">Not: For using dex tab, You should have 'can send' balance to send any coin in the dex tab and 
+            should have 'can receive' balance for coin that you want to buy. For example you have a bitcoin and want to sell it for USDT, firstly btc channel should
+            be opened and in this way you will have 'can send' balance for BTC. For USDT side you should have 'can receive' balance. Rent 
+            usdt channel and in this way you will have 'can receive' balance for USDT. Now you are ready to sell BTC and buy USDT in the dex tab :-). 
+            </div>
+            <div className="tutorial-bottom-contenth">What is Hydranet DEX?</div>
+            <div className="tutorial-bottom-content">  The Hydranet DEX is a Layer 3 cross-chain DEX that utilizes Layer 2 protocols
+                 (Lightning Network and Connext) to allow low-fee, trustless, cross-chain swaps
+                  between BTC, ETH, and additional altcoins all on one platform.</div>
+            <div className="tutorial-bottom-content2">
+                <div>Layer 1: On-chain transactions. Traditional, limited to one type of coin and blockchain.</div>
+                <div>Layer 2: Off-chain transactions. Nearly instant, limited to one type of coin and blockchain.</div>
+                <div>Layer 3: Cross-chain, off-chain transactions. Nearly instant, compatible with multiple types of coins, 
+            blockchain networks, and ecosystems.</div>
+            </div>
+            <div>
+                <img src={features} className="features"></img>
+            </div>
+            <div>
+                <img src={compare} className="compare"></img>
+            </div>
+        </div>
     </div>
   );
 }
