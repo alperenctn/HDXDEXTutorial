@@ -486,41 +486,7 @@ function App() {
         // let tdclose = document.createElement("div");
         // var i = 1
 
-    // const pushL2Channel = (y,a,b) => {
-    //     if(a=="swap"){
-    //         setInputValue(b);
-    //       }
-    //     tdclose.innerHTML ='&times;';
-    //     tdclose.className = "close-receive-closechannel";
-    //     tdchannel.textContent="Channel " + i;
-    //     i++
-    //     tdstatus.textContent="Active";
-    //     tdstatus.style.color = "green"
-    //     if(newchannelinput==""){
-    //       tdcansend.textContent=Number(0);
-    //     }else{
-    //         tdcansend.textContent=newchannelinput;
-    //     }
-    //     tdcanreceive.textContent=inputValue;
-    //     if(inputDuration==0){
-    //       tdrentaltime.textContent="";
-    //     }else{
-    //       tdrentaltime.textContent=0;
-    //     }
-    //     tdchannel.className = "ethchannel";
-    //     tdstatus.className = "ethchannel";
-    //     tdcansend.className = "ethchannel";
-    //     tdcanreceive.className = "ethchannel";
-    //     tdrentaltime.className = "ethchannel";
-    //     tr.className="ethchannels"
-    //     tr.appendChild(tdchannel);
-    //     tr.appendChild(tdstatus);
-    //     tr.appendChild(tdcansend);
-    //     tr.appendChild(tdcanreceive);
-    //     tr.appendChild(tdrentaltime);
-    //     tr.appendChild(tdclose);
 
-    // }
 
     const depositeL2Balance = () =>{
  
